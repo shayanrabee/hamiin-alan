@@ -1,5 +1,4 @@
 import { useEffect, useMemo, useState } from "react";
-
 import { supabase } from "./supabaseClient.js";
 
 import films from "./data/films.js";
@@ -12,10 +11,10 @@ import instrumentalMusic from "./data/instrumentalMusic.js";
 
 import {
   getCategorizedRecommendations,
+  getAlternativeRecommendation,
 } from "./data/recommend.js";
 
 import "./App.css";
-
 
 /* =========================
    سوالات
@@ -98,97 +97,44 @@ const moodGroups = [
 const staticQuestions = [
   {
     key: "goal",
-    title: "الان چی می‌خوای؟",
-    subtitle: "قرار نیست جواب درست یا غلطی وجود داشته باشه.",
+    title: "الان دلت چی می‌خواد؟",
     options: [
-      {
-        value: "feel_better",
-        label: "می‌خوام حالم بهتر بشه",
-      },
-      {
-        value: "fun",
-        label: "می‌خوام بخندم",
-      },
-      {
-        value: "excitement",
-        label: "می‌خوام هیجان داشته باشم",
-      },
-      {
-        value: "calm",
-        label: "می‌خوام آروم بشم",
-      },
-      {
-        value: "thoughtful",
-        label: "می‌خوام ذهنم درگیر بشه",
-      },
-      {
-        value: "discovery",
-        label: "می‌خوام یه چیز عجیب و متفاوت پیدا کنم",
-      },
-      {
-        value: "learning",
-        label: "می‌خوام یه چیز تازه یاد بگیرم",
-      },
-      {
-        value: "surprise",
-        label: "نمی‌دونم، خودمم نمی‌دونم",
-      },
+      { value: "feel_better", label: "می‌خوام حالم بهتر بشه" },
+      { value: "fun", label: "می‌خوام بخندم" },
+      { value: "excitement", label: "می‌خوام هیجان داشته باشم" },
+      { value: "calm", label: "می‌خوام آروم بشم" },
+      { value: "thoughtful", label: "می‌خوام ذهنم درگیر بشه" },
+      { value: "discovery", label: "می‌خوام یه چیز عجیب و متفاوت پیدا کنم" },
+      { value: "learning", label: "می‌خوام یه چیز تازه یاد بگیرم" },
+      { value: "surprise", label: "نمی‌دونم، خودمم نمی‌دونم" },
     ],
   },
   {
     key: "time",
     title: "چقدر وقت داری؟",
-    subtitle:
-      "این یکی مهمه؛ چیزی پیشنهاد نمی‌کنیم که وسطش مجبور شی ولش کنی.",
     options: [
-      {
-        value: "30min",
-        label: "تا نیم ساعت",
-      },
-      {
-        value: "1hour",
-        label: "حدود یه ساعت",
-      },
-      {
-        value: "2_3hours",
-        label: "دو سه ساعت",
-      },
-      {
-        value: "half_day",
-        label: "یه نصف روز",
-      },
-      {
-        value: "a_lot",
-        label: "مهم نیست، وقتم زیاده",
-      },
+      { value: "30min", label: "تا نیم ساعت" },
+      { value: "1hour", label: "حدود یه ساعت" },
+      { value: "2_3hours", label: "دو سه ساعت" },
+      { value: "half_day", label: "یه نصف روز" },
+      { value: "a_lot", label: "مهم نیست، وقتم زیاده" },
     ],
   },
   {
     key: "energy",
     title: "چقدر حوصله داری؟",
-    subtitle:
-      "این مشخص می‌کنه چقدر باید ازت انرژی بگیریم!",
     options: [
       {
         value: "very_low",
         label: "اصلاً حوصله ندارم، یه چیز راحت می‌خوام",
       },
-      {
-        value: "low",
-        label: "یه کم، خیلی کم",
-      },
+      { value: "low", label: "یه کم، خیلی کم" },
       {
         value: "medium",
         label: "بستگی داره، اگه بیارزه چرا که نه",
       },
-      {
-        value: "high",
-        label: "حوصله دارم، بزن بریم",
-      },
-      {
-        value: "very_high",
-        label: "پایه‌ام، هرچی داری رو کن",
-      },
+      { value: "high", label: "حوصله دارم، بزن بریم" },
+      { value: "very_high", label: "پایه‌ام، هرچی داری رو کن" },
     ],
   },
 ];
@@ -207,19 +153,14 @@ function getRandomMoodQuestion() {
 
   return {
     key: "mood",
-    title: "الان چه حالی داری؟",
-    subtitle: "همون چیزی رو بگو که واقعاً الان حس می‌کنی.",
+    title: "حالت چطوره؟",
     options,
   };
 }
 
 function getQuestions() {
-  return [
-    getRandomMoodQuestion(),
-    ...staticQuestions,
-  ];
+  return [getRandomMoodQuestion(), ...staticQuestions];
 }
-
 
 /* =========================
    دیتابیس‌ها
@@ -228,27 +169,16 @@ function getQuestions() {
 function getDatabases() {
   return {
     films: Array.isArray(films) ? films : [],
-    foreignFilms: Array.isArray(foreignFilms)
-      ? foreignFilms
-      : [],
-    shortFilms: Array.isArray(shortFilms)
-      ? shortFilms
-      : [],
-    series: Array.isArray(series)
-      ? series
-      : [],
-    podcasts: Array.isArray(podcasts)
-      ? podcasts
-      : [],
-    books: Array.isArray(books)
-      ? books
-      : [],
+    foreignFilms: Array.isArray(foreignFilms) ? foreignFilms : [],
+    shortFilms: Array.isArray(shortFilms) ? shortFilms : [],
+    series: Array.isArray(series) ? series : [],
+    podcasts: Array.isArray(podcasts) ? podcasts : [],
+    books: Array.isArray(books) ? books : [],
     instrumentalMusic: Array.isArray(instrumentalMusic)
       ? instrumentalMusic
       : [],
   };
 }
-
 
 /* =========================
    نوع محتوا
@@ -256,24 +186,18 @@ function getDatabases() {
 
 function getItemType(item) {
   const type = String(
-    item?.type || ""
+    item?.type || item?.category || ""
   ).toLowerCase();
 
   const origin = String(
     item?.origin || ""
   ).toLowerCase();
 
-  if (
-    type === "short_film" ||
-    type === "short"
-  ) {
+  if (type === "short_film" || type === "short") {
     return "short_film";
   }
 
-  if (
-    type === "series" ||
-    type === "tv_series"
-  ) {
+  if (type === "series" || type === "tv_series") {
     return "series";
   }
 
@@ -308,6 +232,14 @@ function getItemType(item) {
     return "foreign_film";
   }
 
+  if (type === "iran_film") {
+    return "iran_film";
+  }
+
+  if (type === "foreign_film") {
+    return "foreign_film";
+  }
+
   return "unknown";
 }
 
@@ -317,34 +249,37 @@ function getTypeLabel(item) {
   switch (type) {
     case "short_film":
       return "فیلم کوتاه";
-
     case "iran_film":
       return "فیلم ایرانی";
-
     case "foreign_film":
       return "فیلم خارجی";
-
     case "series":
       return "سریال";
-
     case "podcast":
       return "پادکست";
-
     case "book":
       return "کتاب";
-
     case "instrumental_music":
       return "موسیقی بی‌کلام";
-
+    case "poetry":
+      return "شعر";
+    case "music_video":
+      return "موزیک‌ویدئو";
+    case "standup":
+      return "استندآپ";
+    case "online_game":
+      return "بازی آنلاین";
     default:
-      return "پیشنهاد";
+      return "پیشنهادها";
   }
 }
 
 function getDurationNumber(item) {
   const value =
     item?.duration ??
-    item?.durationMinutes;
+    item?.durationMinutes ??
+    item?.minutes ??
+    item?.length;
 
   if (
     typeof value === "number" &&
@@ -365,8 +300,7 @@ function getDurationNumber(item) {
 }
 
 function getDuration(item) {
-  const duration =
-    getDurationNumber(item);
+  const duration = getDurationNumber(item);
 
   if (duration !== null) {
     return `${duration} دقیقه`;
@@ -386,23 +320,22 @@ function getCreator(item) {
   );
 }
 
-
-/* =========================
-   کلید یکتای آیتم
-========================= */
-
 function getItemKey(item) {
   if (!item) {
     return "";
   }
 
-  if (item.id !== undefined && item.id !== null) {
+  if (
+    item.id !== undefined &&
+    item.id !== null
+  ) {
     return String(item.id);
   }
 
-  return `${item.category || ""}-${item.title || ""}`;
+  return `${item.category || getItemType(item) || ""}-${item.title || ""}`
+    .toLowerCase()
+    .trim();
 }
-
 
 /* =========================
    پیشنهادها
@@ -410,13 +343,62 @@ function getItemKey(item) {
 
 function getRecommendations(
   answers,
-  databases
+  databases,
+  excludedKeys = new Set()
 ) {
-  return getCategorizedRecommendations(
-    databases,
-    answers
-  );
+  const results =
+    getCategorizedRecommendations(
+      databases,
+      answers,
+      {
+        excludedKeys,
+      }
+    );
+
+  const usedCategories = new Set();
+  const usedKeys = new Set();
+  const finalResults = [];
+
+  for (
+    const rawItem of Array.isArray(results)
+      ? results
+      : []
+  ) {
+    const category =
+      rawItem?.category ||
+      getItemType(rawItem);
+
+    const item = {
+      ...rawItem,
+      category,
+    };
+
+    const key = getItemKey(item);
+
+    if (!category || !key) {
+      continue;
+    }
+
+    if (usedCategories.has(category)) {
+      continue;
+    }
+
+    if (usedKeys.has(key)) {
+      continue;
+    }
+
+    usedCategories.add(category);
+    usedKeys.add(key);
+
+    finalResults.push(item);
+  }
+
+  return finalResults;
 }
+
+/* =========================
+   عنوان دسته
+========================= */
 
 function getCategoryTitle(category) {
   const titles = {
@@ -427,11 +409,14 @@ function getCategoryTitle(category) {
     series: "سریال",
     book: "کتاب",
     instrumental_music: "موسیقی بی‌کلام",
+    poetry: "شعر",
+    music_video: "موزیک‌ویدئو",
+    standup: "استندآپ",
+    online_game: "بازی آنلاین",
   };
 
   return titles[category] || "پیشنهادها";
 }
-
 
 /* =========================
    کارت پیشنهاد
@@ -474,7 +459,6 @@ function RecommendationCard({
 
   return (
     <article className="recommendation-card">
-
       <div className="recommendation-image">
         {item?.image ? (
           <img
@@ -492,27 +476,17 @@ function RecommendationCard({
       </div>
 
       <div className="recommendation-content">
-
         <div className="recommendation-meta">
-
-          <span>
-            {type}
-          </span>
+          <span>{type}</span>
 
           {item?.year && (
-            <span>
-              {item.year}
-            </span>
+            <span>{item.year}</span>
           )}
 
           {duration && (
-            <span>
-              {duration}
-            </span>
+            <span>{duration}</span>
           )}
-
         </div>
-
 
         <h3
           className="recommendation-title-link"
@@ -527,33 +501,28 @@ function RecommendationCard({
             "بدون عنوان"}
         </h3>
 
-
         {creator && (
           <p className="creator">
             {creator}
           </p>
         )}
 
-
         <div className="card-actions">
-
           <button
             className="secondary"
             onClick={() =>
               onSaveForLater(item)
             }
             disabled={
-              saving ||
-              isSaved
+              saving || isSaved
             }
           >
             {saving
               ? "در حال ذخیره..."
               : isSaved
               ? "ذخیره شد ✓"
-              : "بعداً می‌بینم"}
+              : "بعدن می‌بینم"}
           </button>
-
 
           <button
             className="ghost"
@@ -566,15 +535,11 @@ function RecommendationCard({
               ? "یه لحظه..."
               : "یه چیز دیگه بگو"}
           </button>
-
         </div>
-
       </div>
-
     </article>
   );
 }
-
 
 /* =========================
    کارت ذخیره‌شده
@@ -589,7 +554,7 @@ function SavedItemCard({
     ? getCategoryTitle(
         item.item_type
       )
-    : "پیشنهاد";
+    : "پیشنهادها";
 
   function handleTitleClick() {
     const title =
@@ -616,7 +581,6 @@ function SavedItemCard({
 
   return (
     <article className="recommendation-card">
-
       <div className="recommendation-image">
         {item?.image ? (
           <img
@@ -633,19 +597,12 @@ function SavedItemCard({
         )}
       </div>
 
-
       <div className="recommendation-content">
-
         <div className="recommendation-meta">
-
-          <span>
-            {type}
-          </span>
+          <span>{type}</span>
 
           {item?.year && (
-            <span>
-              {item.year}
-            </span>
+            <span>{item.year}</span>
           )}
 
           {item?.duration && (
@@ -653,9 +610,7 @@ function SavedItemCard({
               {item.duration}
             </span>
           )}
-
         </div>
-
 
         <h3
           className="recommendation-title-link"
@@ -665,16 +620,13 @@ function SavedItemCard({
             "بدون عنوان"}
         </h3>
 
-
         {item?.creator && (
           <p className="creator">
             {item.creator}
           </p>
         )}
 
-
         <div className="card-actions">
-
           <button
             className="secondary"
             onClick={() =>
@@ -684,20 +636,16 @@ function SavedItemCard({
           >
             {removing
               ? "در حال حذف..."
-              : "حذف از بعداً می‌بینم"}
+              : "حذف"}
           </button>
-
         </div>
-
       </div>
-
     </article>
   );
 }
 
-
 /* =========================
-   استایل مشترک فیلدها
+   استایل فیلد
 ========================= */
 
 const inputStyle = {
@@ -711,17 +659,18 @@ const inputStyle = {
   direction: "rtl",
 };
 
-
 /* =========================
-   فرم اطلاعات پروفایل
+   پروفایل
 ========================= */
 
 function ProfileScreen({
   userId,
   onComplete,
 }) {
-  const [displayName, setDisplayName] =
-    useState("");
+  const [
+    displayName,
+    setDisplayName,
+  ] = useState("");
 
   const [age, setAge] =
     useState("");
@@ -732,8 +681,10 @@ function ProfileScreen({
   const [city, setCity] =
     useState("");
 
-  const [wantsPhone, setWantsPhone] =
-    useState("");
+  const [
+    wantsPhone,
+    setWantsPhone,
+  ] = useState("");
 
   const [phone, setPhone] =
     useState("");
@@ -744,8 +695,9 @@ function ProfileScreen({
   const [error, setError] =
     useState("");
 
-
-  async function handleSubmit(event) {
+  async function handleSubmit(
+    event
+  ) {
     event.preventDefault();
 
     setError("");
@@ -764,33 +716,35 @@ function ProfileScreen({
 
     if (!cleanName) {
       setError(
-        "اول بگو دوست داری به چه اسمی صدات بزنیم."
+        "اسمتو نمی‌گی!؟"
       );
       return;
     }
 
     if (
       !age ||
-      !Number.isInteger(numericAge) ||
+      !Number.isInteger(
+        numericAge
+      ) ||
       numericAge < 1 ||
       numericAge > 120
     ) {
       setError(
-        "سن رو درست وارد کن."
+        "نگفتی چند سالته که!"
       );
       return;
     }
 
     if (!gender) {
       setError(
-        "یکی از گزینه‌های سؤال سوم رو انتخاب کن."
+        "پسری یا دختر؟"
       );
       return;
     }
 
     if (!cleanCity) {
       setError(
-        "اسم شهرت رو وارد کن."
+        "کجا زندگی می‌کنی؟ بین خودمون می‌مونه!"
       );
       return;
     }
@@ -807,14 +761,16 @@ function ProfileScreen({
       !cleanPhone
     ) {
       setError(
-        "شماره موبایلت رو وارد کن."
+        "شماره موبایلت رو بده، من زنگ منگ نمی‌زنم"
       );
       return;
     }
 
     if (
       wantsPhone === "yes" &&
-      !/^09\d{9}$/.test(cleanPhone)
+      !/^09\d{9}$/.test(
+        cleanPhone
+      )
     ) {
       setError(
         "شماره موبایل رو به شکل ۰۹xxxxxxxxx وارد کن."
@@ -832,12 +788,14 @@ function ProfileScreen({
         .upsert(
           {
             id: userId,
-            display_name: cleanName,
+            display_name:
+              cleanName,
             age: numericAge,
             gender,
             city: cleanCity,
             phone:
-              wantsPhone === "yes"
+              wantsPhone ===
+              "yes"
                 ? cleanPhone
                 : null,
           },
@@ -851,59 +809,45 @@ function ProfileScreen({
       }
 
       onComplete();
-
     } catch (err) {
-
       console.error(err);
 
       setError(
-        err?.message ||
-        "ذخیره اطلاعات انجام نشد. دوباره تلاش کن."
+        "یه مشکلی پیش اومده باید از اول انجامش بدیم"
       );
-
     } finally {
-
       setLoading(false);
-
     }
   }
 
-
   return (
     <main className="app">
-
       <section className="hero">
-
         <div className="logo">
           همین الان
         </div>
 
         <div className="hero-content">
-
           <div className="eyebrow">
-            H A M I N   A L A N
+            H A M I N A L A N
           </div>
 
           <h1>
-            یکم از خودت
-            <br />
-            <strong>
-              بهمون بگو.
-            </strong>
+            یه کم از خودت بهم بگو
           </h1>
-
 
           <form
             onSubmit={handleSubmit}
             style={{
-              width: "min(100%, 420px)",
+              width:
+                "min(100%, 420px)",
               marginTop: "35px",
               display: "flex",
-              flexDirection: "column",
+              flexDirection:
+                "column",
               gap: "12px",
             }}
           >
-
             <input
               type="text"
               placeholder="دوست داری به چه اسمی صدات بزنم؟"
@@ -917,10 +861,9 @@ function ProfileScreen({
               style={inputStyle}
             />
 
-
             <input
               type="number"
-              placeholder="چقد عمر کردی؟"
+              placeholder="چند سالته؟"
               value={age}
               onChange={(event) =>
                 setAge(
@@ -932,16 +875,15 @@ function ProfileScreen({
               style={inputStyle}
             />
 
-
             <div
               style={{
                 display: "flex",
-                flexDirection: "column",
+                flexDirection:
+                  "column",
                 gap: "8px",
                 marginTop: "4px",
               }}
             >
-
               <div
                 style={{
                   fontSize: "14px",
@@ -952,7 +894,6 @@ function ProfileScreen({
                 داداشمی یا آبجیم؟
               </div>
 
-
               <div
                 style={{
                   display: "grid",
@@ -961,15 +902,18 @@ function ProfileScreen({
                   gap: "8px",
                 }}
               >
-
                 <button
                   type="button"
                   onClick={() =>
-                    setGender("male")
+                    setGender(
+                      "male"
+                    )
                   }
                   style={{
-                    padding: "13px 8px",
-                    borderRadius: "12px",
+                    padding:
+                      "13px 8px",
+                    borderRadius:
+                      "12px",
                     border:
                       gender === "male"
                         ? "2px solid #111"
@@ -982,22 +926,27 @@ function ProfileScreen({
                       gender === "male"
                         ? "#fff"
                         : "#333",
-                    cursor: "pointer",
-                    fontSize: "14px",
+                    cursor:
+                      "pointer",
+                    fontSize:
+                      "14px",
                   }}
                 >
                   داداش
                 </button>
 
-
                 <button
                   type="button"
                   onClick={() =>
-                    setGender("female")
+                    setGender(
+                      "female"
+                    )
                   }
                   style={{
-                    padding: "13px 8px",
-                    borderRadius: "12px",
+                    padding:
+                      "13px 8px",
+                    borderRadius:
+                      "12px",
                     border:
                       gender === "female"
                         ? "2px solid #111"
@@ -1010,13 +959,14 @@ function ProfileScreen({
                       gender === "female"
                         ? "#fff"
                         : "#333",
-                    cursor: "pointer",
-                    fontSize: "14px",
+                    cursor:
+                      "pointer",
+                    fontSize:
+                      "14px",
                   }}
                 >
                   آبجی
                 </button>
-
 
                 <button
                   type="button"
@@ -1026,8 +976,10 @@ function ProfileScreen({
                     )
                   }
                   style={{
-                    padding: "13px 8px",
-                    borderRadius: "12px",
+                    padding:
+                      "13px 8px",
+                    borderRadius:
+                      "12px",
                     border:
                       gender ===
                       "prefer_not_to_say"
@@ -1043,17 +995,16 @@ function ProfileScreen({
                       "prefer_not_to_say"
                         ? "#fff"
                         : "#333",
-                    cursor: "pointer",
-                    fontSize: "14px",
+                    cursor:
+                      "pointer",
+                    fontSize:
+                      "14px",
                   }}
                 >
-                  دوست ندارم بگم
+                  هیچ‌کوم
                 </button>
-
               </div>
-
             </div>
-
 
             <input
               type="text"
@@ -1068,16 +1019,15 @@ function ProfileScreen({
               style={inputStyle}
             />
 
-
             <div
               style={{
                 display: "flex",
-                flexDirection: "column",
+                flexDirection:
+                  "column",
                 gap: "8px",
                 marginTop: "4px",
               }}
             >
-
               <div
                 style={{
                   fontSize: "14px",
@@ -1088,7 +1038,6 @@ function ProfileScreen({
                 بهم شماره میدی؟
               </div>
 
-
               <div
                 style={{
                   display: "grid",
@@ -1097,69 +1046,83 @@ function ProfileScreen({
                   gap: "8px",
                 }}
               >
-
                 <button
                   type="button"
                   onClick={() =>
-                    setWantsPhone("yes")
+                    setWantsPhone(
+                      "yes"
+                    )
                   }
                   style={{
-                    padding: "13px",
-                    borderRadius: "12px",
+                    padding:
+                      "13px",
+                    borderRadius:
+                      "12px",
                     border:
-                      wantsPhone === "yes"
+                      wantsPhone ===
+                      "yes"
                         ? "2px solid #111"
                         : "1px solid #ddd",
                     background:
-                      wantsPhone === "yes"
+                      wantsPhone ===
+                      "yes"
                         ? "#111"
                         : "#fff",
                     color:
-                      wantsPhone === "yes"
+                      wantsPhone ===
+                      "yes"
                         ? "#fff"
                         : "#333",
-                    cursor: "pointer",
-                    fontSize: "14px",
+                    cursor:
+                      "pointer",
+                    fontSize:
+                      "14px",
                   }}
                 >
-                  بله
+                  آره! تو جون بخواه
                 </button>
-
 
                 <button
                   type="button"
                   onClick={() => {
-                    setWantsPhone("no");
+                    setWantsPhone(
+                      "no"
+                    );
                     setPhone("");
                   }}
                   style={{
-                    padding: "13px",
-                    borderRadius: "12px",
+                    padding:
+                      "13px",
+                    borderRadius:
+                      "12px",
                     border:
-                      wantsPhone === "no"
+                      wantsPhone ===
+                      "no"
                         ? "2px solid #111"
                         : "1px solid #ddd",
                     background:
-                      wantsPhone === "no"
+                      wantsPhone ===
+                      "no"
                         ? "#111"
                         : "#fff",
                     color:
-                      wantsPhone === "no"
+                      wantsPhone ===
+                      "no"
                         ? "#fff"
                         : "#333",
-                    cursor: "pointer",
-                    fontSize: "14px",
+                    cursor:
+                      "pointer",
+                    fontSize:
+                      "14px",
                   }}
                 >
-                  نه
+                  نه! هنوز یه کم زوده!
                 </button>
-
               </div>
-
             </div>
 
-
-            {wantsPhone === "yes" && (
+            {wantsPhone ===
+              "yes" && (
               <input
                 type="tel"
                 inputMode="numeric"
@@ -1168,8 +1131,14 @@ function ProfileScreen({
                 onChange={(event) =>
                   setPhone(
                     event.target.value
-                      .replace(/\D/g, "")
-                      .slice(0, 11)
+                      .replace(
+                        /\D/g,
+                        ""
+                      )
+                      .slice(
+                        0,
+                        11
+                      )
                   )
                 }
                 autoComplete="tel"
@@ -1181,19 +1150,20 @@ function ProfileScreen({
               />
             )}
 
-
             {error && (
               <div
                 style={{
-                  color: "#b00020",
-                  fontSize: "13px",
-                  lineHeight: "1.8",
+                  color:
+                    "#b00020",
+                  fontSize:
+                    "13px",
+                  lineHeight:
+                    "1.8",
                 }}
               >
                 {error}
               </div>
             )}
-
 
             <button
               type="submit"
@@ -1201,27 +1171,25 @@ function ProfileScreen({
               disabled={loading}
               style={{
                 marginTop: "8px",
-                opacity: loading ? 0.6 : 1,
+                opacity:
+                  loading
+                    ? 0.6
+                    : 1,
               }}
             >
               {loading
-                ? "یک لحظه..."
+                ? "یه لحظه دندون به جیگر بگیر!"
                 : "بزن بریم"}
             </button>
-
           </form>
-
         </div>
-
       </section>
-
     </main>
   );
 }
 
-
 /* =========================
-   فرم احراز هویت
+   ورود / ثبت‌نام
 ========================= */
 
 function AuthScreen({
@@ -1236,8 +1204,10 @@ function AuthScreen({
   const [password, setPassword] =
     useState("");
 
-  const [confirmPassword, setConfirmPassword] =
-    useState("");
+  const [
+    confirmPassword,
+    setConfirmPassword,
+  ] = useState("");
 
   const [loading, setLoading] =
     useState(false);
@@ -1248,8 +1218,9 @@ function AuthScreen({
   const [error, setError] =
     useState("");
 
-
-  async function handleSubmit(event) {
+  async function handleSubmit(
+    event
+  ) {
     event.preventDefault();
 
     setError("");
@@ -1258,19 +1229,23 @@ function AuthScreen({
     const cleanEmail =
       email.trim();
 
-    if (!cleanEmail || !password) {
+    if (
+      !cleanEmail ||
+      !password
+    ) {
       setError(
-        "ایمیل و رمز عبور را وارد کن."
+        "ایمیل و رمز عبورت رو وارد کن"
       );
       return;
     }
 
     if (
       mode === "signup" &&
-      password !== confirmPassword
+      password !==
+        confirmPassword
     ) {
       setError(
-        "رمزهای عبور یکسان نیستند."
+        "این دوتا رمزی که نوشتی یکی نیستن!"
       );
       return;
     }
@@ -1280,7 +1255,7 @@ function AuthScreen({
       password.length < 6
     ) {
       setError(
-        "رمز عبور باید حداقل ۶ کاراکتر باشد."
+        "رمز عبور باید حداقل شش کاراکتر باشه. سرکوچه که نیست!"
       );
       return;
     }
@@ -1288,50 +1263,54 @@ function AuthScreen({
     setLoading(true);
 
     try {
-
-      if (mode === "signup") {
-
+      if (
+        mode === "signup"
+      ) {
         const {
           data,
-          error: signupError,
-        } = await supabase.auth.signUp({
-          email: cleanEmail,
-          password,
-        });
+          error:
+            signupError,
+        } =
+          await supabase.auth.signUp(
+            {
+              email:
+                cleanEmail,
+              password,
+            }
+          );
 
         if (signupError) {
           throw signupError;
         }
 
-
         if (
           data?.session &&
           data?.user?.id
         ) {
-
           onProfileNeeded(
             data.user.id
           );
-
           return;
         }
 
-
         setMessage(
-          "حساب ساخته شد. ایمیلت رو تأیید کن و بعد وارد شو."
+          "خیلی خوش اومدی! یه ایمیل برات فرستادیم؛ تأییدش کن و تمام."
         );
 
         setMode("login");
-
       } else {
-
         const {
           data,
-          error: loginError,
-        } = await supabase.auth.signInWithPassword({
-          email: cleanEmail,
-          password,
-        });
+          error:
+            loginError,
+        } =
+          await supabase.auth.signInWithPassword(
+            {
+              email:
+                cleanEmail,
+              password,
+            }
+          );
 
         if (loginError) {
           throw loginError;
@@ -1340,43 +1319,33 @@ function AuthScreen({
         if (data.session) {
           onSuccess();
         }
-
       }
-
     } catch (err) {
-
       console.error(err);
 
       setError(
-        err?.message ||
-        "مشکلی پیش آمد. دوباره تلاش کن."
+        "یه جای کار می‌لنگه! دوباره امتحان کن."
       );
-
     } finally {
-
       setLoading(false);
-
     }
   }
 
-
   return (
     <main className="app">
-
       <section className="hero">
-
         <div className="logo">
           همین الان
         </div>
 
         <div className="hero-content">
-
           <div className="eyebrow">
-            H A M I N   A L A N
+            H A M I N A L A N
           </div>
 
           <h1>
-            {mode === "signup" ? (
+            {mode ===
+            "signup" ? (
               <>
                 یه حساب بساز،
                 <br />
@@ -1395,18 +1364,18 @@ function AuthScreen({
             )}
           </h1>
 
-
           <form
             onSubmit={handleSubmit}
             style={{
-              width: "min(100%, 420px)",
+              width:
+                "min(100%, 420px)",
               marginTop: "35px",
               display: "flex",
-              flexDirection: "column",
+              flexDirection:
+                "column",
               gap: "12px",
             }}
           >
-
             <input
               type="email"
               placeholder="ایمیل"
@@ -1424,7 +1393,6 @@ function AuthScreen({
               }}
             />
 
-
             <input
               type="password"
               placeholder="رمز عبور"
@@ -1435,7 +1403,8 @@ function AuthScreen({
                 )
               }
               autoComplete={
-                mode === "signup"
+                mode ===
+                "signup"
                   ? "new-password"
                   : "current-password"
               }
@@ -1446,52 +1415,61 @@ function AuthScreen({
               }}
             />
 
-
-            {mode === "signup" && (
+            {mode ===
+              "signup" && (
               <input
                 type="password"
                 placeholder="تکرار رمز عبور"
-                value={confirmPassword}
-                onChange={(event) =>
+                value={
+                  confirmPassword
+                }
+                onChange={(
+                  event
+                ) =>
                   setConfirmPassword(
-                    event.target.value
+                    event.target
+                      .value
                   )
                 }
                 autoComplete="new-password"
                 style={{
                   ...inputStyle,
-                  direction: "ltr",
-                  textAlign: "left",
+                  direction:
+                    "ltr",
+                  textAlign:
+                    "left",
                 }}
               />
             )}
 
-
             {error && (
               <div
                 style={{
-                  color: "#b00020",
-                  fontSize: "13px",
-                  lineHeight: "1.8",
+                  color:
+                    "#b00020",
+                  fontSize:
+                    "13px",
+                  lineHeight:
+                    "1.8",
                 }}
               >
                 {error}
               </div>
             )}
 
-
             {message && (
               <div
                 style={{
                   color: "#555",
-                  fontSize: "13px",
-                  lineHeight: "1.8",
+                  fontSize:
+                    "13px",
+                  lineHeight:
+                    "1.8",
                 }}
               >
                 {message}
               </div>
             )}
-
 
             <button
               type="submit"
@@ -1499,24 +1477,27 @@ function AuthScreen({
               disabled={loading}
               style={{
                 marginTop: "8px",
-                opacity: loading ? 0.6 : 1,
+                opacity:
+                  loading
+                    ? 0.6
+                    : 1,
               }}
             >
               {loading
-                ? "یک لحظه..."
-                : mode === "signup"
-                ? "ساخت حساب"
+                ? "یه لحظه دندون به جیگر بگیر!"
+                : mode ===
+                  "signup"
+                ? "بیا تو"
                 : "ورود"}
             </button>
-
           </form>
-
 
           <button
             type="button"
             onClick={() => {
               setMode(
-                mode === "signup"
+                mode ===
+                  "signup"
                   ? "login"
                   : "signup"
               );
@@ -1527,32 +1508,31 @@ function AuthScreen({
             style={{
               marginTop: "20px",
               border: 0,
-              background: "transparent",
-              cursor: "pointer",
-              fontSize: "13px",
+              background:
+                "transparent",
+              cursor:
+                "pointer",
+              fontSize:
+                "13px",
               color: "#666",
             }}
           >
-            {mode === "signup"
+            {mode ===
+            "signup"
               ? "حساب داری؟ وارد شو"
               : "حساب نداری؟ ثبت‌نام کن"}
           </button>
-
         </div>
-
       </section>
-
     </main>
   );
 }
-
 
 /* =========================
    App
 ========================= */
 
 function App() {
-
   const [session, setSession] =
     useState(undefined);
 
@@ -1562,69 +1542,80 @@ function App() {
   const [screen, setScreen] =
     useState("home");
 
-  const [profileUserId, setProfileUserId] =
-    useState(null);
+  const [
+    profileUserId,
+    setProfileUserId,
+  ] = useState(null);
 
-  const [profileChecking, setProfileChecking] =
-    useState(false);
+  const [
+    profileChecking,
+    setProfileChecking,
+  ] = useState(false);
 
-  const [questionIndex, setQuestionIndex] =
-    useState(0);
+  const [
+    questionIndex,
+    setQuestionIndex,
+  ] = useState(0);
 
   const [answers, setAnswers] =
     useState({});
 
-  const [recommendations, setRecommendations] =
-    useState([]);
+  const [
+    recommendations,
+    setRecommendations,
+  ] = useState([]);
 
   const [questions, setQuestions] =
     useState(() =>
       getQuestions()
     );
 
+  const [
+    seenRecommendationKeys,
+    setSeenRecommendationKeys,
+  ] = useState(
+    () => new Set()
+  );
 
-  /* =========================
-     ذخیره‌ها
-  ========================= */
+  const [
+    savedItems,
+    setSavedItems,
+  ] = useState([]);
 
-  const [savedItems, setSavedItems] =
-    useState([]);
+  const [
+    savedItemsLoading,
+    setSavedItemsLoading,
+  ] = useState(false);
 
-  const [savedItemsLoading, setSavedItemsLoading] =
-    useState(false);
+  const [
+    savingItemKey,
+    setSavingItemKey,
+  ] = useState(null);
 
-  const [savedScreen, setSavedScreen] =
-    useState(false);
+  const [
+    changingItemKey,
+    setChangingItemKey,
+  ] = useState(null);
 
-  const [savingItemKey, setSavingItemKey] =
-    useState(null);
+  const [
+    removingSavedId,
+    setRemovingSavedId,
+  ] = useState(null);
 
-  const [changingItemKey, setChangingItemKey] =
-    useState(null);
-
-  const [removingSavedId, setRemovingSavedId] =
-    useState(null);
-
-  const [savedError, setSavedError] =
-    useState("");
-
+  const [
+    savedError,
+    setSavedError,
+  ] = useState("");
 
   const databases = useMemo(
     () => getDatabases(),
     []
   );
 
-
-  /* =========================
-     بررسی Session
-  ========================= */
-
   useEffect(() => {
-
     let mounted = true;
 
     async function checkSession() {
-
       const {
         data,
       } =
@@ -1638,9 +1629,13 @@ function App() {
         data.session
       );
 
-      if (data.session?.user?.id) {
-
-        setProfileChecking(true);
+      if (
+        data.session?.user
+          ?.id
+      ) {
+        setProfileChecking(
+          true
+        );
 
         const {
           data: profile,
@@ -1653,7 +1648,8 @@ function App() {
             )
             .eq(
               "id",
-              data.session.user.id
+              data.session
+                .user.id
             )
             .maybeSingle();
 
@@ -1661,7 +1657,9 @@ function App() {
           return;
         }
 
-        setProfileChecking(false);
+        setProfileChecking(
+          false
+        );
 
         if (
           error ||
@@ -1671,68 +1669,54 @@ function App() {
           !profile.gender ||
           !profile.city
         ) {
-
           setProfileUserId(
-            data.session.user.id
+            data.session
+              .user.id
           );
 
           setScreen(
             "profile"
           );
-
         } else {
-
-          setScreen(
-            "home"
-          );
-
+          setScreen("home");
         }
       }
     }
 
     checkSession();
 
-
     const {
       data: listener,
     } =
       supabase.auth.onAuthStateChange(
-        (_event, currentSession) => {
-
+        (
+          _event,
+          currentSession
+        ) => {
           setSession(
             currentSession
           );
-
         }
       );
 
-
     return () => {
-
       mounted = false;
-
       listener.subscription.unsubscribe();
-
     };
-
   }, []);
 
-
-  /* =========================
-     بارگذاری ذخیره‌ها
-  ========================= */
-
   async function loadSavedItems() {
-
     if (!session?.user?.id) {
       return;
     }
 
-    setSavedItemsLoading(true);
+    setSavedItemsLoading(
+      true
+    );
+
     setSavedError("");
 
     try {
-
       const {
         data,
         error,
@@ -1760,63 +1744,44 @@ function App() {
           ? data
           : []
       );
-
     } catch (err) {
-
       console.error(err);
 
       setSavedError(
-        err?.message ||
-        "ذخیره‌ها بارگذاری نشدند."
+        "چی شد؟ نشد که!"
       );
-
     } finally {
-
-      setSavedItemsLoading(false);
-
+      setSavedItemsLoading(
+        false
+      );
     }
   }
 
-
   useEffect(() => {
-
-    if (session?.user?.id) {
+    if (
+      session?.user?.id
+    ) {
       loadSavedItems();
     } else {
       setSavedItems([]);
     }
-
   }, [session?.user?.id]);
 
-
-  /* =========================
-     شروع پرسشنامه
-  ========================= */
-
   function startQuestionnaire() {
-
-    setSavedScreen(false);
-
     setQuestions(
       getQuestions()
     );
 
     setAnswers({});
-
     setRecommendations([]);
-
     setQuestionIndex(0);
-
-    setScreen("questionnaire");
+    setSavedError("");
+    setScreen(
+      "questionnaire"
+    );
   }
 
-
-  /* =========================
-     انتخاب پاسخ
-  ========================= */
-
   function chooseAnswer(option) {
-
     if (!currentQuestion) {
       return;
     }
@@ -1831,12 +1796,10 @@ function App() {
       updatedAnswers
     );
 
-
     if (
       questionIndex <
       questions.length - 1
     ) {
-
       setQuestionIndex(
         (current) =>
           current + 1
@@ -1845,12 +1808,43 @@ function App() {
       return;
     }
 
+    const savedKeys =
+      new Set(
+        savedItems
+          .map(
+            (item) =>
+              item.item_key
+          )
+          .filter(Boolean)
+      );
+
+    const excludedKeys =
+      new Set([
+        ...seenRecommendationKeys,
+        ...savedKeys,
+      ]);
 
     const results =
       getRecommendations(
         updatedAnswers,
-        databases
+        databases,
+        excludedKeys
       );
+
+    const newKeys =
+      results
+        .map((item) =>
+          getItemKey(item)
+        )
+        .filter(Boolean);
+
+    setSeenRecommendationKeys(
+      (current) =>
+        new Set([
+          ...current,
+          ...newKeys,
+        ])
+    );
 
     setRecommendations(
       results
@@ -1859,15 +1853,8 @@ function App() {
     setScreen("results");
   }
 
-
-  /* =========================
-     برگشت
-  ========================= */
-
   function goBack() {
-
     if (questionIndex > 0) {
-
       setQuestionIndex(
         (current) =>
           current - 1
@@ -1879,35 +1866,17 @@ function App() {
     setScreen("home");
   }
 
-
-  /* =========================
-     شروع دوباره
-  ========================= */
-
   function restart() {
-
-    setSavedScreen(false);
-
     setAnswers({});
-
     setRecommendations([]);
-
     setQuestions(
       getQuestions()
     );
-
     setQuestionIndex(0);
-
     setScreen("home");
   }
 
-
-  /* =========================
-     ذخیره برای بعداً
-  ========================= */
-
   async function saveForLater(item) {
-
     if (!session?.user?.id) {
       return;
     }
@@ -1918,7 +1887,6 @@ function App() {
     if (!itemKey) {
       return;
     }
-
 
     const alreadySaved =
       savedItems.some(
@@ -1931,13 +1899,13 @@ function App() {
       return;
     }
 
+    setSavingItemKey(
+      itemKey
+    );
 
-    setSavingItemKey(itemKey);
     setSavedError("");
 
-
     try {
-
       const payload = {
         user_id:
           session.user.id,
@@ -1966,7 +1934,8 @@ function App() {
           null,
 
         year:
-          item?.year !== undefined &&
+          item?.year !==
+            undefined &&
           item?.year !== null
             ? String(item.year)
             : null,
@@ -1978,7 +1947,6 @@ function App() {
         item_data:
           item || {},
       };
-
 
       const {
         data,
@@ -1996,17 +1964,13 @@ function App() {
           .select()
           .single();
 
-
       if (error) {
         throw error;
       }
 
-
       if (data) {
-
         setSavedItems(
           (current) => {
-
             const exists =
               current.some(
                 (saved) =>
@@ -2024,34 +1988,23 @@ function App() {
             ];
           }
         );
-
       }
-
     } catch (err) {
-
       console.error(err);
 
       setSavedError(
-        err?.message ||
-        "ذخیره کردن انجام نشد."
+        "ذخیره نشد که"
       );
-
     } finally {
-
-      setSavingItemKey(null);
-
+      setSavingItemKey(
+        null
+      );
     }
   }
-
-
-  /* =========================
-     حذف از ذخیره‌ها
-  ========================= */
 
   async function removeSavedItem(
     savedId
   ) {
-
     if (!savedId) {
       return;
     }
@@ -2062,9 +2015,7 @@ function App() {
 
     setSavedError("");
 
-
     try {
-
       const {
         error,
       } =
@@ -2080,366 +2031,245 @@ function App() {
             session.user.id
           );
 
-
       if (error) {
         throw error;
       }
-
 
       setSavedItems(
         (current) =>
           current.filter(
             (item) =>
-              item.id !== savedId
+              item.id !==
+              savedId
           )
       );
-
     } catch (err) {
-
       console.error(err);
 
       setSavedError(
-        err?.message ||
-        "حذف انجام نشد."
+        "حذف نشد که"
       );
-
     } finally {
-
-      setRemovingSavedId(null);
-
+      setRemovingSavedId(
+        null
+      );
     }
   }
-
-
-  /* =========================
-     پیشنهاد متفاوت
-  ========================= */
 
   function showDifferentRecommendation(
     currentItem
   ) {
-
     if (!currentItem) {
       return;
     }
 
     const itemKey =
-      getItemKey(currentItem);
+      getItemKey(
+        currentItem
+      );
 
     const category =
       currentItem.category ||
-      getItemType(currentItem);
+      getItemType(
+        currentItem
+      );
 
     if (!category) {
       return;
     }
 
-
     setChangingItemKey(
       itemKey
     );
-
-
-    const databaseMap = {
-      iran_film:
-        databases.films,
-
-      foreign_film:
-        databases.foreignFilms,
-
-      short_film:
-        databases.shortFilms,
-
-      series:
-        databases.series,
-
-      podcast:
-        databases.podcasts,
-
-      book:
-        databases.books,
-
-      instrumental_music:
-        databases.instrumentalMusic,
-    };
-
-
-    const categoryDatabase =
-      databaseMap[category] || [];
-
 
     const currentlyShown =
       recommendations
         .filter(
           (item) =>
             (item.category ||
-              getItemType(item)) ===
+              getItemType(
+                item
+              )) ===
             category
         )
-        .map(
-          (item) =>
-            getItemKey(item)
-        );
+        .map((item) =>
+          getItemKey(item)
+        )
+        .filter(Boolean);
 
+    const savedKeys =
+      new Set(
+        savedItems
+          .map(
+            (item) =>
+              item.item_key
+          )
+          .filter(Boolean)
+      );
 
     const excludedKeys =
-      new Set(
-        currentlyShown
-      );
-
-
-    excludedKeys.add(
-      itemKey
-    );
-
-
-    const availableItems =
-      categoryDatabase.filter(
-        (candidate) =>
-          !excludedKeys.has(
-            getItemKey(candidate)
-          )
-      );
-
-
-    if (
-      availableItems.length === 0
-    ) {
-
-      setSavedError(
-        `برای بخش «${getCategoryTitle(
-          category
-        )}» پیشنهاد دیگری نداریم.`
-      );
-
-      setChangingItemKey(null);
-
-      return;
-    }
-
-
-    const alternative =
-      getCategorizedRecommendations(
-        {
-          films:
-            category === "iran_film"
-              ? availableItems
-              : [],
-
-          foreignFilms:
-            category === "foreign_film"
-              ? availableItems
-              : [],
-
-          shortFilms:
-            category === "short_film"
-              ? availableItems
-              : [],
-
-          series:
-            category === "series"
-              ? availableItems
-              : [],
-
-          podcasts:
-            category === "podcast"
-              ? availableItems
-              : [],
-
-          books:
-            category === "book"
-              ? availableItems
-              : [],
-
-          instrumentalMusic:
-            category ===
-            "instrumental_music"
-              ? availableItems
-              : [],
-        },
-
-        answers
-      );
-
+      new Set([
+        ...seenRecommendationKeys,
+        ...currentlyShown,
+        ...savedKeys,
+        itemKey,
+      ]);
 
     const newItem =
-      alternative?.[0];
-
-
-    if (!newItem) {
-
-      setSavedError(
-        "فعلاً پیشنهاد دیگری برای این بخش نداریم."
+      getAlternativeRecommendation(
+        databases,
+        category,
+        answers,
+        {
+          excludedKeys,
+        }
       );
 
-      setChangingItemKey(null);
+    if (!newItem) {
+      setSavedError(
+        "فعلاً پیشنهاد دیگری نداریم"
+      );
+
+      setChangingItemKey(
+        null
+      );
 
       return;
     }
-
 
     const replacement = {
       ...newItem,
       category,
     };
 
+    const replacementKey =
+      getItemKey(
+        replacement
+      );
+
+    setSeenRecommendationKeys(
+      (current) =>
+        new Set([
+          ...current,
+          replacementKey,
+        ])
+    );
 
     setRecommendations(
       (current) =>
         current.map(
           (item) =>
-            item === currentItem
+            getItemKey(item) ===
+            itemKey
               ? replacement
               : item
         )
     );
 
-
+    setSavedError("");
     setChangingItemKey(null);
   }
 
-
-  /* =========================
-     صفحه ذخیره‌ها
-  ========================= */
-
   function openSavedScreen() {
-    setSavedScreen(true);
     setScreen("saved");
     setSavedError("");
   }
 
-
   function closeSavedScreen() {
-    setSavedScreen(false);
     setScreen("home");
     setSavedError("");
   }
 
-
-  /* =========================
-     خروج
-  ========================= */
-
   async function logout() {
-
     await supabase.auth.signOut();
 
     setSession(null);
     setScreen("home");
     setProfileUserId(null);
     setSavedItems([]);
-    setSavedScreen(false);
+
+    setSeenRecommendationKeys(
+      new Set()
+    );
   }
 
-
   const currentQuestion =
-    questions[questionIndex];
-
-
-  /* =========================
-     در حال بررسی حساب
-  ========================= */
+    questions[
+      questionIndex
+    ];
 
   if (
     session === undefined ||
     profileChecking
   ) {
-
     return (
       <main className="app">
-
         <section
           className="hero"
           style={{
-            minHeight: "100vh",
+            minHeight:
+              "100vh",
           }}
         >
-
           <div className="logo">
             همین الان
           </div>
 
           <p>
-            یک لحظه...
+            یه لحظه دندون به جیگر بگیر!
           </p>
-
         </section>
-
       </main>
     );
   }
-
-
-  /* =========================
-     تکمیل پروفایل
-  ========================= */
 
   if (
     screen === "profile" &&
     profileUserId
   ) {
-
     return (
       <ProfileScreen
-        userId={profileUserId}
+        userId={
+          profileUserId
+        }
         onComplete={() => {
-
-          if (session) {
-
-            setScreen("home");
-
-          } else {
-
-            setAuthMode("login");
-            setProfileUserId(null);
-            setScreen("auth");
-
-          }
-
+          setProfileUserId(
+            null
+          );
+          setScreen("home");
         }}
       />
     );
   }
 
-
-  /* =========================
-     ورود / ثبت‌نام
-  ========================= */
-
   if (!session) {
-
     return (
       <AuthScreen
         mode={authMode}
         setMode={setAuthMode}
-
         onSuccess={() => {
           setScreen("home");
         }}
+        onProfileNeeded={(
+          userId
+        ) => {
+          setProfileUserId(
+            userId
+          );
 
-        onProfileNeeded={(userId) => {
-          setProfileUserId(userId);
-          setScreen("profile");
+          setScreen(
+            "profile"
+          );
         }}
       />
     );
   }
 
-
-  /* =========================
-     صفحه ذخیره‌ها
-  ========================= */
-
   if (screen === "saved") {
-
     return (
       <main className="app">
-
         <section className="results">
-
           <header className="results-header">
-
             <button
               className="back-button"
               onClick={
@@ -2449,13 +2279,11 @@ function App() {
               ←
             </button>
 
-
             <div>
               <div className="logo small">
                 همین الان
               </div>
             </div>
-
 
             <button
               className="logout-link"
@@ -2463,108 +2291,110 @@ function App() {
             >
               خروج
             </button>
-
           </header>
 
-
           <div className="results-intro">
-
-            <span className="question-label">
-              برای بعداً
-            </span>
-
             <h1>
-              اینا رو نگه داشتی.
+              برای بعدن
             </h1>
 
             <p>
-              چیزهایی که گفتی بعداً
-              سراغشون می‌ری، اینجان.
+              اینا رو نگه داشتی.
             </p>
 
+            <p>
+              چیزهایی که گفتی بعدن سراغشون می‌ری، اینجان.
+            </p>
           </div>
-
 
           {savedError && (
             <div
               style={{
-                color: "#b00020",
-                fontSize: "13px",
-                lineHeight: "1.8",
-                marginBottom: "20px",
+                color:
+                  "#b00020",
+                fontSize:
+                  "13px",
+                lineHeight:
+                  "1.8",
+                marginBottom:
+                  "20px",
               }}
             >
               {savedError}
             </div>
           )}
 
-
           {savedItemsLoading ? (
-
             <div className="empty-state">
-
               <h2>
-                یک لحظه...
+                یه لحظه...
               </h2>
 
               <p>
-                داریم چیزهایی که نگه داشتی
-                رو پیدا می‌کنیم.
+                دارم می‌گردم!‌اینا رو کجا گذاشته بودی...؟
               </p>
-
             </div>
-
-          ) : savedItems.length > 0 ? (
-
+          ) : savedItems.length >
+            0 ? (
             <div className="recommendations-grid">
-
               {Object.entries(
                 savedItems.reduce(
-                  (groups, item) => {
-
+                  (
+                    groups,
+                    item
+                  ) => {
                     const category =
                       item.category ||
                       item.item_type ||
                       "unknown";
 
                     if (
-                      !groups[category]
+                      !groups[
+                        category
+                      ]
                     ) {
-                      groups[category] = [];
+                      groups[
+                        category
+                      ] = [];
                     }
 
-                    groups[category].push(
-                      item
-                    );
+                    groups[
+                      category
+                    ].push(item);
 
                     return groups;
-
                   },
                   {}
                 )
               ).map(
-                ([category, items]) => (
-
+                ([
+                  category,
+                  items,
+                ]) => (
                   <section
                     className="recommendation-category"
-                    key={category}
+                    key={
+                      category
+                    }
                   >
-
                     <h2 className="category-title">
                       {getCategoryTitle(
                         category
                       )}
                     </h2>
 
-
                     <div className="category-cards">
-
                       {items.map(
-                        (item) => (
-
+                        (
+                          item
+                        ) => (
                           <SavedItemCard
-                            key={item.id}
-                            item={item}
+                            key={
+                              item.id
+                            }
+                            item={
+                              item
+                            }
                             onRemove={
                               removeSavedItem
                             }
@@ -2573,37 +2403,24 @@ function App() {
                               item.id
                             }
                           />
-
                         )
                       )}
-
                     </div>
-
                   </section>
-
                 )
               )}
-
             </div>
-
           ) : (
-
             <div className="empty-state">
-
               <h2>
-                هنوز چیزی نگه نداشتی.
+                خالیه که!
               </h2>
 
               <p>
-                هر پیشنهادی که دوست داشتی
-                ولی الان وقتش رو نداری،
-                بزن «بعداً می‌بینم».
+                پیشنهادی که دوست داشتی ولی الان وقتش رو نداری، بزن «بعدن می‌بینم»
               </p>
-
             </div>
-
           )}
-
 
           <button
             className="again-button"
@@ -2613,28 +2430,16 @@ function App() {
           >
             یه چیز جدید پیدا کنیم
           </button>
-
         </section>
-
       </main>
     );
   }
 
-
-  /* =========================
-     صفحه خانه
-  ========================= */
-
   if (screen === "home") {
-
     return (
       <main className="app">
-
         <section className="hero">
-
-
           <div className="hero-top-actions">
-
             <button
               className="saved-link"
               onClick={
@@ -2642,16 +2447,18 @@ function App() {
               }
             >
               <span>
-                بعداً می‌بینم
+                بعدن می‌بینم
               </span>
 
-              {savedItems.length > 0 && (
+              {savedItems.length >
+                0 && (
                 <span className="saved-count">
-                  {savedItems.length}
+                  {
+                    savedItems.length
+                  }
                 </span>
               )}
             </button>
-
 
             <button
               className="logout-link"
@@ -2659,35 +2466,24 @@ function App() {
             >
               خروج
             </button>
-
           </div>
-
 
           <div className="logo">
             همین الان
           </div>
 
-
           <div className="hero-content">
-
             <div className="eyebrow">
-              H A M I N   A L A N
+              H A M I N A L A N
             </div>
 
             <h1>
-              نمی‌دونی
-              <br />
-              <strong>
-                الان چیکار کنی؟
-              </strong>
+              نمی‌دونی الان چیکار کنی؟
             </h1>
 
             <p>
-              چند ساعت وقت داری، ایده‌ای نداری؟
-              <br />
-              بزن ببینیم چی بهت می‌چسبه.
+              بزن ببینیم چی بهت می‌چسبه
             </p>
-
 
             <button
               className="main-button"
@@ -2698,48 +2494,33 @@ function App() {
               چه کنم؟
               <span>←</span>
             </button>
-
           </div>
-
 
           <div className="hero-note">
-            فیلم، سریال، کتاب، پادکست، موسیقی و
-            چیزهایی که شاید خودت پیداشون نمی‌کردی.
+            فیلمایی که ندیدی، موزیکایی که نشنیدی، کتابایی که نخوندی، جاهایی که نرفتی... من همه رو بلدم! بهت میگم.
           </div>
-
         </section>
-
       </main>
     );
   }
 
-
-  /* =========================
-     پرسشنامه
-  ========================= */
-
   if (
-    screen === "questionnaire"
+    screen ===
+    "questionnaire"
   ) {
-
     if (!currentQuestion) {
       return null;
     }
-
 
     const progress =
       ((questionIndex + 1) /
         questions.length) *
       100;
 
-
     return (
       <main className="app">
-
         <section className="questionnaire">
-
           <header className="question-header">
-
             <button
               className="back-button"
               onClick={goBack}
@@ -2747,9 +2528,7 @@ function App() {
               ←
             </button>
 
-
             <div className="progress">
-
               <div
                 className="progress-fill"
                 style={{
@@ -2757,38 +2536,28 @@ function App() {
                     `${progress}%`,
                 }}
               />
-
             </div>
 
-
             <span className="question-number">
-              {questionIndex + 1}/
-              {questions.length}
+              {questionIndex +
+                1}
+              /
+              {
+                questions.length
+              }
             </span>
-
           </header>
 
-
           <div className="question-content">
-
-            <span className="question-label">
-              ببینیم...
-            </span>
-
             <h1>
-              {currentQuestion.title}
+              {
+                currentQuestion.title
+              }
             </h1>
 
-            <p>
-              {currentQuestion.subtitle}
-            </p>
-
-
             <div className="options">
-
               {currentQuestion.options.map(
                 (option) => (
-
                   <button
                     key={
                       option.value
@@ -2800,65 +2569,65 @@ function App() {
                       )
                     }
                   >
-
                     <span>
-                      {option.label}
+                      {
+                        option.label
+                      }
                     </span>
 
                     <span className="option-arrow">
                       ←
                     </span>
-
                   </button>
-
                 )
               )}
-
             </div>
-
           </div>
-
         </section>
-
       </main>
     );
   }
 
-
-  /* =========================
-     نتایج
-  ========================= */
-
   const groupedRecommendations =
     recommendations.reduce(
-      (groups, item) => {
-
+      (
+        groups,
+        item
+      ) => {
         const category =
           item.category ||
+          getItemType(item) ||
           "unknown";
 
-        if (!groups[category]) {
-          groups[category] = [];
+        if (
+          !groups[category]
+        ) {
+          groups[
+            category
+          ] = [];
         }
 
-        groups[category].push(
-          item
-        );
+        if (
+          groups[category]
+            .length === 0
+        ) {
+          groups[
+            category
+          ].push({
+            ...item,
+            category,
+          });
+        }
 
         return groups;
-
       },
       {}
     );
 
-
   return (
     <main className="app">
-
       <section className="results">
-
         <header className="results-header">
-
           <button
             className="back-button"
             onClick={restart}
@@ -2866,16 +2635,13 @@ function App() {
             ←
           </button>
 
-
           <div>
             <div className="logo small">
               همین الان
             </div>
           </div>
 
-
           <div className="results-header-actions">
-
             <button
               className="saved-link"
               onClick={
@@ -2883,16 +2649,18 @@ function App() {
               }
             >
               <span>
-                بعداً می‌بینم
+                بعدن می‌بینم
               </span>
 
-              {savedItems.length > 0 && (
+              {savedItems.length >
+                0 && (
                 <span className="saved-count">
-                  {savedItems.length}
+                  {
+                    savedItems.length
+                  }
                 </span>
               )}
             </button>
-
 
             <button
               className="logout-link"
@@ -2900,76 +2668,71 @@ function App() {
             >
               خروج
             </button>
-
           </div>
-
         </header>
 
-
         <div className="results-intro">
-
-          <span className="question-label">
-            پیداش کردیم
-          </span>
-
           <h1>
-            این‌ها شاید بهت بچسبن.
+            کلیک کن، حالشو ببر!
           </h1>
 
           <p>
-            بر اساس حال و حوصله‌ای که گفتی،
-            این‌ها رو برات کنار گذاشتیم.
+            اسکرول کن برو پایین ببین چیا برات گذاشتم کنار
           </p>
-
         </div>
-
 
         {savedError && (
           <div
             style={{
-              color: "#b00020",
-              fontSize: "13px",
-              lineHeight: "1.8",
-              marginBottom: "20px",
+              color:
+                "#b00020",
+              fontSize:
+                "13px",
+              lineHeight:
+                "1.8",
+              marginBottom:
+                "20px",
             }}
           >
             {savedError}
           </div>
         )}
 
-
-        {recommendations.length > 0 ? (
-
+        {recommendations.length >
+        0 ? (
           <div className="recommendations-grid">
-
             {Object.entries(
               groupedRecommendations
             ).map(
-              ([category, items]) => (
-
+              ([
+                category,
+                items,
+              ]) => (
                 <section
                   className="recommendation-category"
-                  key={category}
+                  key={
+                    category
+                  }
                 >
-
                   <h2 className="category-title">
                     {getCategoryTitle(
                       category
                     )}
                   </h2>
 
-
                   <div className="category-cards">
-
                     {items.map(
-                      (item, index) => {
-
+                      (item) => {
                         const itemKey =
-                          getItemKey(item);
+                          getItemKey(
+                            item
+                          );
 
                         const isSaved =
                           savedItems.some(
-                            (saved) =>
+                            (
+                              saved
+                            ) =>
                               saved.item_key ===
                               itemKey
                           );
@@ -2977,9 +2740,11 @@ function App() {
                         return (
                           <RecommendationCard
                             key={
-                              `${itemKey}-${index}`
+                              itemKey
                             }
-                            item={item}
+                            item={
+                              item
+                            }
                             onSaveForLater={
                               saveForLater
                             }
@@ -2999,36 +2764,24 @@ function App() {
                             }
                           />
                         );
-
                       }
                     )}
-
                   </div>
-
                 </section>
-
               )
             )}
-
           </div>
-
         ) : (
-
           <div className="empty-state">
-
             <h2>
               هنوز چیزی برای پیشنهاد نداریم.
             </h2>
 
             <p>
-              به‌زودی اینجا پر از چیزهای
-              دیدنی، شنیدنی و خواندنی می‌شود.
+              به‌زودی اینجا پر از چیزهای دیدنی، شنیدنی و خواندنی می‌شود.
             </p>
-
           </div>
-
         )}
-
 
         <button
           className="again-button"
@@ -3036,14 +2789,11 @@ function App() {
             startQuestionnaire
           }
         >
-          دوباره بپرس ازم
+          می‌خوای از اول امتحان کنی؟
         </button>
-
       </section>
-
     </main>
   );
 }
-
 
 export default App;
