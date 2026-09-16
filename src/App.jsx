@@ -97,7 +97,7 @@ const moodGroups = [
 const staticQuestions = [
   {
     key: "goal",
-    title: "الان دلت چی می‌خواد؟",
+    title: "الان چی می‌خوای؟",
     options: [
       { value: "feel_better", label: "می‌خوام حالم بهتر بشه" },
       { value: "fun", label: "می‌خوام بخندم" },
@@ -153,7 +153,7 @@ function getRandomMoodQuestion() {
 
   return {
     key: "mood",
-    title: "حالت چطوره؟",
+    title: "الان چه حالی داری؟",
     options,
   };
 }
@@ -169,10 +169,16 @@ function getQuestions() {
 function getDatabases() {
   return {
     films: Array.isArray(films) ? films : [],
-    foreignFilms: Array.isArray(foreignFilms) ? foreignFilms : [],
-    shortFilms: Array.isArray(shortFilms) ? shortFilms : [],
+    foreignFilms: Array.isArray(foreignFilms)
+      ? foreignFilms
+      : [],
+    shortFilms: Array.isArray(shortFilms)
+      ? shortFilms
+      : [],
     series: Array.isArray(series) ? series : [],
-    podcasts: Array.isArray(podcasts) ? podcasts : [],
+    podcasts: Array.isArray(podcasts)
+      ? podcasts
+      : [],
     books: Array.isArray(books) ? books : [],
     instrumentalMusic: Array.isArray(instrumentalMusic)
       ? instrumentalMusic
@@ -435,15 +441,13 @@ function RecommendationCard({
   const creator = getCreator(item);
 
   function handleTitleClick() {
-    const title =
-      item?.title?.trim();
+    const title = item?.title?.trim();
 
     if (!title) {
       return;
     }
 
-    const searchQuery =
-      `دانلود ${title}`;
+    const searchQuery = `دانلود ${title}`;
 
     const googleUrl =
       `https://www.google.com/search?q=${encodeURIComponent(
@@ -521,7 +525,7 @@ function RecommendationCard({
               ? "در حال ذخیره..."
               : isSaved
               ? "ذخیره شد ✓"
-              : "بعدن می‌بینم"}
+              : "بعداً می‌بینم"}
           </button>
 
           <button
@@ -636,7 +640,7 @@ function SavedItemCard({
           >
             {removing
               ? "در حال حذف..."
-              : "حذف"}
+              : "حذف از بعداً می‌بینم"}
           </button>
         </div>
       </div>
@@ -695,9 +699,7 @@ function ProfileScreen({
   const [error, setError] =
     useState("");
 
-  async function handleSubmit(
-    event
-  ) {
+  async function handleSubmit(event) {
     event.preventDefault();
 
     setError("");
@@ -716,35 +718,33 @@ function ProfileScreen({
 
     if (!cleanName) {
       setError(
-        "اسمتو نمی‌گی!؟"
+        "اول بگو دوست داری به چه اسمی صدات بزنیم."
       );
       return;
     }
 
     if (
       !age ||
-      !Number.isInteger(
-        numericAge
-      ) ||
+      !Number.isInteger(numericAge) ||
       numericAge < 1 ||
       numericAge > 120
     ) {
       setError(
-        "نگفتی چند سالته که!"
+        "سن رو درست وارد کن."
       );
       return;
     }
 
     if (!gender) {
       setError(
-        "پسری یا دختر؟"
+        "یکی از گزینه‌های سؤال سوم رو انتخاب کن."
       );
       return;
     }
 
     if (!cleanCity) {
       setError(
-        "کجا زندگی می‌کنی؟ بین خودمون می‌مونه!"
+        "اسم شهرت رو وارد کن."
       );
       return;
     }
@@ -761,16 +761,14 @@ function ProfileScreen({
       !cleanPhone
     ) {
       setError(
-        "شماره موبایلت رو بده، من زنگ منگ نمی‌زنم"
+        "شماره موبایلت رو وارد کن."
       );
       return;
     }
 
     if (
       wantsPhone === "yes" &&
-      !/^09\d{9}$/.test(
-        cleanPhone
-      )
+      !/^09\d{9}$/.test(cleanPhone)
     ) {
       setError(
         "شماره موبایل رو به شکل ۰۹xxxxxxxxx وارد کن."
@@ -788,14 +786,12 @@ function ProfileScreen({
         .upsert(
           {
             id: userId,
-            display_name:
-              cleanName,
+            name: cleanName,
             age: numericAge,
             gender,
             city: cleanCity,
             phone:
-              wantsPhone ===
-              "yes"
+              wantsPhone === "yes"
                 ? cleanPhone
                 : null,
           },
@@ -813,7 +809,7 @@ function ProfileScreen({
       console.error(err);
 
       setError(
-        "یه مشکلی پیش اومده باید از اول انجامش بدیم"
+        "ذخیره اطلاعات انجام نشد. دوباره تلاش کن."
       );
     } finally {
       setLoading(false);
@@ -833,7 +829,7 @@ function ProfileScreen({
           </div>
 
           <h1>
-            یه کم از خودت بهم بگو
+            یکم از خودت بهمون بگو.
           </h1>
 
           <form
@@ -863,7 +859,7 @@ function ProfileScreen({
 
             <input
               type="number"
-              placeholder="چند سالته؟"
+              placeholder="چقد عمر کردی؟"
               value={age}
               onChange={(event) =>
                 setAge(
@@ -905,9 +901,7 @@ function ProfileScreen({
                 <button
                   type="button"
                   onClick={() =>
-                    setGender(
-                      "male"
-                    )
+                    setGender("male")
                   }
                   style={{
                     padding:
@@ -938,9 +932,7 @@ function ProfileScreen({
                 <button
                   type="button"
                   onClick={() =>
-                    setGender(
-                      "female"
-                    )
+                    setGender("female")
                   }
                   style={{
                     padding:
@@ -1001,7 +993,7 @@ function ProfileScreen({
                       "14px",
                   }}
                 >
-                  هیچ‌کوم
+                  دوست ندارم بگم
                 </button>
               </div>
             </div>
@@ -1049,9 +1041,7 @@ function ProfileScreen({
                 <button
                   type="button"
                   onClick={() =>
-                    setWantsPhone(
-                      "yes"
-                    )
+                    setWantsPhone("yes")
                   }
                   style={{
                     padding:
@@ -1059,18 +1049,15 @@ function ProfileScreen({
                     borderRadius:
                       "12px",
                     border:
-                      wantsPhone ===
-                      "yes"
+                      wantsPhone === "yes"
                         ? "2px solid #111"
                         : "1px solid #ddd",
                     background:
-                      wantsPhone ===
-                      "yes"
+                      wantsPhone === "yes"
                         ? "#111"
                         : "#fff",
                     color:
-                      wantsPhone ===
-                      "yes"
+                      wantsPhone === "yes"
                         ? "#fff"
                         : "#333",
                     cursor:
@@ -1079,15 +1066,13 @@ function ProfileScreen({
                       "14px",
                   }}
                 >
-                  آره! تو جون بخواه
+                  بله
                 </button>
 
                 <button
                   type="button"
                   onClick={() => {
-                    setWantsPhone(
-                      "no"
-                    );
+                    setWantsPhone("no");
                     setPhone("");
                   }}
                   style={{
@@ -1096,18 +1081,15 @@ function ProfileScreen({
                     borderRadius:
                       "12px",
                     border:
-                      wantsPhone ===
-                      "no"
+                      wantsPhone === "no"
                         ? "2px solid #111"
                         : "1px solid #ddd",
                     background:
-                      wantsPhone ===
-                      "no"
+                      wantsPhone === "no"
                         ? "#111"
                         : "#fff",
                     color:
-                      wantsPhone ===
-                      "no"
+                      wantsPhone === "no"
                         ? "#fff"
                         : "#333",
                     cursor:
@@ -1116,13 +1098,12 @@ function ProfileScreen({
                       "14px",
                   }}
                 >
-                  نه! هنوز یه کم زوده!
+                  نه
                 </button>
               </div>
             </div>
 
-            {wantsPhone ===
-              "yes" && (
+            {wantsPhone === "yes" && (
               <input
                 type="tel"
                 inputMode="numeric"
@@ -1153,12 +1134,9 @@ function ProfileScreen({
             {error && (
               <div
                 style={{
-                  color:
-                    "#b00020",
-                  fontSize:
-                    "13px",
-                  lineHeight:
-                    "1.8",
+                  color: "#b00020",
+                  fontSize: "13px",
+                  lineHeight: "1.8",
                 }}
               >
                 {error}
@@ -1172,13 +1150,11 @@ function ProfileScreen({
               style={{
                 marginTop: "8px",
                 opacity:
-                  loading
-                    ? 0.6
-                    : 1,
+                  loading ? 0.6 : 1,
               }}
             >
               {loading
-                ? "یه لحظه دندون به جیگر بگیر!"
+                ? "یک لحظه..."
                 : "بزن بریم"}
             </button>
           </form>
@@ -1218,9 +1194,7 @@ function AuthScreen({
   const [error, setError] =
     useState("");
 
-  async function handleSubmit(
-    event
-  ) {
+  async function handleSubmit(event) {
     event.preventDefault();
 
     setError("");
@@ -1229,23 +1203,19 @@ function AuthScreen({
     const cleanEmail =
       email.trim();
 
-    if (
-      !cleanEmail ||
-      !password
-    ) {
+    if (!cleanEmail || !password) {
       setError(
-        "ایمیل و رمز عبورت رو وارد کن"
+        "ایمیل و رمز عبور را وارد کن."
       );
       return;
     }
 
     if (
       mode === "signup" &&
-      password !==
-        confirmPassword
+      password !== confirmPassword
     ) {
       setError(
-        "این دوتا رمزی که نوشتی یکی نیستن!"
+        "رمزهای عبور یکسان نیستند."
       );
       return;
     }
@@ -1255,7 +1225,7 @@ function AuthScreen({
       password.length < 6
     ) {
       setError(
-        "رمز عبور باید حداقل شش کاراکتر باشه. سرکوچه که نیست!"
+        "رمز عبور باید حداقل ۶ کاراکتر باشد."
       );
       return;
     }
@@ -1263,21 +1233,15 @@ function AuthScreen({
     setLoading(true);
 
     try {
-      if (
-        mode === "signup"
-      ) {
+      if (mode === "signup") {
         const {
           data,
-          error:
-            signupError,
+          error: signupError,
         } =
-          await supabase.auth.signUp(
-            {
-              email:
-                cleanEmail,
-              password,
-            }
-          );
+          await supabase.auth.signUp({
+            email: cleanEmail,
+            password,
+          });
 
         if (signupError) {
           throw signupError;
@@ -1294,23 +1258,19 @@ function AuthScreen({
         }
 
         setMessage(
-          "خیلی خوش اومدی! یه ایمیل برات فرستادیم؛ تأییدش کن و تمام."
+          "حساب ساخته شد. ایمیلت رو تأیید کن و بعد وارد شو."
         );
 
         setMode("login");
       } else {
         const {
           data,
-          error:
-            loginError,
+          error: loginError,
         } =
-          await supabase.auth.signInWithPassword(
-            {
-              email:
-                cleanEmail,
-              password,
-            }
-          );
+          await supabase.auth.signInWithPassword({
+            email: cleanEmail,
+            password,
+          });
 
         if (loginError) {
           throw loginError;
@@ -1324,7 +1284,7 @@ function AuthScreen({
       console.error(err);
 
       setError(
-        "یه جای کار می‌لنگه! دوباره امتحان کن."
+        "مشکلی پیش آمد. دوباره تلاش کن."
       );
     } finally {
       setLoading(false);
@@ -1344,8 +1304,7 @@ function AuthScreen({
           </div>
 
           <h1>
-            {mode ===
-            "signup" ? (
+            {mode === "signup" ? (
               <>
                 یه حساب بساز،
                 <br />
@@ -1403,8 +1362,7 @@ function AuthScreen({
                 )
               }
               autoComplete={
-                mode ===
-                "signup"
+                mode === "signup"
                   ? "new-password"
                   : "current-password"
               }
@@ -1415,29 +1373,23 @@ function AuthScreen({
               }}
             />
 
-            {mode ===
-              "signup" && (
+            {mode === "signup" && (
               <input
                 type="password"
                 placeholder="تکرار رمز عبور"
                 value={
                   confirmPassword
                 }
-                onChange={(
-                  event
-                ) =>
+                onChange={(event) =>
                   setConfirmPassword(
-                    event.target
-                      .value
+                    event.target.value
                   )
                 }
                 autoComplete="new-password"
                 style={{
                   ...inputStyle,
-                  direction:
-                    "ltr",
-                  textAlign:
-                    "left",
+                  direction: "ltr",
+                  textAlign: "left",
                 }}
               />
             )}
@@ -1445,12 +1397,9 @@ function AuthScreen({
             {error && (
               <div
                 style={{
-                  color:
-                    "#b00020",
-                  fontSize:
-                    "13px",
-                  lineHeight:
-                    "1.8",
+                  color: "#b00020",
+                  fontSize: "13px",
+                  lineHeight: "1.8",
                 }}
               >
                 {error}
@@ -1461,10 +1410,8 @@ function AuthScreen({
               <div
                 style={{
                   color: "#555",
-                  fontSize:
-                    "13px",
-                  lineHeight:
-                    "1.8",
+                  fontSize: "13px",
+                  lineHeight: "1.8",
                 }}
               >
                 {message}
@@ -1478,16 +1425,13 @@ function AuthScreen({
               style={{
                 marginTop: "8px",
                 opacity:
-                  loading
-                    ? 0.6
-                    : 1,
+                  loading ? 0.6 : 1,
               }}
             >
               {loading
-                ? "یه لحظه دندون به جیگر بگیر!"
-                : mode ===
-                  "signup"
-                ? "بیا تو"
+                ? "یک لحظه..."
+                : mode === "signup"
+                ? "ساخت حساب"
                 : "ورود"}
             </button>
           </form>
@@ -1496,8 +1440,7 @@ function AuthScreen({
             type="button"
             onClick={() => {
               setMode(
-                mode ===
-                  "signup"
+                mode === "signup"
                   ? "login"
                   : "signup"
               );
@@ -1510,15 +1453,12 @@ function AuthScreen({
               border: 0,
               background:
                 "transparent",
-              cursor:
-                "pointer",
-              fontSize:
-                "13px",
+              cursor: "pointer",
+              fontSize: "13px",
               color: "#666",
             }}
           >
-            {mode ===
-            "signup"
+            {mode === "signup"
               ? "حساب داری؟ وارد شو"
               : "حساب نداری؟ ثبت‌نام کن"}
           </button>
@@ -1630,12 +1570,9 @@ function App() {
       );
 
       if (
-        data.session?.user
-          ?.id
+        data.session?.user?.id
       ) {
-        setProfileChecking(
-          true
-        );
+        setProfileChecking(true);
 
         const {
           data: profile,
@@ -1644,12 +1581,11 @@ function App() {
           await supabase
             .from("profiles")
             .select(
-              "display_name, age, gender, city"
+              "name, age, gender, city"
             )
             .eq(
               "id",
-              data.session
-                .user.id
+              data.session.user.id
             )
             .maybeSingle();
 
@@ -1657,26 +1593,21 @@ function App() {
           return;
         }
 
-        setProfileChecking(
-          false
-        );
+        setProfileChecking(false);
 
         if (
           error ||
           !profile ||
-          !profile.display_name ||
+          !profile.name ||
           !profile.age ||
           !profile.gender ||
           !profile.city
         ) {
           setProfileUserId(
-            data.session
-              .user.id
+            data.session.user.id
           );
 
-          setScreen(
-            "profile"
-          );
+          setScreen("profile");
         } else {
           setScreen("home");
         }
@@ -1689,10 +1620,7 @@ function App() {
       data: listener,
     } =
       supabase.auth.onAuthStateChange(
-        (
-          _event,
-          currentSession
-        ) => {
+        (_event, currentSession) => {
           setSession(
             currentSession
           );
@@ -1710,10 +1638,7 @@ function App() {
       return;
     }
 
-    setSavedItemsLoading(
-      true
-    );
-
+    setSavedItemsLoading(true);
     setSavedError("");
 
     try {
@@ -1748,19 +1673,15 @@ function App() {
       console.error(err);
 
       setSavedError(
-        "چی شد؟ نشد که!"
+        "ذخیره‌ها بارگذاری نشدند."
       );
     } finally {
-      setSavedItemsLoading(
-        false
-      );
+      setSavedItemsLoading(false);
     }
   }
 
   useEffect(() => {
-    if (
-      session?.user?.id
-    ) {
+    if (session?.user?.id) {
       loadSavedItems();
     } else {
       setSavedItems([]);
@@ -1776,9 +1697,7 @@ function App() {
     setRecommendations([]);
     setQuestionIndex(0);
     setSavedError("");
-    setScreen(
-      "questionnaire"
-    );
+    setScreen("questionnaire");
   }
 
   function chooseAnswer(option) {
@@ -1899,10 +1818,7 @@ function App() {
       return;
     }
 
-    setSavingItemKey(
-      itemKey
-    );
-
+    setSavingItemKey(itemKey);
     setSavedError("");
 
     try {
@@ -1934,8 +1850,7 @@ function App() {
           null,
 
         year:
-          item?.year !==
-            undefined &&
+          item?.year !== undefined &&
           item?.year !== null
             ? String(item.year)
             : null,
@@ -1993,26 +1908,19 @@ function App() {
       console.error(err);
 
       setSavedError(
-        "ذخیره نشد که"
+        "ذخیره کردن انجام نشد."
       );
     } finally {
-      setSavingItemKey(
-        null
-      );
+      setSavingItemKey(null);
     }
   }
 
-  async function removeSavedItem(
-    savedId
-  ) {
+  async function removeSavedItem(savedId) {
     if (!savedId) {
       return;
     }
 
-    setRemovingSavedId(
-      savedId
-    );
-
+    setRemovingSavedId(savedId);
     setSavedError("");
 
     try {
@@ -2047,12 +1955,10 @@ function App() {
       console.error(err);
 
       setSavedError(
-        "حذف نشد که"
+        "حذف انجام نشد."
       );
     } finally {
-      setRemovingSavedId(
-        null
-      );
+      setRemovingSavedId(null);
     }
   }
 
@@ -2087,9 +1993,7 @@ function App() {
         .filter(
           (item) =>
             (item.category ||
-              getItemType(
-                item
-              )) ===
+              getItemType(item)) ===
             category
         )
         .map((item) =>
@@ -2127,12 +2031,12 @@ function App() {
 
     if (!newItem) {
       setSavedError(
-        "فعلاً پیشنهاد دیگری نداریم"
+        `برای بخش «${getCategoryTitle(
+          category
+        )}» فعلاً پیشنهاد دیگری نداریم.`
       );
 
-      setChangingItemKey(
-        null
-      );
+      setChangingItemKey(null);
 
       return;
     }
@@ -2207,8 +2111,7 @@ function App() {
         <section
           className="hero"
           style={{
-            minHeight:
-              "100vh",
+            minHeight: "100vh",
           }}
         >
           <div className="logo">
@@ -2216,7 +2119,7 @@ function App() {
           </div>
 
           <p>
-            یه لحظه دندون به جیگر بگیر!
+            یک لحظه...
           </p>
         </section>
       </main>
@@ -2229,13 +2132,9 @@ function App() {
   ) {
     return (
       <ProfileScreen
-        userId={
-          profileUserId
-        }
+        userId={profileUserId}
         onComplete={() => {
-          setProfileUserId(
-            null
-          );
+          setProfileUserId(null);
           setScreen("home");
         }}
       />
@@ -2250,16 +2149,9 @@ function App() {
         onSuccess={() => {
           setScreen("home");
         }}
-        onProfileNeeded={(
-          userId
-        ) => {
-          setProfileUserId(
-            userId
-          );
-
-          setScreen(
-            "profile"
-          );
+        onProfileNeeded={(userId) => {
+          setProfileUserId(userId);
+          setScreen("profile");
         }}
       />
     );
@@ -2295,7 +2187,7 @@ function App() {
 
           <div className="results-intro">
             <h1>
-              برای بعدن
+              برای بعداً
             </h1>
 
             <p>
@@ -2303,21 +2195,17 @@ function App() {
             </p>
 
             <p>
-              چیزهایی که گفتی بعدن سراغشون می‌ری، اینجان.
+              چیزهایی که گفتی بعداً سراغشون می‌ری، اینجان.
             </p>
           </div>
 
           {savedError && (
             <div
               style={{
-                color:
-                  "#b00020",
-                fontSize:
-                  "13px",
-                lineHeight:
-                  "1.8",
-                marginBottom:
-                  "20px",
+                color: "#b00020",
+                fontSize: "13px",
+                lineHeight: "1.8",
+                marginBottom: "20px",
               }}
             >
               {savedError}
@@ -2327,15 +2215,14 @@ function App() {
           {savedItemsLoading ? (
             <div className="empty-state">
               <h2>
-                یه لحظه...
+                یک لحظه...
               </h2>
 
               <p>
-                دارم می‌گردم!‌اینا رو کجا گذاشته بودی...؟
+                داریم چیزهایی که نگه داشتی رو پیدا می‌کنیم.
               </p>
             </div>
-          ) : savedItems.length >
-            0 ? (
+          ) : savedItems.length > 0 ? (
             <div className="recommendations-grid">
               {Object.entries(
                 savedItems.reduce(
@@ -2373,9 +2260,7 @@ function App() {
                 ]) => (
                   <section
                     className="recommendation-category"
-                    key={
-                      category
-                    }
+                    key={category}
                   >
                     <h2 className="category-title">
                       {getCategoryTitle(
@@ -2385,16 +2270,12 @@ function App() {
 
                     <div className="category-cards">
                       {items.map(
-                        (
-                          item
-                        ) => (
+                        (item) => (
                           <SavedItemCard
                             key={
                               item.id
                             }
-                            item={
-                              item
-                            }
+                            item={item}
                             onRemove={
                               removeSavedItem
                             }
@@ -2413,11 +2294,11 @@ function App() {
           ) : (
             <div className="empty-state">
               <h2>
-                خالیه که!
+                هنوز چیزی نگه نداشتی.
               </h2>
 
               <p>
-                پیشنهادی که دوست داشتی ولی الان وقتش رو نداری، بزن «بعدن می‌بینم»
+                هر پیشنهادی که دوست داشتی ولی الان وقتش رو نداری، بزن «بعداً می‌بینم».
               </p>
             </div>
           )}
@@ -2447,15 +2328,12 @@ function App() {
               }
             >
               <span>
-                بعدن می‌بینم
+                بعداً می‌بینم
               </span>
 
-              {savedItems.length >
-                0 && (
+              {savedItems.length > 0 && (
                 <span className="saved-count">
-                  {
-                    savedItems.length
-                  }
+                  {savedItems.length}
                 </span>
               )}
             </button>
@@ -2482,7 +2360,11 @@ function App() {
             </h1>
 
             <p>
-              بزن ببینیم چی بهت می‌چسبه
+              چند ساعت وقت داری، ایده‌ای نداری؟
+            </p>
+
+            <p>
+              بزن ببینیم چی بهت می‌چسبه.
             </p>
 
             <button
@@ -2497,7 +2379,7 @@ function App() {
           </div>
 
           <div className="hero-note">
-            فیلمایی که ندیدی، موزیکایی که نشنیدی، کتابایی که نخوندی، جاهایی که نرفتی... من همه رو بلدم! بهت میگم.
+            فیلم، سریال، کتاب، پادکست، موسیقی و چیزهایی که شاید خودت پیداشون نمی‌کردی.
           </div>
         </section>
       </main>
@@ -2539,21 +2421,39 @@ function App() {
             </div>
 
             <span className="question-number">
-              {questionIndex +
-                1}
-              /
-              {
-                questions.length
-              }
+              {questionIndex + 1}/
+              {questions.length}
             </span>
           </header>
 
           <div className="question-content">
             <h1>
-              {
-                currentQuestion.title
-              }
+              {currentQuestion.title}
             </h1>
+
+            {currentQuestion.key === "mood" && (
+              <p>
+                همون چیزی رو بگو که واقعاً الان حس می‌کنی.
+              </p>
+            )}
+
+            {currentQuestion.key === "goal" && (
+              <p>
+                قرار نیست جواب درست یا غلطی وجود داشته باشه.
+              </p>
+            )}
+
+            {currentQuestion.key === "time" && (
+              <p>
+                این یکی مهمه؛ چیزی پیشنهاد نمی‌کنیم که وسطش مجبور شی ولش کنی.
+              </p>
+            )}
+
+            {currentQuestion.key === "energy" && (
+              <p>
+                این مشخص می‌کنه چقدر باید ازت انرژی بگیریم!
+              </p>
+            )}
 
             <div className="options">
               {currentQuestion.options.map(
@@ -2570,9 +2470,7 @@ function App() {
                     }
                   >
                     <span>
-                      {
-                        option.label
-                      }
+                      {option.label}
                     </span>
 
                     <span className="option-arrow">
@@ -2602,18 +2500,14 @@ function App() {
         if (
           !groups[category]
         ) {
-          groups[
-            category
-          ] = [];
+          groups[category] = [];
         }
 
         if (
           groups[category]
             .length === 0
         ) {
-          groups[
-            category
-          ].push({
+          groups[category].push({
             ...item,
             category,
           });
@@ -2649,15 +2543,12 @@ function App() {
               }
             >
               <span>
-                بعدن می‌بینم
+                بعداً می‌بینم
               </span>
 
-              {savedItems.length >
-                0 && (
+              {savedItems.length > 0 && (
                 <span className="saved-count">
-                  {
-                    savedItems.length
-                  }
+                  {savedItems.length}
                 </span>
               )}
             </button>
@@ -2673,33 +2564,32 @@ function App() {
 
         <div className="results-intro">
           <h1>
-            کلیک کن، حالشو ببر!
+            پیداش کردیم
           </h1>
 
           <p>
-            اسکرول کن برو پایین ببین چیا برات گذاشتم کنار
+            این‌ها شاید بهت بچسبن.
+          </p>
+
+          <p>
+            بر اساس حال و حوصله‌ای که گفتی، این‌ها رو برات کنار گذاشتیم.
           </p>
         </div>
 
         {savedError && (
           <div
             style={{
-              color:
-                "#b00020",
-              fontSize:
-                "13px",
-              lineHeight:
-                "1.8",
-              marginBottom:
-                "20px",
+              color: "#b00020",
+              fontSize: "13px",
+              lineHeight: "1.8",
+              marginBottom: "20px",
             }}
           >
             {savedError}
           </div>
         )}
 
-        {recommendations.length >
-        0 ? (
+        {recommendations.length > 0 ? (
           <div className="recommendations-grid">
             {Object.entries(
               groupedRecommendations
@@ -2710,9 +2600,7 @@ function App() {
               ]) => (
                 <section
                   className="recommendation-category"
-                  key={
-                    category
-                  }
+                  key={category}
                 >
                   <h2 className="category-title">
                     {getCategoryTitle(
@@ -2789,7 +2677,7 @@ function App() {
             startQuestionnaire
           }
         >
-          می‌خوای از اول امتحان کنی؟
+          دوباره بپرس ازم
         </button>
       </section>
     </main>
@@ -2797,4 +2685,3 @@ function App() {
 }
 
 export default App;
-
