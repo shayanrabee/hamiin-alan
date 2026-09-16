@@ -1,5 +1,4 @@
 import { useEffect, useMemo, useState } from "react";
-import { supabase } from "./supabaseClient.js";
 
 import films from "./data/films.js";
 import foreignFilms from "./data/foreignFilms.js";
@@ -15,6 +14,112 @@ import {
 } from "./data/recommend.js";
 
 import "./App.css";
+
+/* =========================
+   ذخیره‌سازی محلی
+========================= */
+
+const STORAGE_KEYS = {
+  users: "hamiin_alan_users",
+  session: "hamiin_alan_session",
+};
+
+function getUsers() {
+  try {
+    const users = JSON.parse(
+      localStorage.getItem(STORAGE_KEYS.users) || "[]"
+    );
+
+    return Array.isArray(users) ? users : [];
+  } catch {
+    return [];
+  }
+}
+
+function saveUsers(users) {
+  localStorage.setItem(
+    STORAGE_KEYS.users,
+    JSON.stringify(users)
+  );
+}
+
+function getSession() {
+  try {
+    return JSON.parse(
+      localStorage.getItem(STORAGE_KEYS.session) || "null"
+    );
+  } catch {
+    return null;
+  }
+}
+
+function saveSession(session) {
+  if (session) {
+    localStorage.setItem(
+      STORAGE_KEYS.session,
+      JSON.stringify(session)
+    );
+  } else {
+    localStorage.removeItem(STORAGE_KEYS.session);
+  }
+}
+
+function getProfileKey(userId) {
+  return `hamiin_alan_profile_${userId}`;
+}
+
+function getSavedItemsKey(userId) {
+  return `hamiin_alan_saved_${userId}`;
+}
+
+function getLocalProfile(userId) {
+  try {
+    return JSON.parse(
+      localStorage.getItem(getProfileKey(userId)) || "null"
+    );
+  } catch {
+    return null;
+  }
+}
+
+function saveLocalProfile(userId, profile) {
+  localStorage.setItem(
+    getProfileKey(userId),
+    JSON.stringify(profile)
+  );
+}
+
+function getLocalSavedItems(userId) {
+  try {
+    const items = JSON.parse(
+      localStorage.getItem(getSavedItemsKey(userId)) || "[]"
+    );
+
+    return Array.isArray(items) ? items : [];
+  } catch {
+    return [];
+  }
+}
+
+function saveLocalSavedItems(userId, items) {
+  localStorage.setItem(
+    getSavedItemsKey(userId),
+    JSON.stringify(items)
+  );
+}
+
+function createUserId() {
+  if (
+    typeof crypto !== "undefined" &&
+    typeof crypto.randomUUID === "function"
+  ) {
+    return crypto.randomUUID();
+  }
+
+  return `${Date.now()}-${Math.random()
+    .toString(36)
+    .slice(2)}`;
+}
 
 /* =========================
    سوالات
@@ -99,25 +204,64 @@ const staticQuestions = [
     key: "goal",
     title: "الان چی می‌خوای؟",
     options: [
-      { value: "feel_better", label: "می‌خوام حالم بهتر بشه" },
-      { value: "fun", label: "می‌خوام بخندم" },
-      { value: "excitement", label: "می‌خوام هیجان داشته باشم" },
-      { value: "calm", label: "می‌خوام آروم بشم" },
-      { value: "thoughtful", label: "می‌خوام ذهنم درگیر بشه" },
-      { value: "discovery", label: "می‌خوام یه چیز عجیب و متفاوت پیدا کنم" },
-      { value: "learning", label: "می‌خوام یه چیز تازه یاد بگیرم" },
-      { value: "surprise", label: "نمی‌دونم، خودمم نمی‌دونم" },
+      {
+        value: "feel_better",
+        label: "می‌خوام حالم بهتر بشه",
+      },
+      {
+        value: "fun",
+        label: "می‌خوام بخندم",
+      },
+      {
+        value: "excitement",
+        label: "می‌خوام هیجان داشته باشم",
+      },
+      {
+        value: "calm",
+        label: "می‌خوام آروم بشم",
+      },
+      {
+        value: "thoughtful",
+        label: "می‌خوام ذهنم درگیر بشه",
+      },
+      {
+        value: "discovery",
+        label: "می‌خوام یه چیز عجیب و متفاوت پیدا کنم",
+      },
+      {
+        value: "learning",
+        label: "می‌خوام یه چیز تازه یاد بگیرم",
+      },
+      {
+        value: "surprise",
+        label: "نمی‌دونم، خودمم نمی‌دونم",
+      },
     ],
   },
   {
     key: "time",
     title: "چقدر وقت داری؟",
     options: [
-      { value: "30min", label: "تا نیم ساعت" },
-      { value: "1hour", label: "حدود یه ساعت" },
-      { value: "2_3hours", label: "دو سه ساعت" },
-      { value: "half_day", label: "یه نصف روز" },
-      { value: "a_lot", label: "مهم نیست، وقتم زیاده" },
+      {
+        value: "30min",
+        label: "تا نیم ساعت",
+      },
+      {
+        value: "1hour",
+        label: "حدود یه ساعت",
+      },
+      {
+        value: "2_3hours",
+        label: "دو سه ساعت",
+      },
+      {
+        value: "half_day",
+        label: "یه نصف روز",
+      },
+      {
+        value: "a_lot",
+        label: "مهم نیست، وقتم زیاده",
+      },
     ],
   },
   {
@@ -128,13 +272,22 @@ const staticQuestions = [
         value: "very_low",
         label: "اصلاً حوصله ندارم، یه چیز راحت می‌خوام",
       },
-      { value: "low", label: "یه کم، خیلی کم" },
+      {
+        value: "low",
+        label: "یه کم، خیلی کم",
+      },
       {
         value: "medium",
         label: "بستگی داره، اگه بیارزه چرا که نه",
       },
-      { value: "high", label: "حوصله دارم، بزن بریم" },
-      { value: "very_high", label: "پایه‌ام، هرچی داری رو کن" },
+      {
+        value: "high",
+        label: "حوصله دارم، بزن بریم",
+      },
+      {
+        value: "very_high",
+        label: "پایه‌ام، هرچی داری رو کن",
+      },
     ],
   },
 ];
@@ -199,11 +352,17 @@ function getItemType(item) {
     item?.origin || ""
   ).toLowerCase();
 
-  if (type === "short_film" || type === "short") {
+  if (
+    type === "short_film" ||
+    type === "short"
+  ) {
     return "short_film";
   }
 
-  if (type === "series" || type === "tv_series") {
+  if (
+    type === "series" ||
+    type === "tv_series"
+  ) {
     return "series";
   }
 
@@ -255,26 +414,37 @@ function getTypeLabel(item) {
   switch (type) {
     case "short_film":
       return "فیلم کوتاه";
+
     case "iran_film":
       return "فیلم ایرانی";
+
     case "foreign_film":
       return "فیلم خارجی";
+
     case "series":
       return "سریال";
+
     case "podcast":
       return "پادکست";
+
     case "book":
       return "کتاب";
+
     case "instrumental_music":
       return "موسیقی بی‌کلام";
+
     case "poetry":
       return "شعر";
+
     case "music_video":
       return "موزیک‌ویدئو";
+
     case "standup":
       return "استندآپ";
+
     case "online_game":
       return "بازی آنلاین";
+
     default:
       return "پیشنهادها";
   }
@@ -338,7 +508,9 @@ function getItemKey(item) {
     return String(item.id);
   }
 
-  return `${item.category || getItemType(item) || ""}-${item.title || ""}`
+  return `${item.category || getItemType(item) || ""}-${
+    item.title || ""
+  }`
     .toLowerCase()
     .trim();
 }
@@ -699,7 +871,43 @@ function ProfileScreen({
   const [error, setError] =
     useState("");
 
-  async function handleSubmit(event) {
+  useEffect(() => {
+    const profile =
+      getLocalProfile(userId);
+
+    if (!profile) {
+      return;
+    }
+
+    setDisplayName(
+      profile.name || ""
+    );
+
+    setAge(
+      profile.age
+        ? String(profile.age)
+        : ""
+    );
+
+    setGender(
+      profile.gender || ""
+    );
+
+    setCity(
+      profile.city || ""
+    );
+
+    if (profile.phone) {
+      setWantsPhone("yes");
+      setPhone(profile.phone);
+    } else if (
+      profile.phone === null
+    ) {
+      setWantsPhone("no");
+    }
+  }, [userId]);
+
+  function handleSubmit(event) {
     event.preventDefault();
 
     setError("");
@@ -779,30 +987,16 @@ function ProfileScreen({
     setLoading(true);
 
     try {
-      const {
-        error: profileError,
-      } = await supabase
-        .from("profiles")
-        .upsert(
-          {
-            id: userId,
-            name: cleanName,
-            age: numericAge,
-            gender,
-            city: cleanCity,
-            phone:
-              wantsPhone === "yes"
-                ? cleanPhone
-                : null,
-          },
-          {
-            onConflict: "id",
-          }
-        );
-
-      if (profileError) {
-        throw profileError;
-      }
+      saveLocalProfile(userId, {
+        name: cleanName,
+        age: numericAge,
+        gender,
+        city: cleanCity,
+        phone:
+          wantsPhone === "yes"
+            ? cleanPhone
+            : null,
+      });
 
       onComplete();
     } catch (err) {
@@ -1194,14 +1388,14 @@ function AuthScreen({
   const [error, setError] =
     useState("");
 
-  async function handleSubmit(event) {
+  function handleSubmit(event) {
     event.preventDefault();
 
     setError("");
     setMessage("");
 
     const cleanEmail =
-      email.trim();
+      email.trim().toLowerCase();
 
     if (!cleanEmail || !password) {
       setError(
@@ -1233,53 +1427,71 @@ function AuthScreen({
     setLoading(true);
 
     try {
+      const users = getUsers();
+
       if (mode === "signup") {
-        const {
-          data,
-          error: signupError,
-        } =
-          await supabase.auth.signUp({
-            email: cleanEmail,
-            password,
-          });
+        const existingUser =
+          users.find(
+            (user) =>
+              user.email === cleanEmail
+          );
 
-        if (signupError) {
-          throw signupError;
-        }
-
-        if (
-          data?.session &&
-          data?.user?.id
-        ) {
-          onProfileNeeded(
-            data.user.id
+        if (existingUser) {
+          setError(
+            "مشکلی پیش آمد. دوباره تلاش کن."
           );
           return;
         }
 
-        setMessage(
-          "حساب ساخته شد. ایمیلت رو تأیید کن و بعد وارد شو."
+        const user = {
+          id: createUserId(),
+          email: cleanEmail,
+          password,
+        };
+
+        saveUsers([
+          ...users,
+          user,
+        ]);
+
+        saveSession({
+          user: {
+            id: user.id,
+            email: user.email,
+          },
+        });
+
+        onProfileNeeded(
+          user.id
         );
 
-        setMode("login");
-      } else {
-        const {
-          data,
-          error: loginError,
-        } =
-          await supabase.auth.signInWithPassword({
-            email: cleanEmail,
-            password,
-          });
-
-        if (loginError) {
-          throw loginError;
-        }
-
-        if (data.session) {
-          onSuccess();
-        }
+        return;
       }
+
+      const user =
+        users.find(
+          (candidate) =>
+            candidate.email ===
+              cleanEmail &&
+            candidate.password ===
+              password
+        );
+
+      if (!user) {
+        setError(
+          "مشکلی پیش آمد. دوباره تلاش کن."
+        );
+        return;
+      }
+
+      saveSession({
+        user: {
+          id: user.id,
+          email: user.email,
+        },
+      });
+
+      onSuccess();
     } catch (err) {
       console.error(err);
 
@@ -1553,87 +1765,41 @@ function App() {
   );
 
   useEffect(() => {
-    let mounted = true;
+    const currentSession =
+      getSession();
 
-    async function checkSession() {
-      const {
-        data,
-      } =
-        await supabase.auth.getSession();
+    setSession(
+      currentSession
+    );
 
-      if (!mounted) {
-        return;
-      }
+    if (
+      currentSession?.user?.id
+    ) {
+      const userId =
+        currentSession.user.id;
 
-      setSession(
-        data.session
-      );
+      const profile =
+        getLocalProfile(userId);
 
       if (
-        data.session?.user?.id
+        !profile ||
+        !profile.name ||
+        !profile.age ||
+        !profile.gender ||
+        !profile.city
       ) {
-        setProfileChecking(true);
+        setProfileUserId(
+          userId
+        );
 
-        const {
-          data: profile,
-          error,
-        } =
-          await supabase
-            .from("profiles")
-            .select(
-              "name, age, gender, city"
-            )
-            .eq(
-              "id",
-              data.session.user.id
-            )
-            .maybeSingle();
-
-        if (!mounted) {
-          return;
-        }
-
-        setProfileChecking(false);
-
-        if (
-          error ||
-          !profile ||
-          !profile.name ||
-          !profile.age ||
-          !profile.gender ||
-          !profile.city
-        ) {
-          setProfileUserId(
-            data.session.user.id
-          );
-
-          setScreen("profile");
-        } else {
-          setScreen("home");
-        }
+        setScreen("profile");
+      } else {
+        setScreen("home");
       }
     }
-
-    checkSession();
-
-    const {
-      data: listener,
-    } =
-      supabase.auth.onAuthStateChange(
-        (_event, currentSession) => {
-          setSession(
-            currentSession
-          );
-        }
-      );
-
-    return () => {
-      mounted = false;
-      listener.subscription.unsubscribe();
-    };
   }, []);
 
-  async function loadSavedItems() {
+  function loadSavedItems() {
     if (!session?.user?.id) {
       return;
     }
@@ -1642,33 +1808,12 @@ function App() {
     setSavedError("");
 
     try {
-      const {
-        data,
-        error,
-      } =
-        await supabase
-          .from("saved_items")
-          .select("*")
-          .eq(
-            "user_id",
-            session.user.id
-          )
-          .order(
-            "created_at",
-            {
-              ascending: false,
-            }
-          );
+      const items =
+        getLocalSavedItems(
+          session.user.id
+        );
 
-      if (error) {
-        throw error;
-      }
-
-      setSavedItems(
-        Array.isArray(data)
-          ? data
-          : []
-      );
+      setSavedItems(items);
     } catch (err) {
       console.error(err);
 
@@ -1795,7 +1940,7 @@ function App() {
     setScreen("home");
   }
 
-  async function saveForLater(item) {
+  function saveForLater(item) {
     if (!session?.user?.id) {
       return;
     }
@@ -1822,7 +1967,9 @@ function App() {
     setSavedError("");
 
     try {
-      const payload = {
+      const savedItem = {
+        id: createUserId(),
+
         user_id:
           session.user.id,
 
@@ -1861,49 +2008,24 @@ function App() {
 
         item_data:
           item || {},
+
+        created_at:
+          new Date().toISOString(),
       };
 
-      const {
-        data,
-        error,
-      } =
-        await supabase
-          .from("saved_items")
-          .upsert(
-            payload,
-            {
-              onConflict:
-                "user_id,item_key",
-            }
-          )
-          .select()
-          .single();
+      const updatedItems = [
+        savedItem,
+        ...savedItems,
+      ];
 
-      if (error) {
-        throw error;
-      }
+      saveLocalSavedItems(
+        session.user.id,
+        updatedItems
+      );
 
-      if (data) {
-        setSavedItems(
-          (current) => {
-            const exists =
-              current.some(
-                (saved) =>
-                  saved.id ===
-                  data.id
-              );
-
-            if (exists) {
-              return current;
-            }
-
-            return [
-              data,
-              ...current,
-            ];
-          }
-        );
-      }
+      setSavedItems(
+        updatedItems
+      );
     } catch (err) {
       console.error(err);
 
@@ -1915,8 +2037,12 @@ function App() {
     }
   }
 
-  async function removeSavedItem(savedId) {
+  function removeSavedItem(savedId) {
     if (!savedId) {
+      return;
+    }
+
+    if (!session?.user?.id) {
       return;
     }
 
@@ -1924,32 +2050,20 @@ function App() {
     setSavedError("");
 
     try {
-      const {
-        error,
-      } =
-        await supabase
-          .from("saved_items")
-          .delete()
-          .eq(
-            "id",
+      const updatedItems =
+        savedItems.filter(
+          (item) =>
+            item.id !==
             savedId
-          )
-          .eq(
-            "user_id",
-            session.user.id
-          );
+        );
 
-      if (error) {
-        throw error;
-      }
+      saveLocalSavedItems(
+        session.user.id,
+        updatedItems
+      );
 
       setSavedItems(
-        (current) =>
-          current.filter(
-            (item) =>
-              item.id !==
-              savedId
-          )
+        updatedItems
       );
     } catch (err) {
       console.error(err);
@@ -2075,6 +2189,7 @@ function App() {
   }
 
   function openSavedScreen() {
+    loadSavedItems();
     setScreen("saved");
     setSavedError("");
   }
@@ -2084,8 +2199,8 @@ function App() {
     setSavedError("");
   }
 
-  async function logout() {
-    await supabase.auth.signOut();
+  function logout() {
+    saveSession(null);
 
     setSession(null);
     setScreen("home");
@@ -2147,9 +2262,23 @@ function App() {
         mode={authMode}
         setMode={setAuthMode}
         onSuccess={() => {
+          const currentSession =
+            getSession();
+
+          setSession(
+            currentSession
+          );
+
           setScreen("home");
         }}
         onProfileNeeded={(userId) => {
+          const currentSession =
+            getSession();
+
+          setSession(
+            currentSession
+          );
+
           setProfileUserId(userId);
           setScreen("profile");
         }}
