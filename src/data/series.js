@@ -10,7 +10,7 @@ const series = [
     image: "",
     duration: null,
     energy: "medium",
-    moods: ["romantic", "emotional", "dramatic"],
+    moods: ["romantic", "emotional", "thoughtful"],
     goals: ["discovery", "feel_better"]
   },
   {
@@ -19,11 +19,11 @@ const series = [
     type: "series",
     origin: "iran",
     year: 2011,
-    creator: "سروش صحت",
+    creator: "سیروس مقدم",
     image: "",
     duration: null,
     energy: "medium",
-    moods: ["humorous", "heartwarming", "light"],
+    moods: ["funny", "heartwarming", "fun"],
     goals: ["fun", "feel_better"]
   },
   {
@@ -31,12 +31,12 @@ const series = [
     title: "می‌خواهم زنده بمانم",
     type: "series",
     origin: "iran",
-    year: 2018,
+    year: 2020,
     creator: "شهرام شاه‌حسینی",
     image: "",
     duration: null,
     energy: "high",
-    moods: ["suspenseful", "emotional", "intense"],
+    moods: ["tense", "emotional", "intense"],
     goals: ["excitement", "discovery"]
   },
   {
@@ -62,7 +62,7 @@ const series = [
     image: "",
     duration: null,
     energy: "medium",
-    moods: ["humorous", "light", "heartwarming"],
+    moods: ["funny", "fun", "heartwarming"],
     goals: ["fun", "feel_better"]
   },
   {
@@ -75,7 +75,7 @@ const series = [
     image: "",
     duration: null,
     energy: "high",
-    moods: ["suspenseful", "dark", "intense"],
+    moods: ["tense", "dark", "intense"],
     goals: ["excitement", "discovery"]
   },
   {
@@ -88,7 +88,7 @@ const series = [
     image: "",
     duration: null,
     energy: "high",
-    moods: ["suspenseful", "mysterious", "dark"],
+    moods: ["tense", "mysterious", "dark"],
     goals: ["excitement", "discovery"]
   },
   {
@@ -101,7 +101,7 @@ const series = [
     image: "",
     duration: null,
     energy: "medium",
-    moods: ["historical", "romantic", "emotional"],
+    moods: ["romantic", "emotional", "thoughtful"],
     goals: ["discovery", "learning"]
   },
   {
@@ -114,7 +114,7 @@ const series = [
     image: "",
     duration: null,
     energy: "medium",
-    moods: ["dramatic", "thoughtful", "emotional"],
+    moods: ["thoughtful", "emotional"],
     goals: ["discovery", "learning"]
   },
   {
@@ -127,7 +127,7 @@ const series = [
     image: "",
     duration: null,
     energy: "high",
-    moods: ["suspenseful", "emotional", "intense"],
+    moods: ["tense", "emotional", "intense"],
     goals: ["excitement", "discovery"]
   },
   {
@@ -140,7 +140,7 @@ const series = [
     image: "",
     duration: null,
     energy: "high",
-    moods: ["dark", "suspenseful", "intense"],
+    moods: ["dark", "tense", "intense"],
     goals: ["excitement", "discovery"]
   },
   {
@@ -166,24 +166,11 @@ const series = [
     image: "",
     duration: null,
     energy: "medium",
-    moods: ["humorous", "light", "heartwarming"],
+    moods: ["funny", "fun", "heartwarming"],
     goals: ["fun", "feel_better"]
   },
   {
     id: "series-014",
-    title: "بازگشت",
-    type: "series",
-    origin: "iran",
-    year: 2022,
-    creator: "مجید مولایی",
-    image: "",
-    duration: null,
-    energy: "high",
-    moods: ["suspenseful", "dramatic", "intense"],
-    goals: ["excitement", "discovery"]
-  },
-  {
-    id: "series-015",
     title: "محکومین",
     type: "series",
     origin: "iran",
@@ -192,11 +179,11 @@ const series = [
     image: "",
     duration: null,
     energy: "medium",
-    moods: ["dramatic", "emotional", "thoughtful"],
+    moods: ["emotional", "thoughtful"],
     goals: ["discovery", "learning"]
   },
   {
-    id: "series-016",
+    id: "series-015",
     title: "هشتگ خاله سوسکه",
     type: "series",
     origin: "iran",
@@ -205,11 +192,11 @@ const series = [
     image: "",
     duration: null,
     energy: "medium",
-    moods: ["humorous", "light", "heartwarming"],
+    moods: ["funny", "fun", "heartwarming"],
     goals: ["fun", "feel_better"]
   },
   {
-    id: "series-017",
+    id: "series-016",
     title: "بی‌گناه",
     type: "series",
     origin: "iran",
@@ -218,24 +205,11 @@ const series = [
     image: "",
     duration: null,
     energy: "high",
-    moods: ["suspenseful", "dark", "mysterious"],
+    moods: ["tense", "dark", "mysterious"],
     goals: ["excitement", "discovery"]
   },
   {
-    id: "series-018",
-    title: "سریال خاصه",
-    type: "series",
-    origin: "iran",
-    year: 2021,
-    creator: "مهدی گلستانه",
-    image: "",
-    duration: null,
-    energy: "medium",
-    moods: ["humorous", "light", "unique"],
-    goals: ["fun", "feel_better"]
-  },
-  {
-    id: "series-019",
+    id: "series-017",
     title: "پدر",
     type: "series",
     origin: "iran",
@@ -244,26 +218,13 @@ const series = [
     image: "",
     duration: null,
     energy: "medium",
-    moods: ["emotional", "dramatic", "heartwarming"],
+    moods: ["emotional", "heartwarming"],
     goals: ["feel_better", "calm"]
-  },
-  {
-    id: "series-020",
-    title: "قلب رامش",
-    type: "series",
-    origin: "iran",
-    year: 2023,
-    creator: "مسعود اطیابی",
-    image: "",
-    duration: null,
-    energy: "medium",
-    moods: ["romantic", "emotional", "heartwarming"],
-    goals: ["feel_better", "fun"]
   },
 
   // ==================== سریال‌های خارجی - درام ====================
   {
-    id: "series-021",
+    id: "series-018",
     title: "Breaking Bad",
     type: "series",
     origin: "foreign",
@@ -272,11 +233,11 @@ const series = [
     image: "",
     duration: null,
     energy: "high",
-    moods: ["dark", "intense", "suspenseful"],
+    moods: ["dark", "intense", "tense"],
     goals: ["excitement", "discovery"]
   },
   {
-    id: "series-022",
+    id: "series-019",
     title: "Better Call Saul",
     type: "series",
     origin: "foreign",
@@ -285,11 +246,11 @@ const series = [
     image: "",
     duration: null,
     energy: "medium",
-    moods: ["thoughtful", "dramatic", "intense"],
+    moods: ["thoughtful", "intense"],
     goals: ["discovery", "learning"]
   },
   {
-    id: "series-023",
+    id: "series-020",
     title: "The Sopranos",
     type: "series",
     origin: "foreign",
@@ -298,11 +259,11 @@ const series = [
     image: "",
     duration: null,
     energy: "high",
-    moods: ["dark", "dramatic", "intense"],
+    moods: ["dark", "intense"],
     goals: ["discovery", "learning"]
   },
   {
-    id: "series-024",
+    id: "series-021",
     title: "The Wire",
     type: "series",
     origin: "foreign",
@@ -311,11 +272,11 @@ const series = [
     image: "",
     duration: null,
     energy: "medium",
-    moods: ["thoughtful", "dramatic", "deep"],
+    moods: ["thoughtful", "dark"],
     goals: ["learning", "discovery"]
   },
   {
-    id: "series-025",
+    id: "series-022",
     title: "Mad Men",
     type: "series",
     origin: "foreign",
@@ -324,11 +285,11 @@ const series = [
     image: "",
     duration: null,
     energy: "low",
-    moods: ["thoughtful", "dramatic", "nostalgic"],
+    moods: ["thoughtful", "nostalgic"],
     goals: ["discovery", "learning"]
   },
   {
-    id: "series-026",
+    id: "series-023",
     title: "The Crown",
     type: "series",
     origin: "foreign",
@@ -337,11 +298,11 @@ const series = [
     image: "",
     duration: null,
     energy: "low",
-    moods: ["historical", "dramatic", "thoughtful"],
+    moods: ["thoughtful", "emotional"],
     goals: ["learning", "discovery"]
   },
   {
-    id: "series-027",
+    id: "series-024",
     title: "The Handmaid's Tale",
     type: "series",
     origin: "foreign",
@@ -354,7 +315,7 @@ const series = [
     goals: ["excitement", "discovery"]
   },
   {
-    id: "series-028",
+    id: "series-025",
     title: "The Americans",
     type: "series",
     origin: "foreign",
@@ -363,11 +324,11 @@ const series = [
     image: "",
     duration: null,
     energy: "high",
-    moods: ["suspenseful", "dramatic", "thoughtful"],
+    moods: ["tense", "thoughtful"],
     goals: ["excitement", "discovery"]
   },
   {
-    id: "series-029",
+    id: "series-026",
     title: "Homeland",
     type: "series",
     origin: "foreign",
@@ -376,11 +337,11 @@ const series = [
     image: "",
     duration: null,
     energy: "high",
-    moods: ["suspenseful", "intense", "dramatic"],
+    moods: ["tense", "intense"],
     goals: ["excitement", "discovery"]
   },
   {
-    id: "series-030",
+    id: "series-027",
     title: "Succession",
     type: "series",
     origin: "foreign",
@@ -389,13 +350,13 @@ const series = [
     image: "",
     duration: null,
     energy: "high",
-    moods: ["dramatic", "dark", "humorous"],
+    moods: ["dark", "funny"],
     goals: ["discovery", "excitement"]
   },
 
   // ==================== سریال‌های خارجی - جنایی و معمایی ====================
   {
-    id: "series-031",
+    id: "series-028",
     title: "True Detective",
     type: "series",
     origin: "foreign",
@@ -408,7 +369,7 @@ const series = [
     goals: ["excitement", "discovery"]
   },
   {
-    id: "series-032",
+    id: "series-029",
     title: "Mindhunter",
     type: "series",
     origin: "foreign",
@@ -421,7 +382,7 @@ const series = [
     goals: ["discovery", "learning"]
   },
   {
-    id: "series-033",
+    id: "series-030",
     title: "Broadchurch",
     type: "series",
     origin: "foreign",
@@ -430,11 +391,11 @@ const series = [
     image: "",
     duration: null,
     energy: "medium",
-    moods: ["mysterious", "emotional", "suspenseful"],
+    moods: ["mysterious", "emotional", "tense"],
     goals: ["excitement", "discovery"]
   },
   {
-    id: "series-034",
+    id: "series-031",
     title: "The Killing",
     type: "series",
     origin: "foreign",
@@ -443,11 +404,11 @@ const series = [
     image: "",
     duration: null,
     energy: "medium",
-    moods: ["dark", "mysterious", "suspenseful"],
+    moods: ["dark", "mysterious", "tense"],
     goals: ["excitement", "discovery"]
   },
   {
-    id: "series-035",
+    id: "series-032",
     title: "Luther",
     type: "series",
     origin: "foreign",
@@ -456,11 +417,11 @@ const series = [
     image: "",
     duration: null,
     energy: "high",
-    moods: ["dark", "intense", "suspenseful"],
+    moods: ["dark", "intense", "tense"],
     goals: ["excitement", "discovery"]
   },
   {
-    id: "series-036",
+    id: "series-033",
     title: "The Bridge (Bron/Broen)",
     type: "series",
     origin: "foreign",
@@ -469,11 +430,11 @@ const series = [
     image: "",
     duration: null,
     energy: "medium",
-    moods: ["mysterious", "suspenseful", "thoughtful"],
+    moods: ["mysterious", "tense", "thoughtful"],
     goals: ["excitement", "discovery"]
   },
   {
-    id: "series-037",
+    id: "series-034",
     title: "Mare of Easttown",
     type: "series",
     origin: "foreign",
@@ -482,11 +443,11 @@ const series = [
     image: "",
     duration: null,
     energy: "medium",
-    moods: ["mysterious", "emotional", "suspenseful"],
+    moods: ["mysterious", "emotional", "tense"],
     goals: ["excitement", "discovery"]
   },
   {
-    id: "series-038",
+    id: "series-035",
     title: "The Night Of",
     type: "series",
     origin: "foreign",
@@ -495,11 +456,11 @@ const series = [
     image: "",
     duration: null,
     energy: "medium",
-    moods: ["dark", "thoughtful", "suspenseful"],
+    moods: ["dark", "thoughtful", "tense"],
     goals: ["discovery", "learning"]
   },
   {
-    id: "series-039",
+    id: "series-036",
     title: "Happy Valley",
     type: "series",
     origin: "foreign",
@@ -512,7 +473,7 @@ const series = [
     goals: ["excitement", "discovery"]
   },
   {
-    id: "series-040",
+    id: "series-037",
     title: "Line of Duty",
     type: "series",
     origin: "foreign",
@@ -521,13 +482,13 @@ const series = [
     image: "",
     duration: null,
     energy: "high",
-    moods: ["suspenseful", "intense", "dramatic"],
+    moods: ["tense", "intense"],
     goals: ["excitement", "discovery"]
   },
 
   // ==================== سریال‌های خارجی - علمی-تخیلی و فانتزی ====================
   {
-    id: "series-041",
+    id: "series-038",
     title: "Game of Thrones",
     type: "series",
     origin: "foreign",
@@ -540,7 +501,7 @@ const series = [
     goals: ["excitement", "discovery"]
   },
   {
-    id: "series-042",
+    id: "series-039",
     title: "Stranger Things",
     type: "series",
     origin: "foreign",
@@ -553,7 +514,7 @@ const series = [
     goals: ["excitement", "discovery"]
   },
   {
-    id: "series-043",
+    id: "series-040",
     title: "The Witcher",
     type: "series",
     origin: "foreign",
@@ -566,7 +527,7 @@ const series = [
     goals: ["excitement", "discovery"]
   },
   {
-    id: "series-044",
+    id: "series-041",
     title: "House of the Dragon",
     type: "series",
     origin: "foreign",
@@ -575,11 +536,11 @@ const series = [
     image: "",
     duration: null,
     energy: "high",
-    moods: ["epic", "dark", "dramatic"],
+    moods: ["epic", "dark"],
     goals: ["excitement", "discovery"]
   },
   {
-    id: "series-045",
+    id: "series-042",
     title: "The Last of Us",
     type: "series",
     origin: "foreign",
@@ -592,7 +553,7 @@ const series = [
     goals: ["excitement", "discovery"]
   },
   {
-    id: "series-046",
+    id: "series-043",
     title: "Westworld",
     type: "series",
     origin: "foreign",
@@ -605,7 +566,7 @@ const series = [
     goals: ["discovery", "learning"]
   },
   {
-    id: "series-047",
+    id: "series-044",
     title: "Black Mirror",
     type: "series",
     origin: "foreign",
@@ -614,11 +575,11 @@ const series = [
     image: "",
     duration: null,
     energy: "medium",
-    moods: ["thoughtful", "dark", "surreal"],
+    moods: ["thoughtful", "dark", "strange"],
     goals: ["discovery", "learning"]
   },
   {
-    id: "series-048",
+    id: "series-045",
     title: "The Expanse",
     type: "series",
     origin: "foreign",
@@ -631,7 +592,7 @@ const series = [
     goals: ["discovery", "excitement"]
   },
   {
-    id: "series-049",
+    id: "series-046",
     title: "Foundation",
     type: "series",
     origin: "foreign",
@@ -644,7 +605,7 @@ const series = [
     goals: ["discovery", "learning"]
   },
   {
-    id: "series-050",
+    id: "series-047",
     title: "The Mandalorian",
     type: "series",
     origin: "foreign",
@@ -659,7 +620,7 @@ const series = [
 
   // ==================== سریال‌های خارجی - کمدی ====================
   {
-    id: "series-051",
+    id: "series-048",
     title: "The Office (US)",
     type: "series",
     origin: "foreign",
@@ -668,11 +629,11 @@ const series = [
     image: "",
     duration: null,
     energy: "medium",
-    moods: ["humorous", "light", "heartwarming"],
+    moods: ["funny", "fun", "heartwarming"],
     goals: ["fun", "feel_better"]
   },
   {
-    id: "series-052",
+    id: "series-049",
     title: "Parks and Recreation",
     type: "series",
     origin: "foreign",
@@ -681,11 +642,11 @@ const series = [
     image: "",
     duration: null,
     energy: "medium",
-    moods: ["humorous", "heartwarming", "light"],
+    moods: ["funny", "heartwarming", "fun"],
     goals: ["fun", "feel_better"]
   },
   {
-    id: "series-053",
+    id: "series-050",
     title: "Brooklyn Nine-Nine",
     type: "series",
     origin: "foreign",
@@ -694,11 +655,11 @@ const series = [
     image: "",
     duration: null,
     energy: "high",
-    moods: ["humorous", "energetic", "light"],
+    moods: ["funny", "energetic", "fun"],
     goals: ["fun", "feel_better"]
   },
   {
-    id: "series-054",
+    id: "series-051",
     title: "The Good Place",
     type: "series",
     origin: "foreign",
@@ -707,11 +668,11 @@ const series = [
     image: "",
     duration: null,
     energy: "medium",
-    moods: ["humorous", "thoughtful", "unique"],
+    moods: ["funny", "thoughtful", "strange"],
     goals: ["fun", "discovery"]
   },
   {
-    id: "series-055",
+    id: "series-052",
     title: "Modern Family",
     type: "series",
     origin: "foreign",
@@ -720,11 +681,11 @@ const series = [
     image: "",
     duration: null,
     energy: "medium",
-    moods: ["humorous", "heartwarming", "light"],
+    moods: ["funny", "heartwarming", "fun"],
     goals: ["fun", "feel_better"]
   },
   {
-    id: "series-056",
+    id: "series-053",
     title: "Friends",
     type: "series",
     origin: "foreign",
@@ -733,11 +694,11 @@ const series = [
     image: "",
     duration: null,
     energy: "medium",
-    moods: ["humorous", "heartwarming", "nostalgic"],
+    moods: ["funny", "heartwarming", "nostalgic"],
     goals: ["fun", "feel_better"]
   },
   {
-    id: "series-057",
+    id: "series-054",
     title: "How I Met Your Mother",
     type: "series",
     origin: "foreign",
@@ -746,11 +707,11 @@ const series = [
     image: "",
     duration: null,
     energy: "medium",
-    moods: ["humorous", "heartwarming", "nostalgic"],
+    moods: ["funny", "heartwarming", "nostalgic"],
     goals: ["fun", "feel_better"]
   },
   {
-    id: "series-058",
+    id: "series-055",
     title: "Fleabag",
     type: "series",
     origin: "foreign",
@@ -759,11 +720,11 @@ const series = [
     image: "",
     duration: null,
     energy: "medium",
-    moods: ["humorous", "emotional", "unique"],
+    moods: ["funny", "emotional", "strange"],
     goals: ["fun", "discovery"]
   },
   {
-    id: "series-059",
+    id: "series-056",
     title: "Ted Lasso",
     type: "series",
     origin: "foreign",
@@ -772,11 +733,11 @@ const series = [
     image: "",
     duration: null,
     energy: "medium",
-    moods: ["humorous", "heartwarming", "uplifting"],
+    moods: ["funny", "heartwarming", "uplifting"],
     goals: ["feel_better", "fun"]
   },
   {
-    id: "series-060",
+    id: "series-057",
     title: "The Marvelous Mrs. Maisel",
     type: "series",
     origin: "foreign",
@@ -785,13 +746,13 @@ const series = [
     image: "",
     duration: null,
     energy: "high",
-    moods: ["humorous", "energetic", "nostalgic"],
+    moods: ["funny", "energetic", "nostalgic"],
     goals: ["fun", "feel_better"]
   },
 
   // ==================== سریال‌های خارجی - درام و عاشقانه ====================
   {
-    id: "series-061",
+    id: "series-058",
     title: "This Is Us",
     type: "series",
     origin: "foreign",
@@ -800,11 +761,11 @@ const series = [
     image: "",
     duration: null,
     energy: "medium",
-    moods: ["emotional", "heartwarming", "dramatic"],
+    moods: ["emotional", "heartwarming"],
     goals: ["feel_better", "discovery"]
   },
   {
-    id: "series-062",
+    id: "series-059",
     title: "The Affair",
     type: "series",
     origin: "foreign",
@@ -817,7 +778,7 @@ const series = [
     goals: ["discovery", "feel_better"]
   },
   {
-    id: "series-063",
+    id: "series-060",
     title: "Outlander",
     type: "series",
     origin: "foreign",
@@ -826,11 +787,11 @@ const series = [
     image: "",
     duration: null,
     energy: "high",
-    moods: ["romantic", "adventurous", "dramatic"],
+    moods: ["romantic", "adventurous"],
     goals: ["excitement", "feel_better"]
   },
   {
-    id: "series-064",
+    id: "series-061",
     title: "The Queen's Gambit",
     type: "series",
     origin: "foreign",
@@ -839,11 +800,11 @@ const series = [
     image: "",
     duration: null,
     energy: "medium",
-    moods: ["inspiring", "dramatic", "thoughtful"],
+    moods: ["inspiring", "thoughtful"],
     goals: ["discovery", "learning"]
   },
   {
-    id: "series-065",
+    id: "series-062",
     title: "Downton Abbey",
     type: "series",
     origin: "foreign",
@@ -852,11 +813,11 @@ const series = [
     image: "",
     duration: null,
     energy: "low",
-    moods: ["historical", "dramatic", "heartwarming"],
+    moods: ["thoughtful", "heartwarming", "nostalgic"],
     goals: ["learning", "feel_better"]
   },
   {
-    id: "series-066",
+    id: "series-063",
     title: "Call the Midwife",
     type: "series",
     origin: "foreign",
@@ -865,11 +826,11 @@ const series = [
     image: "",
     duration: null,
     energy: "low",
-    moods: ["heartwarming", "emotional", "historical"],
+    moods: ["heartwarming", "emotional"],
     goals: ["feel_better", "learning"]
   },
   {
-    id: "series-067",
+    id: "series-064",
     title: "A Million Little Things",
     type: "series",
     origin: "foreign",
@@ -878,11 +839,11 @@ const series = [
     image: "",
     duration: null,
     energy: "medium",
-    moods: ["emotional", "heartwarming", "dramatic"],
+    moods: ["emotional", "heartwarming"],
     goals: ["feel_better", "discovery"]
   },
   {
-    id: "series-068",
+    id: "series-065",
     title: "Virgin River",
     type: "series",
     origin: "foreign",
@@ -895,7 +856,7 @@ const series = [
     goals: ["feel_better", "calm"]
   },
   {
-    id: "series-069",
+    id: "series-066",
     title: "Sweet Magnolias",
     type: "series",
     origin: "foreign",
@@ -904,11 +865,11 @@ const series = [
     image: "",
     duration: null,
     energy: "low",
-    moods: ["heartwarming", "emotional", "light"],
+    moods: ["heartwarming", "emotional", "calm"],
     goals: ["feel_better", "calm"]
   },
   {
-    id: "series-070",
+    id: "series-067",
     title: "The Bold Type",
     type: "series",
     origin: "foreign",
@@ -917,13 +878,13 @@ const series = [
     image: "",
     duration: null,
     energy: "high",
-    moods: ["energetic", "humorous", "inspiring"],
+    moods: ["energetic", "funny", "inspiring"],
     goals: ["feel_better", "fun"]
   },
 
   // ==================== سریال‌های خارجی - تاریخی ====================
   {
-    id: "series-071",
+    id: "series-068",
     title: "Vikings",
     type: "series",
     origin: "foreign",
@@ -936,7 +897,7 @@ const series = [
     goals: ["excitement", "discovery"]
   },
   {
-    id: "series-072",
+    id: "series-069",
     title: "The Last Kingdom",
     type: "series",
     origin: "foreign",
@@ -945,11 +906,11 @@ const series = [
     image: "",
     duration: null,
     energy: "high",
-    moods: ["epic", "adventurous", "dramatic"],
+    moods: ["epic", "adventurous"],
     goals: ["excitement", "discovery"]
   },
   {
-    id: "series-073",
+    id: "series-070",
     title: "Rome",
     type: "series",
     origin: "foreign",
@@ -958,11 +919,11 @@ const series = [
     image: "",
     duration: null,
     energy: "high",
-    moods: ["epic", "dramatic", "dark"],
+    moods: ["epic", "dark"],
     goals: ["discovery", "learning"]
   },
   {
-    id: "series-074",
+    id: "series-071",
     title: "The Tudors",
     type: "series",
     origin: "foreign",
@@ -971,11 +932,11 @@ const series = [
     image: "",
     duration: null,
     energy: "medium",
-    moods: ["historical", "dramatic", "romantic"],
+    moods: ["romantic", "thoughtful"],
     goals: ["learning", "discovery"]
   },
   {
-    id: "series-075",
+    id: "series-072",
     title: "The Borgias",
     type: "series",
     origin: "foreign",
@@ -984,11 +945,11 @@ const series = [
     image: "",
     duration: null,
     energy: "medium",
-    moods: ["historical", "dramatic", "dark"],
+    moods: ["dark", "thoughtful"],
     goals: ["learning", "discovery"]
   },
   {
-    id: "series-076",
+    id: "series-073",
     title: "Versailles",
     type: "series",
     origin: "foreign",
@@ -997,11 +958,11 @@ const series = [
     image: "",
     duration: null,
     energy: "medium",
-    moods: ["historical", "dramatic", "romantic"],
+    moods: ["romantic", "thoughtful"],
     goals: ["learning", "discovery"]
   },
   {
-    id: "series-077",
+    id: "series-074",
     title: "The Gilded Age",
     type: "series",
     origin: "foreign",
@@ -1010,11 +971,11 @@ const series = [
     image: "",
     duration: null,
     energy: "low",
-    moods: ["historical", "dramatic", "thoughtful"],
+    moods: ["thoughtful"],
     goals: ["learning", "discovery"]
   },
   {
-    id: "series-078",
+    id: "series-075",
     title: "Poldark",
     type: "series",
     origin: "foreign",
@@ -1023,11 +984,11 @@ const series = [
     image: "",
     duration: null,
     energy: "medium",
-    moods: ["historical", "romantic", "dramatic"],
+    moods: ["romantic", "emotional"],
     goals: ["discovery", "feel_better"]
   },
   {
-    id: "series-079",
+    id: "series-076",
     title: "The White Queen",
     type: "series",
     origin: "foreign",
@@ -1036,11 +997,11 @@ const series = [
     image: "",
     duration: null,
     energy: "medium",
-    moods: ["historical", "dramatic", "romantic"],
+    moods: ["romantic", "thoughtful"],
     goals: ["learning", "discovery"]
   },
   {
-    id: "series-080",
+    id: "series-077",
     title: "The White Princess",
     type: "series",
     origin: "foreign",
@@ -1049,13 +1010,13 @@ const series = [
     image: "",
     duration: null,
     energy: "medium",
-    moods: ["historical", "dramatic", "romantic"],
+    moods: ["romantic", "thoughtful"],
     goals: ["learning", "discovery"]
   },
 
   // ==================== سریال‌های خارجی - ابرقهرمانی ====================
   {
-    id: "series-081",
+    id: "series-078",
     title: "The Boys",
     type: "series",
     origin: "foreign",
@@ -1064,11 +1025,11 @@ const series = [
     image: "",
     duration: null,
     energy: "high",
-    moods: ["dark", "humorous", "intense"],
+    moods: ["dark", "funny", "intense"],
     goals: ["excitement", "discovery"]
   },
   {
-    id: "series-082",
+    id: "series-079",
     title: "Invincible",
     type: "series",
     origin: "foreign",
@@ -1081,7 +1042,7 @@ const series = [
     goals: ["excitement", "discovery"]
   },
   {
-    id: "series-083",
+    id: "series-080",
     title: "Daredevil",
     type: "series",
     origin: "foreign",
@@ -1090,11 +1051,11 @@ const series = [
     image: "",
     duration: null,
     energy: "high",
-    moods: ["dark", "intense", "suspenseful"],
+    moods: ["dark", "intense", "tense"],
     goals: ["excitement", "discovery"]
   },
   {
-    id: "series-084",
+    id: "series-081",
     title: "The Punisher",
     type: "series",
     origin: "foreign",
@@ -1103,11 +1064,11 @@ const series = [
     image: "",
     duration: null,
     energy: "high",
-    moods: ["dark", "intense", "violent"],
+    moods: ["dark", "intense"],
     goals: ["excitement", "discovery"]
   },
   {
-    id: "series-085",
+    id: "series-082",
     title: "WandaVision",
     type: "series",
     origin: "foreign",
@@ -1116,11 +1077,11 @@ const series = [
     image: "",
     duration: null,
     energy: "medium",
-    moods: ["unique", "emotional", "mysterious"],
+    moods: ["strange", "emotional", "mysterious"],
     goals: ["discovery", "excitement"]
   },
   {
-    id: "series-086",
+    id: "series-083",
     title: "Loki",
     type: "series",
     origin: "foreign",
@@ -1129,11 +1090,11 @@ const series = [
     image: "",
     duration: null,
     energy: "medium",
-    moods: ["adventurous", "humorous", "mysterious"],
+    moods: ["adventurous", "funny", "mysterious"],
     goals: ["excitement", "discovery"]
   },
   {
-    id: "series-087",
+    id: "series-084",
     title: "The Falcon and the Winter Soldier",
     type: "series",
     origin: "foreign",
@@ -1142,11 +1103,11 @@ const series = [
     image: "",
     duration: null,
     energy: "high",
-    moods: ["adventurous", "dramatic", "intense"],
+    moods: ["adventurous", "intense"],
     goals: ["excitement", "discovery"]
   },
- {
-    id: "series-089",
+  {
+    id: "series-085",
     title: "Moon Knight",
     type: "series",
     origin: "foreign",
@@ -1159,7 +1120,7 @@ const series = [
     goals: ["excitement", "discovery"]
   },
   {
-    id: "series-090",
+    id: "series-086",
     title: "Ms. Marvel",
     type: "series",
     origin: "foreign",
@@ -1174,7 +1135,7 @@ const series = [
 
   // ==================== سریال‌های خارجی - هیجان‌انگیز و معمایی ====================
   {
-    id: "series-091",
+    id: "series-087",
     title: "Sherlock",
     type: "series",
     origin: "foreign",
@@ -1187,7 +1148,7 @@ const series = [
     goals: ["discovery", "excitement"]
   },
   {
-    id: "series-092",
+    id: "series-088",
     title: "The Mentalist",
     type: "series",
     origin: "foreign",
@@ -1196,11 +1157,11 @@ const series = [
     image: "",
     duration: null,
     energy: "medium",
-    moods: ["mysterious", "thoughtful", "humorous"],
+    moods: ["mysterious", "thoughtful", "funny"],
     goals: ["discovery", "excitement"]
   },
   {
-    id: "series-093",
+    id: "series-089",
     title: "Elementary",
     type: "series",
     origin: "foreign",
@@ -1209,11 +1170,11 @@ const series = [
     image: "",
     duration: null,
     energy: "medium",
-    moods: ["mysterious", "thoughtful", "dramatic"],
+    moods: ["mysterious", "thoughtful"],
     goals: ["discovery", "learning"]
   },
   {
-    id: "series-094",
+    id: "series-090",
     title: "The Blacklist",
     type: "series",
     origin: "foreign",
@@ -1222,11 +1183,11 @@ const series = [
     image: "",
     duration: null,
     energy: "high",
-    moods: ["suspenseful", "intense", "mysterious"],
+    moods: ["tense", "intense", "mysterious"],
     goals: ["excitement", "discovery"]
   },
   {
-    id: "series-095",
+    id: "series-091",
     title: "Person of Interest",
     type: "series",
     origin: "foreign",
@@ -1235,11 +1196,11 @@ const series = [
     image: "",
     duration: null,
     energy: "high",
-    moods: ["suspenseful", "thoughtful", "intense"],
+    moods: ["tense", "thoughtful", "intense"],
     goals: ["excitement", "discovery"]
   },
   {
-    id: "series-096",
+    id: "series-092",
     title: "The FBI",
     type: "series",
     origin: "foreign",
@@ -1248,11 +1209,11 @@ const series = [
     image: "",
     duration: null,
     energy: "high",
-    moods: ["suspenseful", "intense", "dramatic"],
+    moods: ["tense", "intense"],
     goals: ["excitement", "discovery"]
   },
   {
-    id: "series-097",
+    id: "series-093",
     title: "NCIS",
     type: "series",
     origin: "foreign",
@@ -1261,11 +1222,11 @@ const series = [
     image: "",
     duration: null,
     energy: "medium",
-    moods: ["suspenseful", "thoughtful", "humorous"],
+    moods: ["tense", "thoughtful", "funny"],
     goals: ["discovery", "excitement"]
   },
   {
-    id: "series-098",
+    id: "series-094",
     title: "Criminal Minds",
     type: "series",
     origin: "foreign",
@@ -1278,7 +1239,7 @@ const series = [
     goals: ["excitement", "discovery"]
   },
   {
-    id: "series-099",
+    id: "series-095",
     title: "CSI: Crime Scene Investigation",
     type: "series",
     origin: "foreign",
@@ -1291,7 +1252,7 @@ const series = [
     goals: ["discovery", "learning"]
   },
   {
-    id: "series-100",
+    id: "series-096",
     title: "Bones",
     type: "series",
     origin: "foreign",
@@ -1300,26 +1261,13 @@ const series = [
     image: "",
     duration: null,
     energy: "medium",
-    moods: ["mysterious", "humorous", "thoughtful"],
+    moods: ["mysterious", "funny", "thoughtful"],
     goals: ["discovery", "fun"]
   },
 
   // ==================== سریال‌های خارجی - درام نوجوانان ====================
   {
-    id: "series-101",
-    title: "Stranger Things",
-    type: "series",
-    origin: "foreign",
-    year: 2016,
-    creator: "The Duffer Brothers",
-    image: "",
-    duration: null,
-    energy: "high",
-    moods: ["adventurous", "nostalgic", "mysterious"],
-    goals: ["excitement", "discovery"]
-  },
-  {
-    id: "series-102",
+    id: "series-097",
     title: "The Umbrella Academy",
     type: "series",
     origin: "foreign",
@@ -1328,11 +1276,11 @@ const series = [
     image: "",
     duration: null,
     energy: "high",
-    moods: ["unique", "adventurous", "humorous"],
+    moods: ["strange", "adventurous", "funny"],
     goals: ["excitement", "discovery"]
   },
   {
-    id: "series-103",
+    id: "series-098",
     title: "Wednesday",
     type: "series",
     origin: "foreign",
@@ -1341,11 +1289,11 @@ const series = [
     image: "",
     duration: null,
     energy: "medium",
-    moods: ["dark", "humorous", "mysterious"],
+    moods: ["dark", "funny", "mysterious"],
     goals: ["discovery", "fun"]
   },
   {
-    id: "series-104",
+    id: "series-099",
     title: "Euphoria",
     type: "series",
     origin: "foreign",
@@ -1358,7 +1306,7 @@ const series = [
     goals: ["discovery", "excitement"]
   },
   {
-    id: "series-105",
+    id: "series-100",
     title: "Sex Education",
     type: "series",
     origin: "foreign",
@@ -1367,11 +1315,11 @@ const series = [
     image: "",
     duration: null,
     energy: "high",
-    moods: ["humorous", "heartwarming", "unique"],
+    moods: ["funny", "heartwarming", "strange"],
     goals: ["fun", "discovery"]
   },
   {
-    id: "series-106",
+    id: "series-101",
     title: "The End of the F***ing World",
     type: "series",
     origin: "foreign",
@@ -1380,11 +1328,11 @@ const series = [
     image: "",
     duration: null,
     energy: "medium",
-    moods: ["dark", "humorous", "unique"],
+    moods: ["dark", "funny", "strange"],
     goals: ["discovery", "fun"]
   },
   {
-    id: "series-107",
+    id: "series-102",
     title: "I Am Not Okay with This",
     type: "series",
     origin: "foreign",
@@ -1393,11 +1341,11 @@ const series = [
     image: "",
     duration: null,
     energy: "medium",
-    moods: ["dark", "humorous", "unique"],
+    moods: ["dark", "funny", "strange"],
     goals: ["discovery", "fun"]
   },
   {
-    id: "series-108",
+    id: "series-103",
     title: "The Society",
     type: "series",
     origin: "foreign",
@@ -1406,11 +1354,11 @@ const series = [
     image: "",
     duration: null,
     energy: "high",
-    moods: ["mysterious", "dramatic", "intense"],
+    moods: ["mysterious", "intense"],
     goals: ["excitement", "discovery"]
   },
   {
-    id: "series-109",
+    id: "series-104",
     title: "Outer Banks",
     type: "series",
     origin: "foreign",
@@ -1419,11 +1367,11 @@ const series = [
     image: "",
     duration: null,
     energy: "high",
-    moods: ["adventurous", "energetic", "dramatic"],
+    moods: ["adventurous", "energetic"],
     goals: ["excitement", "fun"]
   },
   {
-    id: "series-110",
+    id: "series-105",
     title: "Cobra Kai",
     type: "series",
     origin: "foreign",
@@ -1432,13 +1380,13 @@ const series = [
     image: "",
     duration: null,
     energy: "high",
-    moods: ["energetic", "nostalgic", "humorous"],
+    moods: ["energetic", "nostalgic", "funny"],
     goals: ["excitement", "fun"]
   },
 
-  // ==================== سریال‌های خارجی - مستندگونه و آموزشی ====================
+  // ==================== سریال‌های خارجی - مستندگونه ====================
   {
-    id: "series-111",
+    id: "series-106",
     title: "Planet Earth",
     type: "series",
     origin: "foreign",
@@ -1451,7 +1399,7 @@ const series = [
     goals: ["learning", "discovery"]
   },
   {
-    id: "series-112",
+    id: "series-107",
     title: "Planet Earth II",
     type: "series",
     origin: "foreign",
@@ -1464,7 +1412,7 @@ const series = [
     goals: ["learning", "discovery"]
   },
   {
-    id: "series-113",
+    id: "series-108",
     title: "Blue Planet II",
     type: "series",
     origin: "foreign",
@@ -1477,7 +1425,7 @@ const series = [
     goals: ["learning", "discovery"]
   },
   {
-    id: "series-114",
+    id: "series-109",
     title: "Our Planet",
     type: "series",
     origin: "foreign",
@@ -1490,7 +1438,7 @@ const series = [
     goals: ["learning", "discovery"]
   },
   {
-    id: "series-115",
+    id: "series-110",
     title: "The Last Dance",
     type: "series",
     origin: "foreign",
@@ -1503,7 +1451,7 @@ const series = [
     goals: ["learning", "discovery"]
   },
   {
-    id: "series-116",
+    id: "series-111",
     title: "Tiger King",
     type: "series",
     origin: "foreign",
@@ -1512,11 +1460,11 @@ const series = [
     image: "",
     duration: null,
     energy: "high",
-    moods: ["unique", "dark", "humorous"],
+    moods: ["strange", "dark", "funny"],
     goals: ["discovery", "surprise"]
   },
   {
-    id: "series-117",
+    id: "series-112",
     title: "Making a Murderer",
     type: "series",
     origin: "foreign",
@@ -1529,7 +1477,7 @@ const series = [
     goals: ["learning", "discovery"]
   },
   {
-    id: "series-118",
+    id: "series-113",
     title: "The Staircase",
     type: "series",
     origin: "foreign",
@@ -1542,7 +1490,7 @@ const series = [
     goals: ["learning", "discovery"]
   },
   {
-    id: "series-119",
+    id: "series-114",
     title: "Chef's Table",
     type: "series",
     origin: "foreign",
@@ -1555,7 +1503,7 @@ const series = [
     goals: ["learning", "discovery"]
   },
   {
-    id: "series-120",
+    id: "series-115",
     title: "Abstract: The Art of Design",
     type: "series",
     origin: "foreign",
@@ -1564,13 +1512,13 @@ const series = [
     image: "",
     duration: null,
     energy: "low",
-    moods: ["inspiring", "thoughtful", "unique"],
+    moods: ["inspiring", "thoughtful", "strange"],
     goals: ["learning", "discovery"]
   },
 
   // ==================== سریال‌های خارجی - کمدی-درام ====================
   {
-    id: "series-121",
+    id: "series-116",
     title: "BoJack Horseman",
     type: "series",
     origin: "foreign",
@@ -1579,11 +1527,11 @@ const series = [
     image: "",
     duration: null,
     energy: "medium",
-    moods: ["dark", "humorous", "thoughtful"],
+    moods: ["dark", "funny", "thoughtful"],
     goals: ["discovery", "fun"]
   },
   {
-    id: "series-122",
+    id: "series-117",
     title: "The Bear",
     type: "series",
     origin: "foreign",
@@ -1592,11 +1540,11 @@ const series = [
     image: "",
     duration: null,
     energy: "high",
-    moods: ["intense", "emotional", "humorous"],
+    moods: ["intense", "emotional", "funny"],
     goals: ["excitement", "discovery"]
   },
   {
-    id: "series-123",
+    id: "series-118",
     title: "Shameless (US)",
     type: "series",
     origin: "foreign",
@@ -1605,11 +1553,11 @@ const series = [
     image: "",
     duration: null,
     energy: "high",
-    moods: ["dark", "humorous", "emotional"],
+    moods: ["dark", "funny", "emotional"],
     goals: ["fun", "discovery"]
   },
   {
-    id: "series-124",
+    id: "series-119",
     title: "Orange Is the New Black",
     type: "series",
     origin: "foreign",
@@ -1618,11 +1566,11 @@ const series = [
     image: "",
     duration: null,
     energy: "medium",
-    moods: ["humorous", "emotional", "dramatic"],
+    moods: ["funny", "emotional"],
     goals: ["fun", "discovery"]
   },
   {
-    id: "series-125",
+    id: "series-120",
     title: "Dead to Me",
     type: "series",
     origin: "foreign",
@@ -1631,11 +1579,11 @@ const series = [
     image: "",
     duration: null,
     energy: "medium",
-    moods: ["dark", "humorous", "emotional"],
+    moods: ["dark", "funny", "emotional"],
     goals: ["fun", "discovery"]
   },
   {
-    id: "series-126",
+    id: "series-121",
     title: "Russian Doll",
     type: "series",
     origin: "foreign",
@@ -1644,11 +1592,11 @@ const series = [
     image: "",
     duration: null,
     energy: "medium",
-    moods: ["unique", "dark", "humorous"],
+    moods: ["strange", "dark", "funny"],
     goals: ["discovery", "fun"]
   },
   {
-    id: "series-127",
+    id: "series-122",
     title: "Insecure",
     type: "series",
     origin: "foreign",
@@ -1657,11 +1605,11 @@ const series = [
     image: "",
     duration: null,
     energy: "medium",
-    moods: ["humorous", "emotional", "thoughtful"],
+    moods: ["funny", "emotional", "thoughtful"],
     goals: ["fun", "discovery"]
   },
   {
-    id: "series-128",
+    id: "series-123",
     title: "Schitt's Creek",
     type: "series",
     origin: "foreign",
@@ -1670,11 +1618,11 @@ const series = [
     image: "",
     duration: null,
     energy: "medium",
-    moods: ["humorous", "heartwarming", "unique"],
+    moods: ["funny", "heartwarming", "strange"],
     goals: ["fun", "feel_better"]
   },
   {
-    id: "series-129",
+    id: "series-124",
     title: "The Kominsky Method",
     type: "series",
     origin: "foreign",
@@ -1683,11 +1631,11 @@ const series = [
     image: "",
     duration: null,
     energy: "low",
-    moods: ["humorous", "thoughtful", "heartwarming"],
+    moods: ["funny", "thoughtful", "heartwarming"],
     goals: ["fun", "feel_better"]
   },
   {
-    id: "series-130",
+    id: "series-125",
     title: "After Life",
     type: "series",
     origin: "foreign",
@@ -1696,13 +1644,13 @@ const series = [
     image: "",
     duration: null,
     energy: "medium",
-    moods: ["dark", "humorous", "emotional"],
+    moods: ["dark", "funny", "emotional"],
     goals: ["discovery", "feel_better"]
   },
 
-  // ==================== سریال‌های خارجی - علمی-تخیلی ====================
+  // ==================== سریال‌های خارجی - علمی-تخیلی (ادامه) ====================
   {
-    id: "series-131",
+    id: "series-126",
     title: "The X-Files",
     type: "series",
     origin: "foreign",
@@ -1711,11 +1659,11 @@ const series = [
     image: "",
     duration: null,
     energy: "medium",
-    moods: ["mysterious", "suspenseful", "thoughtful"],
+    moods: ["mysterious", "tense", "thoughtful"],
     goals: ["discovery", "excitement"]
   },
   {
-    id: "series-132",
+    id: "series-127",
     title: "Fringe",
     type: "series",
     origin: "foreign",
@@ -1728,7 +1676,7 @@ const series = [
     goals: ["discovery", "excitement"]
   },
   {
-    id: "series-133",
+    id: "series-128",
     title: "Battlestar Galactica",
     type: "series",
     origin: "foreign",
@@ -1741,7 +1689,7 @@ const series = [
     goals: ["discovery", "excitement"]
   },
   {
-    id: "series-134",
+    id: "series-129",
     title: "The Orville",
     type: "series",
     origin: "foreign",
@@ -1750,11 +1698,11 @@ const series = [
     image: "",
     duration: null,
     energy: "medium",
-    moods: ["humorous", "adventurous", "thoughtful"],
+    moods: ["funny", "adventurous", "thoughtful"],
     goals: ["fun", "discovery"]
   },
   {
-    id: "series-135",
+    id: "series-130",
     title: "Dark",
     type: "series",
     origin: "foreign",
@@ -1767,7 +1715,7 @@ const series = [
     goals: ["discovery", "excitement"]
   },
   {
-    id: "series-136",
+    id: "series-131",
     title: "Sense8",
     type: "series",
     origin: "foreign",
@@ -1776,11 +1724,11 @@ const series = [
     image: "",
     duration: null,
     energy: "high",
-    moods: ["unique", "emotional", "adventurous"],
+    moods: ["strange", "emotional", "adventurous"],
     goals: ["discovery", "excitement"]
   },
   {
-    id: "series-137",
+    id: "series-132",
     title: "Altered Carbon",
     type: "series",
     origin: "foreign",
@@ -1793,7 +1741,7 @@ const series = [
     goals: ["excitement", "discovery"]
   },
   {
-    id: "series-138",
+    id: "series-133",
     title: "The OA",
     type: "series",
     origin: "foreign",
@@ -1802,11 +1750,11 @@ const series = [
     image: "",
     duration: null,
     energy: "medium",
-    moods: ["mysterious", "thoughtful", "unique"],
+    moods: ["mysterious", "thoughtful", "strange"],
     goals: ["discovery", "surprise"]
   },
   {
-    id: "series-139",
+    id: "series-134",
     title: "Travelers",
     type: "series",
     origin: "foreign",
@@ -1819,7 +1767,7 @@ const series = [
     goals: ["discovery", "excitement"]
   },
   {
-    id: "series-140",
+    id: "series-135",
     title: "Continuum",
     type: "series",
     origin: "foreign",
@@ -1828,13 +1776,13 @@ const series = [
     image: "",
     duration: null,
     energy: "high",
-    moods: ["suspenseful", "thoughtful", "intense"],
+    moods: ["tense", "thoughtful", "intense"],
     goals: ["excitement", "discovery"]
   },
 
   // ==================== سریال‌های خارجی - ترسناک ====================
   {
-    id: "series-141",
+    id: "series-136",
     title: "The Walking Dead",
     type: "series",
     origin: "foreign",
@@ -1843,11 +1791,11 @@ const series = [
     image: "",
     duration: null,
     energy: "high",
-    moods: ["dark", "intense", "suspenseful"],
+    moods: ["dark", "intense", "tense"],
     goals: ["excitement", "discovery"]
   },
   {
-    id: "series-142",
+    id: "series-137",
     title: "American Horror Story",
     type: "series",
     origin: "foreign",
@@ -1856,11 +1804,11 @@ const series = [
     image: "",
     duration: null,
     energy: "high",
-    moods: ["dark", "scary", "unique"],
+    moods: ["dark", "strange"],
     goals: ["excitement", "discovery"]
   },
   {
-    id: "series-143",
+    id: "series-138",
     title: "The Haunting of Hill House",
     type: "series",
     origin: "foreign",
@@ -1869,11 +1817,11 @@ const series = [
     image: "",
     duration: null,
     energy: "high",
-    moods: ["dark", "suspenseful", "emotional"],
+    moods: ["dark", "tense", "emotional"],
     goals: ["excitement", "discovery"]
   },
   {
-    id: "series-144",
+    id: "series-139",
     title: "The Haunting of Bly Manor",
     type: "series",
     origin: "foreign",
@@ -1882,11 +1830,11 @@ const series = [
     image: "",
     duration: null,
     energy: "medium",
-    moods: ["dark", "romantic", "suspenseful"],
+    moods: ["dark", "romantic", "tense"],
     goals: ["excitement", "discovery"]
   },
   {
-    id: "series-145",
+    id: "series-140",
     title: "Midnight Mass",
     type: "series",
     origin: "foreign",
@@ -1895,11 +1843,11 @@ const series = [
     image: "",
     duration: null,
     energy: "medium",
-    moods: ["dark", "thoughtful", "suspenseful"],
+    moods: ["dark", "thoughtful", "tense"],
     goals: ["discovery", "learning"]
   },
   {
-    id: "series-146",
+    id: "series-141",
     title: "The Chilling Adventures of Sabrina",
     type: "series",
     origin: "foreign",
@@ -1912,7 +1860,7 @@ const series = [
     goals: ["excitement", "discovery"]
   },
   {
-    id: "series-147",
+    id: "series-142",
     title: "Penny Dreadful",
     type: "series",
     origin: "foreign",
@@ -1921,11 +1869,11 @@ const series = [
     image: "",
     duration: null,
     energy: "high",
-    moods: ["dark", "gothic", "suspenseful"],
+    moods: ["dark", "strange", "tense"],
     goals: ["excitement", "discovery"]
   },
   {
-    id: "series-148",
+    id: "series-143",
     title: "The Strain",
     type: "series",
     origin: "foreign",
@@ -1934,11 +1882,11 @@ const series = [
     image: "",
     duration: null,
     energy: "high",
-    moods: ["dark", "suspenseful", "intense"],
+    moods: ["dark", "tense", "intense"],
     goals: ["excitement", "discovery"]
   },
   {
-    id: "series-149",
+    id: "series-144",
     title: "Bates Motel",
     type: "series",
     origin: "foreign",
@@ -1947,11 +1895,11 @@ const series = [
     image: "",
     duration: null,
     energy: "high",
-    moods: ["dark", "suspenseful", "psychological"],
+    moods: ["dark", "tense", "mysterious"],
     goals: ["excitement", "discovery"]
   },
   {
-    id: "series-150",
+    id: "series-145",
     title: "Hannibal",
     type: "series",
     origin: "foreign",
@@ -1960,13 +1908,13 @@ const series = [
     image: "",
     duration: null,
     energy: "high",
-    moods: ["dark", "psychological", "intense"],
+    moods: ["dark", "mysterious", "intense"],
     goals: ["excitement", "discovery"]
   },
 
   // ==================== سریال‌های خارجی - درام پزشکی ====================
   {
-    id: "series-151",
+    id: "series-146",
     title: "House M.D.",
     type: "series",
     origin: "foreign",
@@ -1975,11 +1923,11 @@ const series = [
     image: "",
     duration: null,
     energy: "medium",
-    moods: ["thoughtful", "dramatic", "humorous"],
+    moods: ["thoughtful", "funny"],
     goals: ["discovery", "learning"]
   },
   {
-    id: "series-152",
+    id: "series-147",
     title: "Grey's Anatomy",
     type: "series",
     origin: "foreign",
@@ -1988,11 +1936,11 @@ const series = [
     image: "",
     duration: null,
     energy: "high",
-    moods: ["emotional", "dramatic", "romantic"],
+    moods: ["emotional", "romantic"],
     goals: ["discovery", "feel_better"]
   },
   {
-    id: "series-153",
+    id: "series-148",
     title: "ER",
     type: "series",
     origin: "foreign",
@@ -2001,11 +1949,11 @@ const series = [
     image: "",
     duration: null,
     energy: "high",
-    moods: ["dramatic", "intense", "emotional"],
+    moods: ["intense", "emotional"],
     goals: ["discovery", "excitement"]
   },
   {
-    id: "series-154",
+    id: "series-149",
     title: "The Good Doctor",
     type: "series",
     origin: "foreign",
@@ -2014,11 +1962,11 @@ const series = [
     image: "",
     duration: null,
     energy: "medium",
-    moods: ["emotional", "heartwarming", "dramatic"],
+    moods: ["emotional", "heartwarming"],
     goals: ["feel_better", "discovery"]
   },
   {
-    id: "series-155",
+    id: "series-150",
     title: "New Amsterdam",
     type: "series",
     origin: "foreign",
@@ -2027,11 +1975,11 @@ const series = [
     image: "",
     duration: null,
     energy: "medium",
-    moods: ["emotional", "heartwarming", "dramatic"],
+    moods: ["emotional", "heartwarming"],
     goals: ["feel_better", "discovery"]
   },
   {
-    id: "series-156",
+    id: "series-151",
     title: "Nurse Jackie",
     type: "series",
     origin: "foreign",
@@ -2040,11 +1988,11 @@ const series = [
     image: "",
     duration: null,
     energy: "medium",
-    moods: ["dark", "humorous", "dramatic"],
+    moods: ["dark", "funny"],
     goals: ["discovery", "fun"]
   },
   {
-    id: "series-157",
+    id: "series-152",
     title: "Chicago Med",
     type: "series",
     origin: "foreign",
@@ -2053,11 +2001,11 @@ const series = [
     image: "",
     duration: null,
     energy: "high",
-    moods: ["dramatic", "intense", "emotional"],
+    moods: ["intense", "emotional"],
     goals: ["excitement", "discovery"]
   },
   {
-    id: "series-158",
+    id: "series-153",
     title: "St. Elsewhere",
     type: "series",
     origin: "foreign",
@@ -2066,11 +2014,11 @@ const series = [
     image: "",
     duration: null,
     energy: "medium",
-    moods: ["dramatic", "thoughtful", "emotional"],
+    moods: ["thoughtful", "emotional"],
     goals: ["discovery", "learning"]
   },
   {
-    id: "series-159",
+    id: "series-154",
     title: "The Knick",
     type: "series",
     origin: "foreign",
@@ -2079,11 +2027,11 @@ const series = [
     image: "",
     duration: null,
     energy: "high",
-    moods: ["dark", "historical", "dramatic"],
+    moods: ["dark", "thoughtful"],
     goals: ["learning", "discovery"]
   },
   {
-    id: "series-160",
+    id: "series-155",
     title: "Private Practice",
     type: "series",
     origin: "foreign",
@@ -2092,13 +2040,13 @@ const series = [
     image: "",
     duration: null,
     energy: "medium",
-    moods: ["emotional", "dramatic", "romantic"],
+    moods: ["emotional", "romantic"],
     goals: ["feel_better", "discovery"]
   },
 
   // ==================== سریال‌های خارجی - وسترن ====================
   {
-    id: "series-161",
+    id: "series-156",
     title: "Deadwood",
     type: "series",
     origin: "foreign",
@@ -2107,11 +2055,11 @@ const series = [
     image: "",
     duration: null,
     energy: "high",
-    moods: ["dark", "dramatic", "intense"],
+    moods: ["dark", "intense"],
     goals: ["discovery", "learning"]
   },
   {
-    id: "series-162",
+    id: "series-157",
     title: "Hell on Wheels",
     type: "series",
     origin: "foreign",
@@ -2120,11 +2068,11 @@ const series = [
     image: "",
     duration: null,
     energy: "high",
-    moods: ["dark", "adventurous", "dramatic"],
+    moods: ["dark", "adventurous"],
     goals: ["excitement", "discovery"]
   },
   {
-    id: "series-163",
+    id: "series-158",
     title: "Godless",
     type: "series",
     origin: "foreign",
@@ -2133,11 +2081,11 @@ const series = [
     image: "",
     duration: null,
     energy: "high",
-    moods: ["dark", "dramatic", "intense"],
+    moods: ["dark", "intense"],
     goals: ["excitement", "discovery"]
   },
   {
-    id: "series-164",
+    id: "series-159",
     title: "The Son",
     type: "series",
     origin: "foreign",
@@ -2146,11 +2094,11 @@ const series = [
     image: "",
     duration: null,
     energy: "medium",
-    moods: ["dramatic", "historical", "dark"],
+    moods: ["dark", "thoughtful"],
     goals: ["discovery", "learning"]
   },
   {
-    id: "series-165",
+    id: "series-160",
     title: "1883",
     type: "series",
     origin: "foreign",
@@ -2163,7 +2111,7 @@ const series = [
     goals: ["excitement", "discovery"]
   },
   {
-    id: "series-166",
+    id: "series-161",
     title: "1923",
     type: "series",
     origin: "foreign",
@@ -2172,13 +2120,13 @@ const series = [
     image: "",
     duration: null,
     energy: "high",
-    moods: ["epic", "dramatic", "adventurous"],
+    moods: ["epic", "adventurous"],
     goals: ["excitement", "discovery"]
   },
 
   // ==================== سریال‌های خارجی - انیمیشن بزرگسال ====================
   {
-    id: "series-167",
+    id: "series-162",
     title: "Rick and Morty",
     type: "series",
     origin: "foreign",
@@ -2187,11 +2135,11 @@ const series = [
     image: "",
     duration: null,
     energy: "high",
-    moods: ["humorous", "unique", "thoughtful"],
+    moods: ["funny", "strange", "thoughtful"],
     goals: ["fun", "discovery"]
   },
   {
-    id: "series-168",
+    id: "series-163",
     title: "South Park",
     type: "series",
     origin: "foreign",
@@ -2200,11 +2148,11 @@ const series = [
     image: "",
     duration: null,
     energy: "high",
-    moods: ["humorous", "dark", "satirical"],
+    moods: ["funny", "dark", "strange"],
     goals: ["fun", "discovery"]
   },
   {
-    id: "series-169",
+    id: "series-164",
     title: "The Simpsons",
     type: "series",
     origin: "foreign",
@@ -2213,11 +2161,11 @@ const series = [
     image: "",
     duration: null,
     energy: "medium",
-    moods: ["humorous", "heartwarming", "nostalgic"],
+    moods: ["funny", "heartwarming", "nostalgic"],
     goals: ["fun", "feel_better"]
   },
   {
-    id: "series-170",
+    id: "series-165",
     title: "Family Guy",
     type: "series",
     origin: "foreign",
@@ -2226,11 +2174,11 @@ const series = [
     image: "",
     duration: null,
     energy: "high",
-    moods: ["humorous", "dark", "satirical"],
+    moods: ["funny", "dark", "strange"],
     goals: ["fun", "feel_better"]
   },
   {
-    id: "series-171",
+    id: "series-166",
     title: "American Dad!",
     type: "series",
     origin: "foreign",
@@ -2239,11 +2187,11 @@ const series = [
     image: "",
     duration: null,
     energy: "high",
-    moods: ["humorous", "dark", "satirical"],
+    moods: ["funny", "dark", "strange"],
     goals: ["fun", "discovery"]
   },
   {
-    id: "series-172",
+    id: "series-167",
     title: "Futurama",
     type: "series",
     origin: "foreign",
@@ -2252,11 +2200,11 @@ const series = [
     image: "",
     duration: null,
     energy: "medium",
-    moods: ["humorous", "thoughtful", "adventurous"],
+    moods: ["funny", "thoughtful", "adventurous"],
     goals: ["fun", "discovery"]
   },
   {
-    id: "series-173",
+    id: "series-168",
     title: "Archer",
     type: "series",
     origin: "foreign",
@@ -2265,11 +2213,11 @@ const series = [
     image: "",
     duration: null,
     energy: "high",
-    moods: ["humorous", "energetic", "dark"],
+    moods: ["funny", "energetic", "dark"],
     goals: ["fun", "excitement"]
   },
   {
-    id: "series-174",
+    id: "series-169",
     title: "Big Mouth",
     type: "series",
     origin: "foreign",
@@ -2278,11 +2226,11 @@ const series = [
     image: "",
     duration: null,
     energy: "high",
-    moods: ["humorous", "unique", "emotional"],
+    moods: ["funny", "strange", "emotional"],
     goals: ["fun", "discovery"]
   },
   {
-    id: "series-175",
+    id: "series-170",
     title: "Bob's Burgers",
     type: "series",
     origin: "foreign",
@@ -2291,11 +2239,11 @@ const series = [
     image: "",
     duration: null,
     energy: "medium",
-    moods: ["humorous", "heartwarming", "unique"],
+    moods: ["funny", "heartwarming", "strange"],
     goals: ["fun", "feel_better"]
   },
   {
-    id: "series-176",
+    id: "series-171",
     title: "King of the Hill",
     type: "series",
     origin: "foreign",
@@ -2304,13 +2252,13 @@ const series = [
     image: "",
     duration: null,
     energy: "low",
-    moods: ["humorous", "heartwarming", "thoughtful"],
+    moods: ["funny", "heartwarming", "thoughtful"],
     goals: ["fun", "feel_better"]
   },
 
   // ==================== سریال‌های خارجی - جنایی ====================
   {
-    id: "series-177",
+    id: "series-172",
     title: "Dexter",
     type: "series",
     origin: "foreign",
@@ -2319,11 +2267,11 @@ const series = [
     image: "",
     duration: null,
     energy: "high",
-    moods: ["dark", "suspenseful", "psychological"],
+    moods: ["dark", "tense", "mysterious"],
     goals: ["excitement", "discovery"]
   },
   {
-    id: "series-178",
+    id: "series-173",
     title: "Dexter: New Blood",
     type: "series",
     origin: "foreign",
@@ -2332,11 +2280,11 @@ const series = [
     image: "",
     duration: null,
     energy: "high",
-    moods: ["dark", "suspenseful", "intense"],
+    moods: ["dark", "tense", "intense"],
     goals: ["excitement", "discovery"]
   },
   {
-    id: "series-179",
+    id: "series-174",
     title: "The Sinner",
     type: "series",
     origin: "foreign",
@@ -2345,11 +2293,11 @@ const series = [
     image: "",
     duration: null,
     energy: "high",
-    moods: ["dark", "mysterious", "psychological"],
+    moods: ["dark", "mysterious"],
     goals: ["excitement", "discovery"]
   },
   {
-    id: "series-180",
+    id: "series-175",
     title: "You",
     type: "series",
     origin: "foreign",
@@ -2358,11 +2306,11 @@ const series = [
     image: "",
     duration: null,
     energy: "high",
-    moods: ["dark", "suspenseful", "psychological"],
+    moods: ["dark", "tense", "mysterious"],
     goals: ["excitement", "discovery"]
   },
   {
-    id: "series-181",
+    id: "series-176",
     title: "Killing Eve",
     type: "series",
     origin: "foreign",
@@ -2371,11 +2319,11 @@ const series = [
     image: "",
     duration: null,
     energy: "high",
-    moods: ["dark", "humorous", "suspenseful"],
+    moods: ["dark", "funny", "tense"],
     goals: ["excitement", "discovery"]
   },
   {
-    id: "series-182",
+    id: "series-177",
     title: "Ozark",
     type: "series",
     origin: "foreign",
@@ -2384,11 +2332,11 @@ const series = [
     image: "",
     duration: null,
     energy: "high",
-    moods: ["dark", "intense", "suspenseful"],
+    moods: ["dark", "intense", "tense"],
     goals: ["excitement", "discovery"]
   },
   {
-    id: "series-183",
+    id: "series-178",
     title: "Narcos",
     type: "series",
     origin: "foreign",
@@ -2397,11 +2345,11 @@ const series = [
     image: "",
     duration: null,
     energy: "high",
-    moods: ["dark", "intense", "dramatic"],
+    moods: ["dark", "intense"],
     goals: ["excitement", "discovery"]
   },
   {
-    id: "series-184",
+    id: "series-179",
     title: "Narcos: Mexico",
     type: "series",
     origin: "foreign",
@@ -2410,11 +2358,11 @@ const series = [
     image: "",
     duration: null,
     energy: "high",
-    moods: ["dark", "intense", "dramatic"],
+    moods: ["dark", "intense"],
     goals: ["excitement", "discovery"]
   },
   {
-    id: "series-185",
+    id: "series-180",
     title: "Power",
     type: "series",
     origin: "foreign",
@@ -2423,11 +2371,11 @@ const series = [
     image: "",
     duration: null,
     energy: "high",
-    moods: ["dark", "intense", "dramatic"],
+    moods: ["dark", "intense"],
     goals: ["excitement", "discovery"]
   },
   {
-    id: "series-186",
+    id: "series-181",
     title: "The Shield",
     type: "series",
     origin: "foreign",
@@ -2436,13 +2384,13 @@ const series = [
     image: "",
     duration: null,
     energy: "high",
-    moods: ["dark", "intense", "dramatic"],
+    moods: ["dark", "intense"],
     goals: ["excitement", "discovery"]
   },
 
   // ==================== سریال‌های خارجی - خانوادگی ====================
   {
-    id: "series-187",
+    id: "series-182",
     title: "The Fosters",
     type: "series",
     origin: "foreign",
@@ -2451,11 +2399,11 @@ const series = [
     image: "",
     duration: null,
     energy: "medium",
-    moods: ["emotional", "heartwarming", "dramatic"],
+    moods: ["emotional", "heartwarming"],
     goals: ["feel_better", "discovery"]
   },
   {
-    id: "series-188",
+    id: "series-183",
     title: "Parenthood",
     type: "series",
     origin: "foreign",
@@ -2464,11 +2412,11 @@ const series = [
     image: "",
     duration: null,
     energy: "medium",
-    moods: ["emotional", "heartwarming", "dramatic"],
+    moods: ["emotional", "heartwarming"],
     goals: ["feel_better", "discovery"]
   },
   {
-    id: "series-189",
+    id: "series-184",
     title: "Brothers & Sisters",
     type: "series",
     origin: "foreign",
@@ -2477,37 +2425,11 @@ const series = [
     image: "",
     duration: null,
     energy: "medium",
-    moods: ["emotional", "dramatic", "heartwarming"],
+    moods: ["emotional", "heartwarming"],
     goals: ["feel_better", "discovery"]
   },
   {
-    id: "series-190",
-    title: "This Is Us",
-    type: "series",
-    origin: "foreign",
-    year: 2016,
-    creator: "Dan Fogelman",
-    image: "",
-    duration: null,
-    energy: "medium",
-    moods: ["emotional", "heartwarming", "dramatic"],
-    goals: ["feel_better", "discovery"]
-  },
-  {
-    id: "series-191",
-    title: "A Million Little Things",
-    type: "series",
-    origin: "foreign",
-    year: 2018,
-    creator: "D.J. Nash",
-    image: "",
-    duration: null,
-    energy: "medium",
-    moods: ["emotional", "heartwarming", "dramatic"],
-    goals: ["feel_better", "discovery"]
-  },
-  {
-    id: "series-192",
+    id: "series-185",
     title: "The Good Wife",
     type: "series",
     origin: "foreign",
@@ -2516,11 +2438,11 @@ const series = [
     image: "",
     duration: null,
     energy: "medium",
-    moods: ["dramatic", "thoughtful", "intense"],
+    moods: ["thoughtful", "intense"],
     goals: ["discovery", "learning"]
   },
   {
-    id: "series-193",
+    id: "series-186",
     title: "The Good Fight",
     type: "series",
     origin: "foreign",
@@ -2529,11 +2451,11 @@ const series = [
     image: "",
     duration: null,
     energy: "medium",
-    moods: ["dramatic", "thoughtful", "humorous"],
+    moods: ["thoughtful", "funny"],
     goals: ["discovery", "fun"]
   },
   {
-    id: "series-194",
+    id: "series-187",
     title: "Designated Survivor",
     type: "series",
     origin: "foreign",
@@ -2542,11 +2464,11 @@ const series = [
     image: "",
     duration: null,
     energy: "high",
-    moods: ["suspenseful", "dramatic", "thoughtful"],
+    moods: ["tense", "thoughtful"],
     goals: ["excitement", "discovery"]
   },
   {
-    id: "series-195",
+    id: "series-188",
     title: "Scandal",
     type: "series",
     origin: "foreign",
@@ -2555,11 +2477,11 @@ const series = [
     image: "",
     duration: null,
     energy: "high",
-    moods: ["dramatic", "intense", "romantic"],
+    moods: ["intense", "romantic"],
     goals: ["excitement", "discovery"]
   },
   {
-    id: "series-196",
+    id: "series-189",
     title: "How to Get Away with Murder",
     type: "series",
     origin: "foreign",
@@ -2568,13 +2490,13 @@ const series = [
     image: "",
     duration: null,
     energy: "high",
-    moods: ["suspenseful", "dramatic", "intense"],
+    moods: ["tense", "intense"],
     goals: ["excitement", "discovery"]
   },
 
   // ==================== سریال‌های خارجی - عاشقانه ====================
   {
-    id: "series-197",
+    id: "series-190",
     title: "Bridgerton",
     type: "series",
     origin: "foreign",
@@ -2583,11 +2505,11 @@ const series = [
     image: "",
     duration: null,
     energy: "high",
-    moods: ["romantic", "dramatic", "heartwarming"],
+    moods: ["romantic", "heartwarming"],
     goals: ["feel_better", "discovery"]
   },
   {
-    id: "series-198",
+    id: "series-191",
     title: "Queen Charlotte",
     type: "series",
     origin: "foreign",
@@ -2596,35 +2518,1321 @@ const series = [
     image: "",
     duration: null,
     energy: "medium",
-    moods: ["romantic", "dramatic", "emotional"],
+    moods: ["romantic", "emotional"],
+    goals: ["feel_better", "discovery"]
+  },
+  const seriesExtra = [
+  // ==================== درام و جنایی (منابع: IMDb, Radio Times, HBO) ====================
+  {
+    id: "series-192",
+    title: "The Night Manager",
+    type: "series",
+    origin: "foreign",
+    year: 2016,
+    creator: "David Farr",
+    image: "",
+    duration: null,
+    energy: "high",
+    moods: ["tense", "mysterious", "intense"],
+    goals: ["excitement", "discovery"]
+  },
+  {
+    id: "series-193",
+    title: "Doctor Foster",
+    type: "series",
+    origin: "foreign",
+    year: 2015,
+    creator: "Mike Bartlett",
+    image: "",
+    duration: null,
+    energy: "high",
+    moods: ["dark", "emotional", "tense"],
+    goals: ["discovery", "excitement"]
+  },
+  {
+    id: "series-194",
+    title: "Wolf Hall",
+    type: "series",
+    origin: "foreign",
+    year: 2015,
+    creator: "Peter Straughan",
+    image: "",
+    duration: null,
+    energy: "low",
+    moods: ["thoughtful", "dark"],
+    goals: ["learning", "discovery"]
+  },
+  {
+    id: "series-195",
+    title: "The Tourist",
+    type: "series",
+    origin: "foreign",
+    year: 2022,
+    creator: "Harry Williams, Jack Williams",
+    image: "",
+    duration: null,
+    energy: "high",
+    moods: ["mysterious", "tense", "dark"],
+    goals: ["excitement", "discovery"]
+  },
+  {
+    id: "series-196",
+    title: "Small Axe",
+    type: "series",
+    origin: "foreign",
+    year: 2020,
+    creator: "Steve McQueen",
+    image: "",
+    duration: null,
+    energy: "medium",
+    moods: ["thoughtful", "emotional"],
+    goals: ["learning", "discovery"]
+  },
+  {
+    id: "series-197",
+    title: "Strike",
+    type: "series",
+    origin: "foreign",
+    year: 2017,
+    creator: "Ben Richards",
+    image: "",
+    duration: null,
+    energy: "medium",
+    moods: ["mysterious", "thoughtful"],
+    goals: ["discovery", "excitement"]
+  },
+  {
+    id: "series-198",
+    title: "Normal People",
+    type: "series",
+    origin: "foreign",
+    year: 2020,
+    creator: "Sally Rooney, Alice Birch",
+    image: "",
+    duration: null,
+    energy: "low",
+    moods: ["romantic", "emotional", "melancholic"],
     goals: ["feel_better", "discovery"]
   },
   {
     id: "series-199",
-    title: "The Notebook",
+    title: "The Outlaws",
     type: "series",
     origin: "foreign",
-    year: 2004,
-    creator: "Nick Cassavetes",
+    year: 2021,
+    creator: "Stephen Merchant, Elgin James",
     image: "",
     duration: null,
     energy: "medium",
-    moods: ["romantic", "emotional", "heartwarming"],
-    goals: ["feel_better", "calm"]
+    moods: ["funny", "tense"],
+    goals: ["fun", "discovery"]
   },
   {
     id: "series-200",
-    title: "Dear John",
+    title: "This Town",
     type: "series",
     origin: "foreign",
-    year: 2010,
-    creator: "Lasse Hallström",
+    year: 2024,
+    creator: "Steven Knight",
     image: "",
     duration: null,
     energy: "medium",
-    moods: ["romantic", "emotional", "heartwarming"],
-    goals: ["feel_better", "calm"]
+    moods: ["emotional", "nostalgic"],
+    goals: ["feel_better", "discovery"]
+  },
+  {
+    id: "series-201",
+    title: "Virdee",
+    type: "series",
+    origin: "foreign",
+    year: 2025,
+    creator: "AA Dhand",
+    image: "",
+    duration: null,
+    energy: "high",
+    moods: ["dark", "tense", "mysterious"],
+    goals: ["excitement", "discovery"]
+  },
+  {
+    id: "series-202",
+    title: "SAS: Rogue Heroes",
+    type: "series",
+    origin: "foreign",
+    year: 2022,
+    creator: "Steven Knight",
+    image: "",
+    duration: null,
+    energy: "high",
+    moods: ["epic", "energetic", "adventurous"],
+    goals: ["excitement", "discovery"]
+  },
+  {
+    id: "series-203",
+    title: "Sherwood",
+    type: "series",
+    origin: "foreign",
+    year: 2022,
+    creator: "James Graham",
+    image: "",
+    duration: null,
+    energy: "medium",
+    moods: ["dark", "thoughtful"],
+    goals: ["discovery", "learning"]
+  },
+  {
+    id: "series-204",
+    title: "The Responder",
+    type: "series",
+    origin: "foreign",
+    year: 2022,
+    creator: "Tony Schumacher",
+    image: "",
+    duration: null,
+    energy: "high",
+    moods: ["dark", "intense", "emotional"],
+    goals: ["excitement", "discovery"]
+  },
+  {
+    id: "series-205",
+    title: "This Is Going to Hurt",
+    type: "series",
+    origin: "foreign",
+    year: 2022,
+    creator: "Adam Kay",
+    image: "",
+    duration: null,
+    energy: "medium",
+    moods: ["funny", "emotional", "thoughtful"],
+    goals: ["fun", "discovery"]
+  },
+  {
+    id: "series-206",
+    title: "The Capture",
+    type: "series",
+    origin: "foreign",
+    year: 2019,
+    creator: "Ben Chanan",
+    image: "",
+    duration: null,
+    energy: "high",
+    moods: ["tense", "mysterious", "thoughtful"],
+    goals: ["excitement", "discovery"]
+  },
+  {
+    id: "series-207",
+    title: "Years and Years",
+    type: "series",
+    origin: "foreign",
+    year: 2019,
+    creator: "Russell T Davies",
+    image: "",
+    duration: null,
+    energy: "medium",
+    moods: ["dark", "thoughtful", "emotional"],
+    goals: ["discovery", "learning"]
+  },
+  {
+    id: "series-208",
+    title: "Ghosts",
+    type: "series",
+    origin: "foreign",
+    year: 2019,
+    creator: "Mathew Baynton, Simon Farnaby, Martha Howe-Douglas",
+    image: "",
+    duration: null,
+    energy: "medium",
+    moods: ["funny", "heartwarming", "strange"],
+    goals: ["fun", "feel_better"]
+  },
+  {
+    id: "series-209",
+    title: "Dracula",
+    type: "series",
+    origin: "foreign",
+    year: 2020,
+    creator: "Steven Moffat, Mark Gatiss",
+    image: "",
+    duration: null,
+    energy: "high",
+    moods: ["dark", "strange", "tense"],
+    goals: ["excitement", "discovery"]
+  },
+  {
+    id: "series-210",
+    title: "The Trial of Christine Keeler",
+    type: "series",
+    origin: "foreign",
+    year: 2019,
+    creator: "Amanda Coe",
+    image: "",
+    duration: null,
+    energy: "medium",
+    moods: ["thoughtful", "emotional"],
+    goals: ["learning", "discovery"]
+  },
+
+  // ==================== درام تاریخی و جنایی (منابع: IMDb, HBO) ====================
+  {
+    id: "series-211",
+    title: "Oz",
+    type: "series",
+    origin: "foreign",
+    year: 1997,
+    creator: "Tom Fontana",
+    image: "",
+    duration: null,
+    energy: "high",
+    moods: ["dark", "intense"],
+    goals: ["excitement", "discovery"]
+  },
+  {
+    id: "series-212",
+    title: "Carnivàle",
+    type: "series",
+    origin: "foreign",
+    year: 2003,
+    creator: "Daniel Knauf",
+    image: "",
+    duration: null,
+    energy: "medium",
+    moods: ["strange", "dark", "mysterious"],
+    goals: ["discovery", "surprise"]
+  },
+  {
+    id: "series-213",
+    title: "The Young Pope",
+    type: "series",
+    origin: "foreign",
+    year: 2016,
+    creator: "Paolo Sorrentino",
+    image: "",
+    duration: null,
+    energy: "medium",
+    moods: ["thoughtful", "strange", "dark"],
+    goals: ["discovery", "learning"]
+  },
+  {
+    id: "series-214",
+    title: "Banshee",
+    type: "series",
+    origin: "foreign",
+    year: 2013,
+    creator: "David Schickler, Jonathan Tropper",
+    image: "",
+    duration: null,
+    energy: "high",
+    moods: ["dark", "intense", "energetic"],
+    goals: ["excitement", "discovery"]
+  },
+  {
+    id: "series-215",
+    title: "The Knick",
+    type: "series",
+    origin: "foreign",
+    year: 2014,
+    creator: "Jack Amiel, Michael Begler",
+    image: "",
+    duration: null,
+    energy: "high",
+    moods: ["dark", "thoughtful"],
+    goals: ["learning", "discovery"]
+  },
+  {
+    id: "series-216",
+    title: "John Adams",
+    type: "series",
+    origin: "foreign",
+    year: 2008,
+    creator: "Kirk Ellis",
+    image: "",
+    duration: null,
+    energy: "low",
+    moods: ["thoughtful", "emotional"],
+    goals: ["learning", "discovery"]
+  },
+  {
+    id: "series-217",
+    title: "Show Me a Hero",
+    type: "series",
+    origin: "foreign",
+    year: 2015,
+    creator: "David Simon, William F. Zorzi",
+    image: "",
+    duration: null,
+    energy: "medium",
+    moods: ["thoughtful", "emotional"],
+    goals: ["learning", "discovery"]
+  },
+  {
+    id: "series-218",
+    title: "The Corner",
+    type: "series",
+    origin: "foreign",
+    year: 2000,
+    creator: "David Simon, Ed Burns",
+    image: "",
+    duration: null,
+    energy: "medium",
+    moods: ["dark", "thoughtful"],
+    goals: ["learning", "discovery"]
+  },
+  {
+    id: "series-219",
+    title: "Generation Kill",
+    type: "series",
+    origin: "foreign",
+    year: 2008,
+    creator: "David Simon, Ed Burns",
+    image: "",
+    duration: null,
+    energy: "high",
+    moods: ["intense", "thoughtful"],
+    goals: ["excitement", "learning"]
+  },
+  {
+    id: "series-220",
+    title: "The Plot Against America",
+    type: "series",
+    origin: "foreign",
+    year: 2020,
+    creator: "David Simon, Ed Burns",
+    image: "",
+    duration: null,
+    energy: "medium",
+    moods: ["dark", "thoughtful"],
+    goals: ["learning", "discovery"]
+  },
+  {
+    id: "series-221",
+    title: "Barry",
+    type: "series",
+    origin: "foreign",
+    year: 2018,
+    creator: "Alec Berg, Bill Hader",
+    image: "",
+    duration: null,
+    energy: "high",
+    moods: ["dark", "funny"],
+    goals: ["fun", "discovery"]
+  },
+  {
+    id: "series-222",
+    title: "Sharp Objects",
+    type: "series",
+    origin: "foreign",
+    year: 2018,
+    creator: "Marti Noxon",
+    image: "",
+    duration: null,
+    energy: "medium",
+    moods: ["dark", "mysterious", "emotional"],
+    goals: ["discovery", "excitement"]
+  },
+  {
+    id: "series-223",
+    title: "My Brilliant Friend",
+    type: "series",
+    origin: "foreign",
+    year: 2018,
+    creator: "Saverio Costanzo",
+    image: "",
+    duration: null,
+    energy: "low",
+    moods: ["emotional", "thoughtful"],
+    goals: ["feel_better", "discovery"]
+  },
+  {
+    id: "series-224",
+    title: "Gentleman Jack",
+    type: "series",
+    origin: "foreign",
+    year: 2019,
+    creator: "Sally Wainwright",
+    image: "",
+    duration: null,
+    energy: "medium",
+    moods: ["romantic", "thoughtful"],
+    goals: ["feel_better", "discovery"]
+  },
+  {
+    id: "series-225",
+    title: "Chernobyl",
+    type: "series",
+    origin: "foreign",
+    year: 2019,
+    creator: "Craig Mazin",
+    image: "",
+    duration: null,
+    energy: "high",
+    moods: ["dark", "intense", "thoughtful"],
+    goals: ["learning", "discovery"]
+  },
+  {
+    id: "series-226",
+    title: "I May Destroy You",
+    type: "series",
+    origin: "foreign",
+    year: 2020,
+    creator: "Michaela Coel",
+    image: "",
+    duration: null,
+    energy: "medium",
+    moods: ["dark", "emotional", "thoughtful"],
+    goals: ["discovery", "feel_better"]
+  },
+
+  // ==================== سریال‌های اپل تی‌وی و هولو (منابع: IMDb, Hulu) ====================
+  {
+    id: "series-227",
+    title: "For All Mankind",
+    type: "series",
+    origin: "foreign",
+    year: 2019,
+    creator: "Ronald D. Moore, Ben Nedivi, Matt Wolpert",
+    image: "",
+    duration: null,
+    energy: "high",
+    moods: ["epic", "thoughtful", "adventurous"],
+    goals: ["discovery", "excitement"]
+  },
+  {
+    id: "series-228",
+    title: "The Morning Show",
+    type: "series",
+    origin: "foreign",
+    year: 2019,
+    creator: "Jay Carson, Kerry Ehrin",
+    image: "",
+    duration: null,
+    energy: "high",
+    moods: ["intense", "thoughtful"],
+    goals: ["discovery", "excitement"]
+  },
+  {
+    id: "series-229",
+    title: "See",
+    type: "series",
+    origin: "foreign",
+    year: 2019,
+    creator: "Steven Knight",
+    image: "",
+    duration: null,
+    energy: "high",
+    moods: ["epic", "adventurous", "dark"],
+    goals: ["excitement", "discovery"]
+  },
+  {
+    id: "series-230",
+    title: "Servant",
+    type: "series",
+    origin: "foreign",
+    year: 2019,
+    creator: "Tony Basgallop",
+    image: "",
+    duration: null,
+    energy: "medium",
+    moods: ["dark", "mysterious", "strange"],
+    goals: ["surprise", "discovery"]
+  },
+  {
+    id: "series-231",
+    title: "Truth Be Told",
+    type: "series",
+    origin: "foreign",
+    year: 2019,
+    creator: "Nichelle D. Tramble",
+    image: "",
+    duration: null,
+    energy: "medium",
+    moods: ["mysterious", "thoughtful"],
+    goals: ["discovery", "learning"]
+  },
+  {
+    id: "series-232",
+    title: "Defending Jacob",
+    type: "series",
+    origin: "foreign",
+    year: 2020,
+    creator: "Mark Bomback",
+    image: "",
+    duration: null,
+    energy: "high",
+    moods: ["dark", "tense", "emotional"],
+    goals: ["excitement", "discovery"]
+  },
+  {
+    id: "series-233",
+    title: "Foundation",
+    type: "series",
+    origin: "foreign",
+    year: 2021,
+    creator: "David S. Goyer, Josh Friedman",
+    image: "",
+    duration: null,
+    energy: "medium",
+    moods: ["epic", "thoughtful", "adventurous"],
+    goals: ["discovery", "learning"]
+  },
+  {
+    id: "series-234",
+    title: "Invasion",
+    type: "series",
+    origin: "foreign",
+    year: 2021,
+    creator: "Simon Kinberg, David Weil",
+    image: "",
+    duration: null,
+    energy: "medium",
+    moods: ["tense", "mysterious", "thoughtful"],
+    goals: ["discovery", "excitement"]
+  },
+  {
+    id: "series-235",
+    title: "Shrinking",
+    type: "series",
+    origin: "foreign",
+    year: 2023,
+    creator: "Bill Lawrence, Jason Segel, Brett Goldstein",
+    image: "",
+    duration: null,
+    energy: "medium",
+    moods: ["funny", "emotional", "heartwarming"],
+    goals: ["feel_better", "fun"]
+  },
+  {
+    id: "series-236",
+    title: "Silo",
+    type: "series",
+    origin: "foreign",
+    year: 2023,
+    creator: "Graham Yost",
+    image: "",
+    duration: null,
+    energy: "medium",
+    moods: ["mysterious", "dark", "thoughtful"],
+    goals: ["discovery", "excitement"]
+  },
+  {
+    id: "series-237",
+    title: "The White Lotus",
+    type: "series",
+    origin: "foreign",
+    year: 2021,
+    creator: "Mike White",
+    image: "",
+    duration: null,
+    energy: "medium",
+    moods: ["dark", "funny", "strange"],
+    goals: ["discovery", "fun"]
+  },
+  {
+    id: "series-238",
+    title: "The Flight Attendant",
+    type: "series",
+    origin: "foreign",
+    year: 2020,
+    creator: "Steve Yockey",
+    image: "",
+    duration: null,
+    energy: "high",
+    moods: ["mysterious", "funny", "tense"],
+    goals: ["excitement", "fun"]
+  },
+  {
+    id: "series-239",
+    title: "Unprisoned",
+    type: "series",
+    origin: "foreign",
+    year: 2023,
+    creator: "Tracy McMillan",
+    image: "",
+    duration: null,
+    energy: "medium",
+    moods: ["funny", "emotional", "heartwarming"],
+    goals: ["fun", "feel_better"]
+  },
+  {
+    id: "series-240",
+    title: "How to Die Alone",
+    type: "series",
+    origin: "foreign",
+    year: 2024,
+    creator: "Natasha Rothwell",
+    image: "",
+    duration: null,
+    energy: "medium",
+    moods: ["funny", "emotional", "thoughtful"],
+    goals: ["fun", "feel_better"]
+  },
+
+  // ==================== سریال‌های نتفلیکس (منابع: IMDb, Wikipedia) ====================
+  {
+    id: "series-241",
+    title: "Jessica Jones",
+    type: "series",
+    origin: "foreign",
+    year: 2015,
+    creator: "Melissa Rosenberg",
+    image: "",
+    duration: null,
+    energy: "high",
+    moods: ["dark", "tense", "mysterious"],
+    goals: ["excitement", "discovery"]
+  },
+  {
+    id: "series-242",
+    title: "The Get Down",
+    type: "series",
+    origin: "foreign",
+    year: 2016,
+    creator: "Stephen Adly Guirgis, Baz Luhrmann",
+    image: "",
+    duration: null,
+    energy: "high",
+    moods: ["energetic", "nostalgic"],
+    goals: ["feel_better", "discovery"]
+  },
+  {
+    id: "series-243",
+    title: "Luke Cage",
+    type: "series",
+    origin: "foreign",
+    year: 2016,
+    creator: "Cheo Hodari Coker",
+    image: "",
+    duration: null,
+    energy: "high",
+    moods: ["dark", "intense"],
+    goals: ["excitement", "discovery"]
+  },
+  {
+    id: "series-244",
+    title: "A Series of Unfortunate Events",
+    type: "series",
+    origin: "foreign",
+    year: 2017,
+    creator: "Barry Sonnenfeld",
+    image: "",
+    duration: null,
+    energy: "medium",
+    moods: ["strange", "dark", "funny"],
+    goals: ["fun", "discovery"]
+  },
+  {
+    id: "series-245",
+    title: "Iron Fist",
+    type: "series",
+    origin: "foreign",
+    year: 2017,
+    creator: "Scott Buck",
+    image: "",
+    duration: null,
+    energy: "high",
+    moods: ["adventurous", "mysterious"],
+    goals: ["excitement", "discovery"]
+  },
+  {
+    id: "series-246",
+    title: "13 Reasons Why",
+    type: "series",
+    origin: "foreign",
+    year: 2017,
+    creator: "Brian Yorkey",
+    image: "",
+    duration: null,
+    energy: "medium",
+    moods: ["dark", "emotional", "thoughtful"],
+    goals: ["discovery", "feel_better"]
+  },
+  {
+    id: "series-247",
+    title: "Free Rein",
+    type: "series",
+    origin: "foreign",
+    year: 2017,
+    creator: "Vicki Lutas, Anna McCleery",
+    image: "",
+    duration: null,
+    energy: "low",
+    moods: ["heartwarming", "calm"],
+    goals: ["feel_better", "fun"]
+  },
+  {
+    id: "series-248",
+    title: "Greenhouse Academy",
+    type: "series",
+    origin: "foreign",
+    year: 2017,
+    creator: "Giora Chamizer",
+    image: "",
+    duration: null,
+    energy: "medium",
+    moods: ["mysterious", "adventurous"],
+    goals: ["discovery", "excitement"]
+  },
+  {
+    id: "series-249",
+    title: "Seven Seconds",
+    type: "series",
+    origin: "foreign",
+    year: 2018,
+    creator: "Veena Sud",
+    image: "",
+    duration: null,
+    energy: "medium",
+    moods: ["dark", "thoughtful", "emotional"],
+    goals: ["discovery", "learning"]
+  },
+  {
+    id: "series-250",
+    title: "The Umbrella Academy",
+    type: "series",
+    origin: "foreign",
+    year: 2019,
+    creator: "Steve Blackman",
+    image: "",
+    duration: null,
+    energy: "high",
+    moods: ["strange", "adventurous", "funny"],
+    goals: ["excitement", "discovery"]
+  },
+  {
+    id: "series-251",
+    title: "Lucifer",
+    type: "series",
+    origin: "foreign",
+    year: 2016,
+    creator: "Tom Kapinos",
+    image: "",
+    duration: null,
+    energy: "medium",
+    moods: ["funny", "mysterious", "romantic"],
+    goals: ["fun", "discovery"]
+  },
+  {
+    id: "series-252",
+    title: "The End of the F***ing World",
+    type: "series",
+    origin: "foreign",
+    year: 2017,
+    creator: "Charlie Covell",
+    image: "",
+    duration: null,
+    energy: "medium",
+    moods: ["dark", "funny", "strange"],
+    goals: ["discovery", "fun"]
+  },
+  {
+    id: "series-253",
+    title: "Love, Death & Robots",
+    type: "series",
+    origin: "foreign",
+    year: 2019,
+    creator: "Tim Miller",
+    image: "",
+    duration: null,
+    energy: "high",
+    moods: ["strange", "dark", "thoughtful"],
+    goals: ["discovery", "surprise"]
+  },
+  {
+    id: "series-254",
+    title: "The Politician",
+    type: "series",
+    origin: "foreign",
+    year: 2019,
+    creator: "Ryan Murphy, Brad Falchuk, Ian Brennan",
+    image: "",
+    duration: null,
+    energy: "high",
+    moods: ["funny", "dark"],
+    goals: ["fun", "discovery"]
+  },
+  {
+    id: "series-255",
+    title: "Ratched",
+    type: "series",
+    origin: "foreign",
+    year: 2020,
+    creator: "Evan Romansky",
+    image: "",
+    duration: null,
+    energy: "high",
+    moods: ["dark", "strange", "tense"],
+    goals: ["excitement", "discovery"]
+  },
+  {
+    id: "series-256",
+    title: "The Queen's Gambit",
+    type: "series",
+    origin: "foreign",
+    year: 2020,
+    creator: "Scott Frank, Allan Scott",
+    image: "",
+    duration: null,
+    energy: "medium",
+    moods: ["inspiring", "thoughtful"],
+    goals: ["discovery", "learning"]
+  },
+  {
+    id: "series-257",
+    title: "Squid Game",
+    type: "series",
+    origin: "foreign",
+    year: 2021,
+    creator: "Hwang Dong-hyuk",
+    image: "",
+    duration: null,
+    energy: "very_high",
+    moods: ["dark", "intense", "tense"],
+    goals: ["excitement", "surprise"]
+  },
+  {
+    id: "series-258",
+    title: "Maid",
+    type: "series",
+    origin: "foreign",
+    year: 2021,
+    creator: "Molly Smith Metzler",
+    image: "",
+    duration: null,
+    energy: "medium",
+    moods: ["emotional", "thoughtful"],
+    goals: ["feel_better", "discovery"]
+  },
+  {
+    id: "series-259",
+    title: "Station Eleven",
+    type: "series",
+    origin: "foreign",
+    year: 2021,
+    creator: "Patrick Somerville",
+    image: "",
+    duration: null,
+    energy: "medium",
+    moods: ["emotional", "thoughtful", "melancholic"],
+    goals: ["feel_better", "discovery"]
+  },
+  {
+    id: "series-260",
+    title: "Reacher",
+    type: "series",
+    origin: "foreign",
+    year: 2022,
+    creator: "Nick Santora",
+    image: "",
+    duration: null,
+    energy: "high",
+    moods: ["tense", "intense", "adventurous"],
+    goals: ["excitement", "discovery"]
+  },
+  {
+    id: "series-261",
+    title: "The Old Man",
+    type: "series",
+    origin: "foreign",
+    year: 2022,
+    creator: "Robert Levine, Jonathan E. Steinberg",
+    image: "",
+    duration: null,
+    energy: "high",
+    moods: ["tense", "dark", "thoughtful"],
+    goals: ["excitement", "discovery"]
+  },
+  {
+    id: "series-262",
+    title: "The Sandman",
+    type: "series",
+    origin: "foreign",
+    year: 2022,
+    creator: "Neil Gaiman, David S. Goyer, Allan Heinberg",
+    image: "",
+    duration: null,
+    energy: "medium",
+    moods: ["strange", "mysterious", "dark"],
+    goals: ["discovery", "surprise"]
+  },
+  {
+    id: "series-263",
+    title: "Wednesday",
+    type: "series",
+    origin: "foreign",
+    year: 2022,
+    creator: "Alfred Gough, Miles Millar",
+    image: "",
+    duration: null,
+    energy: "medium",
+    moods: ["dark", "funny", "mysterious"],
+    goals: ["discovery", "fun"]
+  },
+  {
+    id: "series-264",
+    title: "The Diplomat",
+    type: "series",
+    origin: "foreign",
+    year: 2023,
+    creator: "Debora Cahn",
+    image: "",
+    duration: null,
+    energy: "high",
+    moods: ["tense", "thoughtful"],
+    goals: ["excitement", "discovery"]
+  },
+  {
+    id: "series-265",
+    title: "Beef",
+    type: "series",
+    origin: "foreign",
+    year: 2023,
+    creator: "Lee Sung Jin",
+    image: "",
+    duration: null,
+    energy: "high",
+    moods: ["dark", "funny", "emotional"],
+    goals: ["discovery", "fun"]
+  },
+  {
+    id: "series-266",
+    title: "One Piece",
+    type: "series",
+    origin: "foreign",
+    year: 2023,
+    creator: "Matt Owens, Steven Maeda",
+    image: "",
+    duration: null,
+    energy: "high",
+    moods: ["adventurous", "fun", "epic"],
+    goals: ["excitement", "fun"]
+  },
+  {
+    id: "series-267",
+    title: "3 Body Problem",
+    type: "series",
+    origin: "foreign",
+    year: 2024,
+    creator: "David Benioff, D.B. Weiss, Alexander Woo",
+    image: "",
+    duration: null,
+    energy: "high",
+    moods: ["thoughtful", "mysterious", "epic"],
+    goals: ["discovery", "learning"]
+  },
+  {
+    id: "series-268",
+    title: "Baby Reindeer",
+    type: "series",
+    origin: "foreign",
+    year: 2024,
+    creator: "Richard Gadd",
+    image: "",
+    duration: null,
+    energy: "medium",
+    moods: ["dark", "emotional", "tense"],
+    goals: ["discovery", "feel_better"]
+  },
+  {
+    id: "series-269",
+    title: "Ripley",
+    type: "series",
+    origin: "foreign",
+    year: 2024,
+    creator: "Steven Zaillian",
+    image: "",
+    duration: null,
+    energy: "medium",
+    moods: ["dark", "mysterious", "thoughtful"],
+    goals: ["discovery", "excitement"]
+  },
+  {
+    id: "series-270",
+    title: "The Gentlemen",
+    type: "series",
+    origin: "foreign",
+    year: 2024,
+    creator: "Guy Ritchie",
+    image: "",
+    duration: null,
+    energy: "high",
+    moods: ["funny", "dark", "energetic"],
+    goals: ["fun", "excitement"]
+  },
+
+  // ==================== سریال‌های کمدی (منابع: IMDb, HBO) ====================
+  {
+    id: "series-271",
+    title: "Curb Your Enthusiasm",
+    type: "series",
+    origin: "foreign",
+    year: 2000,
+    creator: "Larry David",
+    image: "",
+    duration: null,
+    energy: "medium",
+    moods: ["funny", "strange"],
+    goals: ["fun", "feel_better"]
+  },
+  {
+    id: "series-272",
+    title: "The IT Crowd",
+    type: "series",
+    origin: "foreign",
+    year: 2006,
+    creator: "Graham Linehan",
+    image: "",
+    duration: null,
+    energy: "medium",
+    moods: ["funny", "strange"],
+    goals: ["fun", "feel_better"]
+  },
+  {
+    id: "series-273",
+    title: "Silicon Valley",
+    type: "series",
+    origin: "foreign",
+    year: 2014,
+    creator: "Mike Judge, John Altschuler, Dave Krinsky",
+    image: "",
+    duration: null,
+    energy: "high",
+    moods: ["funny", "dark"],
+    goals: ["fun", "discovery"]
+  },
+  {
+    id: "series-274",
+    title: "Veep",
+    type: "series",
+    origin: "foreign",
+    year: 2012,
+    creator: "Armando Iannucci",
+    image: "",
+    duration: null,
+    energy: "high",
+    moods: ["funny", "dark", "energetic"],
+    goals: ["fun", "discovery"]
+  },
+  {
+    id: "series-275",
+    title: "Atlanta",
+    type: "series",
+    origin: "foreign",
+    year: 2016,
+    creator: "Donald Glover",
+    image: "",
+    duration: null,
+    energy: "medium",
+    moods: ["funny", "thoughtful", "strange"],
+    goals: ["fun", "discovery"]
+  },
+  {
+    id: "series-276",
+    title: "What We Do in the Shadows",
+    type: "series",
+    origin: "foreign",
+    year: 2019,
+    creator: "Jemaine Clement",
+    image: "",
+    duration: null,
+    energy: "high",
+    moods: ["funny", "strange", "dark"],
+    goals: ["fun", "feel_better"]
+  },
+  {
+    id: "series-277",
+    title: "Hacks",
+    type: "series",
+    origin: "foreign",
+    year: 2021,
+    creator: "Lucia Aniello, Paul W. Downs, Jen Statsky",
+    image: "",
+    duration: null,
+    energy: "medium",
+    moods: ["funny", "thoughtful", "heartwarming"],
+    goals: ["fun", "feel_better"]
+  },
+  {
+    id: "series-278",
+    title: "Only Murders in the Building",
+    type: "series",
+    origin: "foreign",
+    year: 2021,
+    creator: "Steve Martin, John Hoffman",
+    image: "",
+    duration: null,
+    energy: "medium",
+    moods: ["funny", "mysterious", "heartwarming"],
+    goals: ["fun", "discovery"]
+  },
+  {
+    id: "series-279",
+    title: "Abbott Elementary",
+    type: "series",
+    origin: "foreign",
+    year: 2021,
+    creator: "Quinta Brunson",
+    image: "",
+    duration: null,
+    energy: "medium",
+    moods: ["funny", "heartwarming"],
+    goals: ["fun", "feel_better"]
+  },
+  {
+    id: "series-280",
+    title: "The Bear",
+    type: "series",
+    origin: "foreign",
+    year: 2022,
+    creator: "Christopher Storer",
+    image: "",
+    duration: null,
+    energy: "high",
+    moods: ["intense", "emotional", "funny"],
+    goals: ["excitement", "discovery"]
+  },
+  {
+    id: "series-281",
+    title: "Jury Duty",
+    type: "series",
+    origin: "foreign",
+    year: 2023,
+    creator: "Lee Eisenberg, Gene Stupnitsky",
+    image: "",
+    duration: null,
+    energy: "medium",
+    moods: ["funny", "heartwarming", "strange"],
+    goals: ["fun", "feel_better"]
+  },
+
+  // ==================== سریال‌های درام نوجوانان و خانوادگی ====================
+  {
+    id: "series-282",
+    title: "One Tree Hill",
+    type: "series",
+    origin: "foreign",
+    year: 2003,
+    creator: "Mark Schwahn",
+    image: "",
+    duration: null,
+    energy: "medium",
+    moods: ["emotional", "romantic", "nostalgic"],
+    goals: ["feel_better", "discovery"]
+  },
+  {
+    id: "series-283",
+    title: "Lost",
+    type: "series",
+    origin: "foreign",
+    year: 2004,
+    creator: "J.J. Abrams, Damon Lindelof, Jeffrey Lieber",
+    image: "",
+    duration: null,
+    energy: "high",
+    moods: ["mysterious", "adventurous", "thoughtful"],
+    goals: ["discovery", "excitement"]
+  },
+  {
+    id: "series-284",
+    title: "Desperate Housewives",
+    type: "series",
+    origin: "foreign",
+    year: 2004,
+    creator: "Marc Cherry",
+    image: "",
+    duration: null,
+    energy: "medium",
+    moods: ["funny", "dark", "mysterious"],
+    goals: ["fun", "discovery"]
+  },
+  {
+    id: "series-285",
+    title: "The Big Bang Theory",
+    type: "series",
+    origin: "foreign",
+    year: 2007,
+    creator: "Chuck Lorre, Bill Prady",
+    image: "",
+    duration: null,
+    energy: "medium",
+    moods: ["funny", "heartwarming"],
+    goals: ["fun", "feel_better"]
+  },
+  {
+    id: "series-286",
+    title: "Teen Wolf",
+    type: "series",
+    origin: "foreign",
+    year: 2011,
+    creator: "Jeff Davis",
+    image: "",
+    duration: null,
+    energy: "high",
+    moods: ["dark", "adventurous", "mysterious"],
+    goals: ["excitement", "discovery"]
+  },
+  {
+    id: "series-287",
+    title: "The Vampire Diaries",
+    type: "series",
+    origin: "foreign",
+    year: 2009,
+    creator: "Kevin Williamson, Julie Plec",
+    image: "",
+    duration: null,
+    energy: "high",
+    moods: ["romantic", "dark", "intense"],
+    goals: ["feel_better", "excitement"]
+  },
+  {
+    id: "series-288",
+    title: "Pretty Little Liars",
+    type: "series",
+    origin: "foreign",
+    year: 2010,
+    creator: "I. Marlene King",
+    image: "",
+    duration: null,
+    energy: "high",
+    moods: ["mysterious", "tense", "romantic"],
+    goals: ["excitement", "discovery"]
+  },
+  {
+    id: "series-289",
+    title: "Riverdale",
+    type: "series",
+    origin: "foreign",
+    year: 2017,
+    creator: "Roberto Aguirre-Sacasa",
+    image: "",
+    duration: null,
+    energy: "high",
+    moods: ["dark", "mysterious", "strange"],
+    goals: ["excitement", "discovery"]
+  },
+  {
+    id: "series-290",
+    title: "Dynasty",
+    type: "series",
+    origin: "foreign",
+    year: 2017,
+    creator: "Sallie Patrick, Stephanie Savage, Josh Schwartz",
+    image: "",
+    duration: null,
+    energy: "high",
+    moods: ["dark", "funny"],
+    goals: ["fun", "excitement"]
+  },
+  {
+    id: "series-291",
+    title: "Elite",
+    type: "series",
+    origin: "foreign",
+    year: 2018,
+    creator: "Carlos Montero, Darío Madrona",
+    image: "",
+    duration: null,
+    energy: "high",
+    moods: ["mysterious", "tense", "emotional"],
+    goals: ["excitement", "discovery"]
   }
 ];
 
-export default series;
+export default seriesExtra;
