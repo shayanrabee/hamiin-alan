@@ -1,5 +1,6 @@
 
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
+import { supabase } from "./supabase";
 
 import films from "./data/films.js";
 import foreignFilms from "./data/foreignFilms.js";
@@ -24,72 +25,43 @@ const moodGroups = [
   {
     value: "very_low",
     options: [
-      "الان سگم",
-      "خراب خراب",
-      "داغون داغون",
-      "از این بدتر نمیشم",
-      "میخوام جیغ بزنم",
-      "میخوام فحش بدم",
-      "تف تو این زندگی",
-      "فنام",
-      "برو بابا ولم کن",
-      "اعصاب ندارم",
+      "الان سگم", "خراب خراب", "داغون داغون", "از این بدتر نمیشم",
+      "میخوام جیغ بزنم", "میخوام فحش بدم", "تف تو این زندگی",
+      "فنام", "برو بابا ولم کن", "اعصاب ندارم",
     ],
   },
   {
     value: "low",
     options: [
-      "از این بدتر هم بودم",
-      "خیلی حوصله ندارم",
-      "خوب نیستم زیاد",
-      "تعریفی ندارم",
-      "خیلی حال مال ندارم",
-      "کی خوبه تو این اوضاع؟",
-      "یه مقداری کلافه‌م",
-      "راستش نه! خوب نیستم",
-      "دلم گرفته!",
+      "از این بدتر هم بودم", "خیلی حوصله ندارم", "خوب نیستم زیاد",
+      "تعریفی ندارم", "خیلی حال مال ندارم", "کی خوبه تو این اوضاع؟",
+      "یه مقداری کلافه‌م", "راستش نه! خوب نیستم", "دلم گرفته!",
     ],
   },
   {
     value: "normal",
     options: [
-      "معمولی‌ام",
-      "بدی نیستم",
-      "نه خوبم، نه بدم",
-      "ای! خدا رو شکر",
-      "مرسی، می‌گذره",
-      "فعلاً هستم تا ببینم چی میشه",
-      "زنده‌ایم شکر",
+      "معمولی‌ام", "بدی نیستم", "نه خوبم، نه بدم", "ای! خدا رو شکر",
+      "مرسی، می‌گذره", "فعلاً هستم تا ببینم چی میشه", "زنده‌ایم شکر",
       "یه نفسی میاد و میره",
     ],
   },
   {
     value: "good",
     options: [
-      "خوبم",
-      "سرحالم",
-      "یه قندی تو دلم آب شده",
-      "خوشحالم",
-      "انگار تازه صبح شده",
-      "اصلاً خسته نیستم",
-      "ما خوبیم، شما چطوری؟",
-      "شانس داره باهام راه میاد",
-      "فعلاً که همه‌چی خوبه",
-      "امروز رو فرم‌ام",
-      "حالم با خودم خوبه",
+      "خوبم", "سرحالم", "یه قندی تو دلم آب شده", "خوشحالم",
+      "انگار تازه صبح شده", "اصلاً خسته نیستم", "ما خوبیم، شما چطوری؟",
+      "شانس داره باهام راه میاد", "فعلاً که همه‌چی خوبه",
+      "امروز رو فرم‌ام", "حالم با خودم خوبه",
     ],
   },
   {
     value: "very_good",
     options: [
-      "دلت نخواد خیلییی خوبم",
-      "قر تو کمرم فراوووونه",
-      "انقد خوشحالم کههههه",
-      "دارم پرررررر درمیارم",
-      "از این بهتر نمیشهههه",
-      "بالای بالام. خیلی بالااا",
-      "انگار رو ابراااااام",
-      "خوششششال",
+      "دلت نخواد خیلییی خوبم", "قر تو کمرم فراوووونه",
+      "انقد خوشحالم کههههه", "دارم پرررررر درمیارم",
+      "از این بهتر نمیشهههه", "بالای بالام. خیلی بالااا",
+      "انگار رو ابراااااام", "خوششششال",
     ],
   },
 ];
@@ -104,10 +76,7 @@ const staticQuestions = [
       { value: "excitement", label: "می‌خوام هیجان داشته باشم" },
       { value: "calm", label: "می‌خوام آروم بشم" },
       { value: "thoughtful", label: "می‌خوام ذهنم درگیر بشه" },
-      {
-        value: "discovery",
-        label: "می‌خوام یه چیز عجیب و متفاوت پیدا کنم",
-      },
+      { value: "discovery", label: "می‌خوام یه چیز عجیب و متفاوت پیدا کنم" },
       { value: "learning", label: "می‌خوام یه چیز تازه یاد بگیرم" },
       { value: "surprise", label: "نمی‌دونم، خودمم نمی‌دونم" },
     ],
@@ -127,15 +96,9 @@ const staticQuestions = [
     key: "energy",
     title: "چقدر حوصله داری؟",
     options: [
-      {
-        value: "very_low",
-        label: "اصلاً حوصله ندارم، یه چیز راحت می‌خوام",
-      },
+      { value: "very_low", label: "اصلاً حوصله ندارم، یه چیز راحت می‌خوام" },
       { value: "low", label: "یه کم، خیلی کم" },
-      {
-        value: "medium",
-        label: "بستگی داره، اگه بیارزه چرا که نه",
-      },
+      { value: "medium", label: "بستگی داره، اگه بیارزه چرا که نه" },
       { value: "high", label: "حوصله دارم، بزن بریم" },
       { value: "very_high", label: "پایه‌ام، هرچی داری رو کن" },
     ],
@@ -143,19 +106,15 @@ const staticQuestions = [
 ];
 
 function getRandomMoodQuestion() {
-  const options = moodGroups.map((group) => {
-    const randomIndex = Math.floor(Math.random() * group.options.length);
-
-    return {
-      value: group.value,
-      label: group.options[randomIndex],
-    };
-  });
-
   return {
     key: "mood",
     title: "الان چه حالی داری؟",
-    options,
+    options: moodGroups.map((group) => ({
+      value: group.value,
+      label: group.options[
+        Math.floor(Math.random() * group.options.length)
+      ],
+    })),
   };
 }
 
@@ -194,9 +153,7 @@ function getItemType(item) {
     type === "instrumental_music" ||
     type === "music" ||
     type === "instrumental"
-  ) {
-    return "instrumental_music";
-  }
+  ) return "instrumental_music";
 
   if (
     type === "long_film" ||
@@ -239,9 +196,7 @@ function getDurationNumber(item) {
     item?.minutes ??
     item?.length;
 
-  if (typeof value === "number" && Number.isFinite(value)) {
-    return value;
-  }
+  if (typeof value === "number" && Number.isFinite(value)) return value;
 
   if (typeof value === "string") {
     const match = value.match(/\d+/);
@@ -269,10 +224,7 @@ function getCreator(item) {
 
 function getItemKey(item) {
   if (!item) return "";
-
-  if (item.id !== undefined && item.id !== null) {
-    return String(item.id);
-  }
+  if (item.id !== undefined && item.id !== null) return String(item.id);
 
   return `${item.category || getItemType(item)}-${item.title || ""}`
     .toLowerCase()
@@ -296,17 +248,11 @@ function getRecommendations(answers, databases, excludedKeys = new Set()) {
 
   for (const rawItem of Array.isArray(results) ? results : []) {
     const category = rawItem?.category || getItemType(rawItem);
-
-    const item = {
-      ...rawItem,
-      category,
-    };
-
+    const item = { ...rawItem, category };
     const key = getItemKey(item);
 
     if (!category || !key) continue;
-    if (usedCategories.has(category)) continue;
-    if (usedKeys.has(key)) continue;
+    if (usedCategories.has(category) || usedKeys.has(key)) continue;
 
     usedCategories.add(category);
     usedKeys.add(key);
@@ -403,6 +349,7 @@ function RecommendationCard({ item, onDifferent, changing }) {
 
 function App() {
   const [screen, setScreen] = useState("home");
+  const [authLoading, setAuthLoading] = useState(false);
   const [questionIndex, setQuestionIndex] = useState(0);
   const [answers, setAnswers] = useState({});
   const [recommendations, setRecommendations] = useState([]);
@@ -412,6 +359,8 @@ function App() {
   const [changingItemKey, setChangingItemKey] = useState(null);
   const [message, setMessage] = useState("");
 
+  const googleButtonRef = useRef(null);
+  const googleInitializedRef = useRef(false);
   const databases = useMemo(() => getDatabases(), []);
 
   function startQuestionnaire() {
@@ -423,7 +372,148 @@ function App() {
     setScreen("questionnaire");
   }
 
+  /* نشست موجود را بررسی کن */
+  useEffect(() => {
+    let active = true;
+
+    supabase.auth.getSession().then(({ data, error }) => {
+      if (!active) return;
+
+      if (error) {
+        setMessage("بررسی ورود ناموفق بود. دوباره تلاش کن.");
+        return;
+      }
+
+      if (data.session) {
+        startQuestionnaire();
+      }
+    }).catch((error) => {
+      console.error("Session check failed:", error);
+      if (active) setMessage("ارتباط با سرویس ورود برقرار نشد.");
+    });
+
+    const {
+      data: { subscription },
+    } = supabase.auth.onAuthStateChange((event, session) => {
+      if (active && session && event === "SIGNED_IN") {
+        setScreen("questionnaire");
+        setMessage("");
+      }
+    });
+
+    return () => {
+      active = false;
+      subscription.unsubscribe();
+    };
+  }, []);
+
+  /* بارگذاری دکمه رسمی Google Identity Services */
+  useEffect(() => {
+    if (screen !== "login") return;
+
+    const clientId = import.meta.env.VITE_GOOGLE_CLIENT_ID;
+
+    if (!clientId) {
+      setMessage("شناسهٔ گوگل در فایل .env پیدا نشد.");
+      return;
+    }
+
+    let cancelled = false;
+
+    function renderGoogleButton() {
+      if (cancelled || !googleButtonRef.current || !window.google?.accounts?.id) {
+        return;
+      }
+
+      googleButtonRef.current.innerHTML = "";
+
+      window.google.accounts.id.initialize({
+        client_id: clientId,
+        callback: async (response) => {
+          if (!response?.credential) {
+            setMessage("گوگل توکن ورود را برنگرداند. دوباره تلاش کن.");
+            return;
+          }
+
+          setAuthLoading(true);
+          setMessage("");
+
+          try {
+            const { error } = await supabase.auth.signInWithIdToken({
+              provider: "google",
+              token: response.credential,
+            });
+
+            if (error) throw error;
+
+            startQuestionnaire();
+          } catch (error) {
+            console.error("Google token sign-in error:", error);
+            setMessage(
+              "ورود ناموفق بود. تنظیمات Google Provider در Supabase و شناسهٔ کلاینت را بررسی کن."
+            );
+          } finally {
+            setAuthLoading(false);
+          }
+        },
+      });
+
+      window.google.accounts.id.renderButton(googleButtonRef.current, {
+        type: "standard",
+        theme: "outline",
+        size: "large",
+        text: "signin_with",
+        shape: "rectangular",
+        logo_alignment: "left",
+        width: 280,
+        locale: "en",
+      });
+
+      googleInitializedRef.current = true;
+    }
+
+    if (window.google?.accounts?.id) {
+      renderGoogleButton();
+    } else {
+      let script = document.querySelector(
+        'script[src="https://accounts.google.com/gsi/client"]'
+      );
+
+      const onLoad = () => renderGoogleButton();
+      const onError = () => {
+        if (!cancelled) {
+          setMessage("بارگذاری دکمهٔ گوگل ناموفق بود. اتصال اینترنت را بررسی کن.");
+        }
+      };
+
+      if (!script) {
+        script = document.createElement("script");
+        script.src = "https://accounts.google.com/gsi/client";
+        script.async = true;
+        script.defer = true;
+        script.addEventListener("load", onLoad);
+        script.addEventListener("error", onError);
+        document.head.appendChild(script);
+      } else {
+        script.addEventListener("load", onLoad);
+        script.addEventListener("error", onError);
+        if (window.google?.accounts?.id) renderGoogleButton();
+      }
+
+      return () => {
+        cancelled = true;
+        script?.removeEventListener("load", onLoad);
+        script?.removeEventListener("error", onError);
+      };
+    }
+
+    return () => {
+      cancelled = true;
+    };
+  }, [screen]);
+
   function chooseAnswer(option) {
+    const currentQuestion = questions[questionIndex];
     if (!currentQuestion) return;
 
     const updatedAnswers = {
@@ -444,9 +534,7 @@ function App() {
       seenRecommendationKeys
     );
 
-    const newKeys = results
-      .map((item) => getItemKey(item))
-      .filter(Boolean);
+    const newKeys = results.map(getItemKey).filter(Boolean);
 
     setSeenRecommendationKeys(
       (current) => new Set([...current, ...newKeys])
@@ -479,17 +567,13 @@ function App() {
 
     const itemKey = getItemKey(currentItem);
     const category = currentItem.category || getItemType(currentItem);
-
     if (!category) return;
 
     setChangingItemKey(itemKey);
 
     const currentlyShown = recommendations
-      .filter(
-        (item) =>
-          (item.category || getItemType(item)) === category
-      )
-      .map((item) => getItemKey(item))
+      .filter((item) => (item.category || getItemType(item)) === category)
+      .map(getItemKey)
       .filter(Boolean);
 
     const excludedKeys = new Set([
@@ -513,11 +597,7 @@ function App() {
       return;
     }
 
-    const replacement = {
-      ...newItem,
-      category,
-    };
-
+    const replacement = { ...newItem, category };
     const replacementKey = getItemKey(replacement);
 
     setSeenRecommendationKeys(
@@ -536,10 +616,7 @@ function App() {
 
   const currentQuestion = questions[questionIndex];
 
-  /* =========================
-     صفحه شروع YEYHO
-  ========================= */
-
+  /* صفحه شروع */
   if (screen === "home") {
     return (
       <main className="app yeyho-app">
@@ -548,10 +625,12 @@ function App() {
 
           <div className="yeyho-hero-content">
             <h1>حوصله ت سر رفته؟</h1>
-
             <button
               className="yeyho-main-button"
-              onClick={startQuestionnaire}
+              onClick={() => {
+                setMessage("");
+                setScreen("login");
+              }}
             >
               بزن بریم
             </button>
@@ -561,29 +640,65 @@ function App() {
     );
   }
 
-  /* =========================
-     پرسشنامه
-  ========================= */
+  /* صفحه ورود جداگانه */
+  if (screen === "login") {
+    return (
+      <main className="app yeyho-app">
+        <section className="yeyho-home">
+          <div className="yeyho-logo">yeyho</div>
 
+          <div className="yeyho-hero-content">
+            <h1>با گوگل وارد شو</h1>
+            <p>برای ادامه، حساب گوگلت رو انتخاب کن.</p>
+
+            <div
+              ref={googleButtonRef}
+              style={{
+                display: "flex",
+                justifyContent: "center",
+                minHeight: 44,
+                margin: "24px auto",
+              }}
+            />
+
+            {authLoading && <p>در حال بررسی حساب...</p>}
+
+            {message && (
+              <p role="alert" className="auth-message">
+                {message}
+              </p>
+            )}
+
+            <button
+              className="ghost"
+              onClick={() => {
+                setMessage("");
+                setScreen("home");
+              }}
+              disabled={authLoading}
+            >
+              برگشت
+            </button>
+          </div>
+        </section>
+      </main>
+    );
+  }
+
+  /* پرسش‌نامه */
   if (screen === "questionnaire") {
     if (!currentQuestion) return null;
 
-    const progress =
-      ((questionIndex + 1) / questions.length) * 100;
+    const progress = ((questionIndex + 1) / questions.length) * 100;
 
     return (
       <main className="app">
         <section className="questionnaire">
           <header className="question-header">
-            <button className="back-button" onClick={goBack}>
-              ←
-            </button>
+            <button className="back-button" onClick={goBack}>←</button>
 
             <div className="progress">
-              <div
-                className="progress-fill"
-                style={{ width: `${progress}%` }}
-              />
+              <div className="progress-fill" style={{ width: `${progress}%` }} />
             </div>
 
             <span className="question-number">
@@ -597,17 +712,12 @@ function App() {
             {currentQuestion.key === "mood" && (
               <p>همون چیزی رو بگو که واقعاً الان حس می‌کنی.</p>
             )}
-
             {currentQuestion.key === "goal" && (
               <p>قرار نیست جواب درست یا غلطی وجود داشته باشه.</p>
             )}
-
             {currentQuestion.key === "time" && (
-              <p>
-                این یکی مهمه؛ چیزی پیشنهاد نمی‌کنیم که وسطش مجبور شی ولش کنی.
-              </p>
+              <p>این یکی مهمه؛ چیزی پیشنهاد نمی‌کنیم که وسطش مجبور شی ولش کنی.</p>
             )}
-
             {currentQuestion.key === "energy" && (
               <p>این مشخص می‌کنه چقدر باید ازت انرژی بگیریم!</p>
             )}
@@ -630,39 +740,23 @@ function App() {
     );
   }
 
-  /* =========================
-     نتایج
-  ========================= */
+  /* نتایج */
+  const groupedRecommendations = recommendations.reduce((groups, item) => {
+    const category = item.category || getItemType(item) || "unknown";
 
-  const groupedRecommendations = recommendations.reduce(
-    (groups, item) => {
-      const category =
-        item.category || getItemType(item) || "unknown";
+    if (!groups[category]) groups[category] = [];
+    if (groups[category].length === 0) {
+      groups[category].push({ ...item, category });
+    }
 
-      if (!groups[category]) {
-        groups[category] = [];
-      }
-
-      if (groups[category].length === 0) {
-        groups[category].push({
-          ...item,
-          category,
-        });
-      }
-
-      return groups;
-    },
-    {}
-  );
+    return groups;
+  }, {});
 
   return (
     <main className="app">
       <section className="results">
         <header className="results-header">
-          <button className="back-button" onClick={restart}>
-            ←
-          </button>
-
+          <button className="back-button" onClick={restart}>←</button>
           <div>
             <div className="logo small yeyho-wordmark">yeyho</div>
           </div>
@@ -671,9 +765,7 @@ function App() {
         <div className="results-intro">
           <h1>پیداش کردیم</h1>
           <p>این‌ها شاید بهت بچسبن.</p>
-          <p>
-            بر اساس حال و حوصله‌ای که گفتی، این‌ها رو برات کنار گذاشتیم.
-          </p>
+          <p>بر اساس حال و حوصله‌ای که گفتی، این‌ها رو برات کنار گذاشتیم.</p>
         </div>
 
         {message && (
@@ -691,40 +783,31 @@ function App() {
 
         {recommendations.length > 0 ? (
           <div className="recommendations-grid">
-            {Object.entries(groupedRecommendations).map(
-              ([category, items]) => (
-                <section
-                  className="recommendation-category"
-                  key={category}
-                >
-                  <h2 className="category-title">
-                    {getCategoryTitle(category)}
-                  </h2>
+            {Object.entries(groupedRecommendations).map(([category, items]) => (
+              <section className="recommendation-category" key={category}>
+                <h2 className="category-title">{getCategoryTitle(category)}</h2>
 
-                  <div className="category-cards">
-                    {items.map((item) => {
-                      const itemKey = getItemKey(item);
+                <div className="category-cards">
+                  {items.map((item) => {
+                    const itemKey = getItemKey(item);
 
-                      return (
-                        <RecommendationCard
-                          key={itemKey}
-                          item={item}
-                          onDifferent={showDifferentRecommendation}
-                          changing={changingItemKey === itemKey}
-                        />
-                      );
-                    })}
-                  </div>
-                </section>
-              )
-            )}
+                    return (
+                      <RecommendationCard
+                        key={itemKey}
+                        item={item}
+                        onDifferent={showDifferentRecommendation}
+                        changing={changingItemKey === itemKey}
+                      />
+                    );
+                  })}
+                </div>
+              </section>
+            ))}
           </div>
         ) : (
           <div className="empty-state">
             <h2>هنوز چیزی برای پیشنهاد نداریم.</h2>
-            <p>
-              به‌زودی اینجا پر از چیزهای دیدنی، شنیدنی و خواندنی می‌شود.
-            </p>
+            <p>به‌زودی اینجا پر از چیزهای دیدنی، شنیدنی و خواندنی می‌شود.</p>
           </div>
         )}
 
