@@ -1,3 +1,4 @@
+
 import { useMemo, useState } from "react";
 
 import films from "./data/films.js";
@@ -143,9 +144,7 @@ const staticQuestions = [
 
 function getRandomMoodQuestion() {
   const options = moodGroups.map((group) => {
-    const randomIndex = Math.floor(
-      Math.random() * group.options.length
-    );
+    const randomIndex = Math.floor(Math.random() * group.options.length);
 
     return {
       value: group.value,
@@ -183,20 +182,11 @@ function getDatabases() {
 }
 
 function getItemType(item) {
-  const type = String(
-    item?.type || item?.category || ""
-  ).toLowerCase();
-
+  const type = String(item?.type || item?.category || "").toLowerCase();
   const origin = String(item?.origin || "").toLowerCase();
 
-  if (type === "short_film" || type === "short") {
-    return "short_film";
-  }
-
-  if (type === "series" || type === "tv_series") {
-    return "series";
-  }
-
+  if (type === "short_film" || type === "short") return "short_film";
+  if (type === "series" || type === "tv_series") return "series";
   if (type === "podcast") return "podcast";
   if (type === "book") return "book";
 
@@ -293,11 +283,7 @@ function getItemKey(item) {
    الگوریتم پیشنهادها
 ========================= */
 
-function getRecommendations(
-  answers,
-  databases,
-  excludedKeys = new Set()
-) {
+function getRecommendations(answers, databases, excludedKeys = new Set()) {
   const results = getCategorizedRecommendations(
     databases,
     answers,
@@ -352,11 +338,7 @@ function getCategoryTitle(category) {
    کارت پیشنهاد
 ========================= */
 
-function RecommendationCard({
-  item,
-  onDifferent,
-  changing,
-}) {
+function RecommendationCard({ item, onDifferent, changing }) {
   const type = getTypeLabel(item);
   const duration = getDuration(item);
   const creator = getCreator(item);
@@ -376,13 +358,10 @@ function RecommendationCard({
     <article className="recommendation-card">
       <div className="recommendation-image">
         {item?.image ? (
-          <img
-            src={item.image}
-            alt={item.title || "پیشنهاد"}
-          />
+          <img src={item.image} alt={item.title || "پیشنهاد"} />
         ) : (
           <div className="image-placeholder">
-            <span>همین الان</span>
+            <span>yeyho</span>
           </div>
         )}
       </div>
@@ -542,8 +521,7 @@ function App() {
     const replacementKey = getItemKey(replacement);
 
     setSeenRecommendationKeys(
-      (current) =>
-        new Set([...current, replacementKey])
+      (current) => new Set([...current, replacementKey])
     );
 
     setRecommendations((current) =>
@@ -559,34 +537,24 @@ function App() {
   const currentQuestion = questions[questionIndex];
 
   /* =========================
-     صفحه شروع
+     صفحه شروع YEYHO
   ========================= */
 
   if (screen === "home") {
     return (
-      <main className="app">
-        <section className="hero">
-          <div className="logo">همین الان</div>
+      <main className="app yeyho-app">
+        <section className="yeyho-home">
+          <div className="yeyho-logo">yeyho</div>
 
-          <div className="hero-content">
-            <div className="eyebrow">H A M I N A L A N</div>
-
-            <h1>نمی‌دونی الان چیکار کنی؟</h1>
-
-            <p>چند ساعت وقت داری، ایده‌ای نداری؟</p>
-            <p>بزن ببینیم چی بهت می‌چسبه.</p>
+          <div className="yeyho-hero-content">
+            <h1>حوصله ت سر رفته؟</h1>
 
             <button
-              className="main-button"
+              className="yeyho-main-button"
               onClick={startQuestionnaire}
             >
-              چه کنم؟
-              <span>←</span>
+              بزن بریم
             </button>
-          </div>
-
-          <div className="hero-note">
-            فیلم، سریال، کتاب، پادکست، موسیقی و چیزهایی که شاید خودت پیداشون نمی‌کردی.
           </div>
         </section>
       </main>
@@ -696,7 +664,7 @@ function App() {
           </button>
 
           <div>
-            <div className="logo small">همین الان</div>
+            <div className="logo small yeyho-wordmark">yeyho</div>
           </div>
         </header>
 
